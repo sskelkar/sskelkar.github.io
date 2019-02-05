@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Javascript on betweencurlybraces</title>
-    <link>http://example.org/tags/javascript/</link>
+    <link>https://sskelkar.github.io/tags/javascript/</link>
     <description>Recent content in Javascript on betweencurlybraces</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 20 Jul 2015 00:00:00 +0530</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://sskelkar.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Closures in JavaScript</title>
-      <link>http://example.org/2015-07-20-closures-in-javascript/</link>
+      <link>https://sskelkar.github.io/2015-07-20-closures-in-javascript/</link>
       <pubDate>Mon, 20 Jul 2015 00:00:00 +0530</pubDate>
       
-      <guid>http://example.org/2015-07-20-closures-in-javascript/</guid>
+      <guid>https://sskelkar.github.io/2015-07-20-closures-in-javascript/</guid>
       <description>A good understanding of closures is a must-have skill for any JavaScript programmer. So let&amp;rsquo;s take a look at how they work with two simple examples.
 In JavaScript, functions are first class citizens. This means a function can be passed as an argument to another function, returned as the value from a function, assigned to a variable and stored in a data structure.
 We can even write a function within a function, and the inner function has access to the environment within which it was created.</description>
@@ -24,10 +24,10 @@ We can even write a function within a function, and the inner function has acces
     
     <item>
       <title>Dependency Injection in AngularJS 1.x</title>
-      <link>http://example.org/2015-07-19-dependency-injection-in-angularjs-1x/</link>
+      <link>https://sskelkar.github.io/2015-07-19-dependency-injection-in-angularjs-1x/</link>
       <pubDate>Sun, 19 Jul 2015 00:00:00 +0530</pubDate>
       
-      <guid>http://example.org/2015-07-19-dependency-injection-in-angularjs-1x/</guid>
+      <guid>https://sskelkar.github.io/2015-07-19-dependency-injection-in-angularjs-1x/</guid>
       <description>AngularJS Dependency Injection works like magic! You pass a service name in your controller constructor function and angular runtime promptly provides you with a suitable object. While this makes development process easier, it might be a little disconcerting if you don’t know what’s happening behind the scene. In this article, I will take a look at how angular DI works.
 In an Angular application, user can create different kinds of components like: directives, controllers, services etc.</description>
     </item>

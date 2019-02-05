@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on betweencurlybraces</title>
-    <link>http://example.org/tags/</link>
+    <link>https://sskelkar.github.io/tags/</link>
     <description>Recent content in Tags on betweencurlybraces</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 19 Jul 2015 00:00:00 +0530</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://sskelkar.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Angular</title>
-      <link>http://example.org/tags/angular/</link>
+      <link>https://sskelkar.github.io/tags/angular/</link>
       <pubDate>Sun, 19 Jul 2015 00:00:00 +0530</pubDate>
       
-      <guid>http://example.org/tags/angular/</guid>
+      <guid>https://sskelkar.github.io/tags/angular/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Functional Programming</title>
-      <link>http://example.org/tags/functional-programming/</link>
+      <link>https://sskelkar.github.io/tags/functional-programming/</link>
       <pubDate>Mon, 20 Jul 2015 00:00:00 +0530</pubDate>
       
-      <guid>http://example.org/tags/functional-programming/</guid>
+      <guid>https://sskelkar.github.io/tags/functional-programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Java</title>
-      <link>http://example.org/tags/java/</link>
+      <link>https://sskelkar.github.io/tags/java/</link>
       <pubDate>Thu, 04 Feb 2016 00:00:00 +0530</pubDate>
       
-      <guid>http://example.org/tags/java/</guid>
+      <guid>https://sskelkar.github.io/tags/java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Javascript</title>
-      <link>http://example.org/tags/javascript/</link>
+      <link>https://sskelkar.github.io/tags/javascript/</link>
       <pubDate>Mon, 20 Jul 2015 00:00:00 +0530</pubDate>
       
-      <guid>http://example.org/tags/javascript/</guid>
+      <guid>https://sskelkar.github.io/tags/javascript/</guid>
       <description></description>
     </item>
     
