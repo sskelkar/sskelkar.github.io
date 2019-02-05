@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on betweencurlybraces</title>
+    <link>http://example.org/post/</link>
+    <description>Recent content in Posts on betweencurlybraces</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 04 Feb 2016 00:00:00 +0530</lastBuildDate>
+    
+	<atom:link href="http://example.org/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Memory profiling – simple examples</title>
+      <link>http://example.org/2016-02-04-memory-profiling-simple-examples/</link>
+      <pubDate>Thu, 04 Feb 2016 00:00:00 +0530</pubDate>
+      
+      <guid>http://example.org/2016-02-04-memory-profiling-simple-examples/</guid>
+      <description>Recently I have been trying to learn different memory profiling tools to monitor Java applications. I have looked into the command line tools that are shipped as part of JDK like jstat, jps, jvisualvm etc. Licensed tools like Yourkit provide wholesome information about a running JVM including memory usage, CPU time, thread count etc. Running a java application with -verbose:gc option prints memory usage of each generation after every garbage collection event.</description>
+    </item>
+    
+    <item>
+      <title>Closures in JavaScript</title>
+      <link>http://example.org/2015-07-20-closures-in-javascript/</link>
+      <pubDate>Mon, 20 Jul 2015 00:00:00 +0530</pubDate>
+      
+      <guid>http://example.org/2015-07-20-closures-in-javascript/</guid>
+      <description>A good understanding of closures is a must-have skill for any JavaScript programmer. So let&amp;rsquo;s take a look at how they work with two simple examples.
+In JavaScript, functions are first class citizens. This means a function can be passed as an argument to another function, returned as the value from a function, assigned to a variable and stored in a data structure.
+We can even write a function within a function, and the inner function has access to the environment within which it was created.</description>
+    </item>
+    
+    <item>
+      <title>Dependency Injection in AngularJS 1.x</title>
+      <link>http://example.org/2015-07-19-dependency-injection-in-angularjs-1x/</link>
+      <pubDate>Sun, 19 Jul 2015 00:00:00 +0530</pubDate>
+      
+      <guid>http://example.org/2015-07-19-dependency-injection-in-angularjs-1x/</guid>
+      <description>AngularJS Dependency Injection works like magic! You pass a service name in your controller constructor function and angular runtime promptly provides you with a suitable object. While this makes development process easier, it might be a little disconcerting if you don’t know what’s happening behind the scene. In this article, I will take a look at how angular DI works.
+In an Angular application, user can create different kinds of components like: directives, controllers, services etc.</description>
+    </item>
+    
+  </channel>
+</rss>
