@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://sskelkar.github.io/2019-01-12-db-integration-tests-for-spring-app/</loc>
+    <lastmod>2019-01-12T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sskelkar.github.io/2018-09-23-small-pleasures-of-programming/</loc>
+    <lastmod>2018-09-23T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sskelkar.github.io/2017-11-08-representing-natural-numbers-in-lambda-calculus/</loc>
     <lastmod>2017-11-08T00:00:00+05:30</lastmod>
   </url>
@@ -28,8 +38,58 @@
   </url>
   
   <url>
+    <loc>https://sskelkar.github.io/2016-02-12-logging-with-spring-aop/</loc>
+    <lastmod>2016-02-12T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sskelkar.github.io/2016-02-04-memory-profiling-simple-examples/</loc>
     <lastmod>2016-02-04T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sskelkar.github.io/2016-01-15-jpa-entity-relationships/</loc>
+    <lastmod>2016-01-15T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sskelkar.github.io/2016-01-11-introduction-to-jdb/</loc>
+    <lastmod>2016-01-11T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sskelkar.github.io/2015-12-17-service-discovery-setup-guide/</loc>
+    <lastmod>2015-12-17T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sskelkar.github.io/2015-12-17-how-to-set-up-a-local-spring-cloud-config-server/</loc>
+    <lastmod>2015-12-15T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sskelkar.github.io/2015-10-24-building-with-gradle/</loc>
+    <lastmod>2015-10-24T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sskelkar.github.io/2015-08-26-tail-recursion/</loc>
+    <lastmod>2015-08-26T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sskelkar.github.io/2015-08-09-how-unit-testing-leads-to-improved-code/</loc>
+    <lastmod>2015-08-09T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sskelkar.github.io/2015-08-05-scheming-with-the-little-schemer/</loc>
+    <lastmod>2015-08-05T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sskelkar.github.io/2015-07-23-rip-yahoo-pipes/</loc>
+    <lastmod>2015-07-23T00:00:00+05:30</lastmod>
   </url>
   
   <url>
@@ -54,6 +114,12 @@
   </url>
   
   <url>
+    <loc>https://sskelkar.github.io/tags/coding-is-fun/</loc>
+    <lastmod>2018-09-23T00:00:00+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://sskelkar.github.io/tags/functional-programming/</loc>
     <lastmod>2017-11-08T00:00:00+05:30</lastmod>
     <priority>0</priority>
@@ -61,7 +127,7 @@
   
   <url>
     <loc>https://sskelkar.github.io/tags/java/</loc>
-    <lastmod>2017-10-14T00:00:00+05:30</lastmod>
+    <lastmod>2019-01-12T00:00:00+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -73,7 +139,13 @@
   
   <url>
     <loc>https://sskelkar.github.io/post/</loc>
-    <lastmod>2017-11-08T00:00:00+05:30</lastmod>
+    <lastmod>2019-01-12T00:00:00+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sskelkar.github.io/tags/spring/</loc>
+    <lastmod>2019-01-12T00:00:00+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -85,13 +157,13 @@
   
   <url>
     <loc>https://sskelkar.github.io/tags/unit-testing/</loc>
-    <lastmod>2017-01-14T00:00:00+05:30</lastmod>
+    <lastmod>2019-01-12T00:00:00+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://sskelkar.github.io/</loc>
-    <lastmod>2017-11-08T00:00:00+05:30</lastmod>
+    <lastmod>2019-01-12T00:00:00+05:30</lastmod>
     <priority>0</priority>
   </url>
   

@@ -188,10 +188,12 @@ blockquote,
   <small class="text-secondary">
   
   
-  Jul 2015
-    &nbsp;&#9679;&nbsp;
+  Posted on Jul 2015
+    by
+    <b>Sojjwal Kelkar</b>
+    &nbsp;|&nbsp;
   4 min read
-    &nbsp;&#x25CF;&nbsp;
+    &nbsp;&nbsp;
   </small>
   
 
@@ -207,7 +209,7 @@ blockquote,
 
 <p>We can even write a function within a function, and the inner function has access to the <em>environment</em> within which it was created. A closure is a combination of a function and the environment in which it was created. This means an inner function can hold the scope of parent function even if the parent function has returned. Following example will make it a little clear.</p>
 
-<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#204a87;font-weight:bold">function</span> <span style="color:#000">adderFactory</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#204a87;font-weight:bold">function</span> <span style="color:#000">adderFactory</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
     <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">function</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
         <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">y</span><span style="color:#000;font-weight:bold">;</span>
     <span style="color:#000;font-weight:bold">}</span>
@@ -219,7 +221,8 @@ blockquote,
 <span style="color:#000">console</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">log</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">addBy5</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">));</span>          <span style="color:#8f5902;font-style:italic">// prints &#34;7&#34;
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">console</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">log</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">addBy10</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">));</span>         <span style="color:#8f5902;font-style:italic">// prints &#34;12&#34;
 </span></code></pre></div>
-In the above code, we have an outer function <code>adderFactory</code> with a local variable <code>x</code>. From this function, we return an unnamed function which refers to the variable <code>x</code>.</p>
+
+<p>In the above code, we have an outer function <code>adderFactory</code> with a local variable <code>x</code>. From this function, we return an unnamed function which refers to the variable <code>x</code>.</p>
 
 <p>We then call the <code>adderFactory</code> with value 5. <code>adderFactory</code> exits after returning the unnamed function, which we store in the variable <code>addBy5</code>. Now this variable <code>addBy5</code> is bound to a function that adds 5 to the number passed to it and returns the sum.</p>
 

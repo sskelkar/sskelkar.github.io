@@ -188,10 +188,12 @@ blockquote,
   <small class="text-secondary">
   
   
-  Feb 2016
-    &nbsp;&#9679;&nbsp;
+  Posted on Feb 2016
+    by
+    <b>Sojjwal Kelkar</b>
+    &nbsp;|&nbsp;
   5 min read
-    &nbsp;&#x25CF;&nbsp;
+    &nbsp;&nbsp;
   </small>
   
 
@@ -242,8 +244,9 @@ blockquote,
       <span style="color:#000">array</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">valueOf</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">));</span>
     <span style="color:#ce5c00;font-weight:bold">}</span>
   <span style="color:#ce5c00;font-weight:bold">}</span>
-<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div>
-I will compile and run it as following:</p>
+<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div></p>
+
+<p>I will compile and run it as following:</p>
 
 <pre><code class="language-cmd">javac ArrayListProfiler.java &amp;&amp; java -Xmx1m -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Xloggc:D:\gc.log ArrayListProfiler
 </code></pre>
@@ -282,8 +285,9 @@ Heap
       <span style="color:#000">array</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">valueOf</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">));</span>
     <span style="color:#ce5c00;font-weight:bold">}</span>
   <span style="color:#ce5c00;font-weight:bold">}</span>
-<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div>
-The output in this case comes out to be like this:</p>
+<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div></p>
+
+<p>The output in this case comes out to be like this:</p>
 
 <pre><code class="language-sh">Java HotSpot(TM) 64-Bit Server VM (25.40-b25) for windows-amd64 JRE (1.8.0_40-b26), built on Mar  7 2015 13:51:59 by &quot;java_re&quot; with MS VC++ 10.0 (VS2010)
 Memory: 4k page, physical 8365480k(1929064k free), swap 16729064k(4231388k free)

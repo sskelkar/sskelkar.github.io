@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="https://sskelkar.github.io/css/bootstrap.min.css" />
 
   
-  <title>Parallelizing time intensive operations with RxJava Observables | betweencurlybraces</title>
+  <title>Running time intensive operations in parallel with RxJava Observables | betweencurlybraces</title>
   
 
   <style>
@@ -183,15 +183,17 @@ blockquote,
   
   <div class="container">
     <article>
-      <h1>Parallelizing time intensive operations with RxJava Observables</h1>
+      <h1>Running time intensive operations in parallel with RxJava Observables</h1>
 <p>
   <small class="text-secondary">
   
   
-  Sep 2016
-    &nbsp;&#9679;&nbsp;
+  Posted on Sep 2016
+    by
+    <b>Sojjwal Kelkar</b>
+    &nbsp;|&nbsp;
   6 min read
-    &nbsp;&#x25CF;&nbsp;
+    &nbsp;&nbsp;
   </small>
   
 
@@ -229,8 +231,9 @@ Let&rsquo;s consider a situation where we have a consumer class that depends on 
     <span style="color:#ce5c00;font-weight:bold">}</span>
     <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">list</span><span style="color:#ce5c00;font-weight:bold">;</span>
   <span style="color:#ce5c00;font-weight:bold">}</span>
-<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div>
-Note that the <code>produce()</code> method of each producer is going to take approx 5 seconds to execute. The time required to consume them sequentially would be the aggregate of the execution time of each producer.
+<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div></p>
+
+<p>Note that the <code>produce()</code> method of each producer is going to take approx 5 seconds to execute. The time required to consume them sequentially would be the aggregate of the execution time of each producer.
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">SequentialConsumer</span> <span style="color:#ce5c00;font-weight:bold">{</span>
   <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">consume</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Producer1</span> <span style="color:#000">p1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Producer2</span> <span style="color:#000">p2</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
     <span style="color:#000">Long</span> <span style="color:#000">start</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">currentTimeMillis</span><span style="color:#ce5c00;font-weight:bold">();</span>
@@ -244,8 +247,9 @@ Note that the <code>produce()</code> method of each producer is going to take ap
     <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Serial time elapsed: &#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">end</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">start</span><span style="color:#ce5c00;font-weight:bold">)/</span><span style="color:#000">1000</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#34; seconds&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#8f5902;font-style:italic">// prints 10 seconds
 </span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">result</span><span style="color:#ce5c00;font-weight:bold">;</span>
   <span style="color:#ce5c00;font-weight:bold">}</span>
-<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div>
-Now let&rsquo;s rewrite the above code using Observables. First, we need to identify the tasks that can be parallelized, and wrap them inside RxJava Observable objects. In our case, we will convert the <code>produce()</code> method invocations to Observable tasks by wrapping them in <code>Observable.just()</code> methods. Additionally, we would also like to defer the execution of our Observable tasks so that we can control when they get invoked. So we wrap our tasks inside <code>Observable.defer()</code>.</p>
+<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div></p>
+
+<p>Now let&rsquo;s rewrite the above code using Observables. First, we need to identify the tasks that can be parallelized, and wrap them inside RxJava Observable objects. In our case, we will convert the <code>produce()</code> method invocations to Observable tasks by wrapping them in <code>Observable.just()</code> methods. Additionally, we would also like to defer the execution of our Observable tasks so that we can control when they get invoked. So we wrap our tasks inside <code>Observable.defer()</code>.</p>
 
 <p>The way Observer model works is, we have an Observable which emits some information. And we have a subscriber or observer, that listens to the Observable and consumes the information emitted by it. So we need our Observable tasks to be subscribed on, so that the results emitted by them can be processed. We also need to execute them in parallel, which can be done by executing them in separate threads. This can be done by calling <code>subscribeOn(Schedulers.newThread())</code>.</p>
 
@@ -258,8 +262,9 @@ Now let&rsquo;s rewrite the above code using Observables. First, we need to iden
 
 <span style="color:#000">Observable</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">zip</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">o1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">o2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">o3</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">o1Result</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">o2Result</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">o3Result</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#ce5c00;font-weight:bold">{</span>
   <span style="color:#8f5902;font-style:italic">// some code
-</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#ce5c00;font-weight:bold">});</span></code></pre></div>
-In our example, the two Observables will each emit a list of Integers, which we can collect in another ArrayList and return from the <code>consume()</code> method.
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#ce5c00;font-weight:bold">});</span></code></pre></div></p>
+
+<p>In our example, the two Observables will each emit a list of Integers, which we can collect in another ArrayList and return from the <code>consume()</code> method.
 We need to pause our main thread until all the parallel tasks are completed, so that we can collect their results. This can be done using the <code>toBlocking()</code> operator.
 Finally, we  call the <code>single()</code> method to trigger the execution of our Observables and return the combined list of integers.</p>
 

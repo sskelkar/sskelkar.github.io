@@ -6,10 +6,29 @@
     <description>Recent content on betweencurlybraces</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Nov 2017 00:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 12 Jan 2019 00:00:00 +0530</lastBuildDate>
     
 	<atom:link href="https://sskelkar.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Database integration tests for a Spring application</title>
+      <link>https://sskelkar.github.io/2019-01-12-db-integration-tests-for-spring-app/</link>
+      <pubDate>Sat, 12 Jan 2019 00:00:00 +0530</pubDate>
+      
+      <guid>https://sskelkar.github.io/2019-01-12-db-integration-tests-for-spring-app/</guid>
+      <description>Suppose you are tasked with writing tests for a Spring and Hibernate application. This application uses a mix of native queries, HQL or entity associations to fetch data from the database. If you choose to mock the DAO or entity layers, you leave a significant portion of the code untested. In such cases data integration tests can provide the most correct feedback. But you do you configure your application to run integration tests?</description>
+    </item>
+    
+    <item>
+      <title>The small pleasures of programming</title>
+      <link>https://sskelkar.github.io/2018-09-23-small-pleasures-of-programming/</link>
+      <pubDate>Sun, 23 Sep 2018 00:00:00 +0530</pubDate>
+      
+      <guid>https://sskelkar.github.io/2018-09-23-small-pleasures-of-programming/</guid>
+      <description>It’s not just pulling off a complex engineering feat that makes programmers love their jobs. There are small pleasures to be had even in your day to day tasks, if you look for them.
+Seasoned programmers know the thrill of recognising the possibility to introduce an abstraction over duplication. A task as simple as renaming a variable can be the difference between obscurantism and lucidity. It’s the boy scout principle in action.</description>
+    </item>
     
     <item>
       <title>Representing natural numbers in lambda calculus</title>
@@ -50,7 +69,7 @@ A -&amp;gt; B -&amp;gt; C  Let&amp;rsquo;s say a call is made from A to B. To se
     </item>
     
     <item>
-      <title>Parallelizing time intensive operations with RxJava Observables</title>
+      <title>Running time intensive operations in parallel with RxJava Observables</title>
       <link>https://sskelkar.github.io/2016-09-01-rxjava-observables/</link>
       <pubDate>Thu, 01 Sep 2016 00:00:00 +0530</pubDate>
       
@@ -60,12 +79,112 @@ While we can create threads for this purpose, an additional benefit of using Obs
     </item>
     
     <item>
+      <title>Logging with Spring AOP</title>
+      <link>https://sskelkar.github.io/2016-02-12-logging-with-spring-aop/</link>
+      <pubDate>Fri, 12 Feb 2016 00:00:00 +0530</pubDate>
+      
+      <guid>https://sskelkar.github.io/2016-02-12-logging-with-spring-aop/</guid>
+      <description>Aspect oriented programming (AOP) is a way of separating the business login in your code from cross cutting concerns. What is a cross cutting concern?
+Analogy time. A typical house has different rooms that have designated functions. We keep our stuff in the rooms where they make sense. The living room is an unlikely location for a dishwasher and a bathtub belongs in the bathroom. But the electric circuit runs throughout the house because it is not tied to the functionality of any specific room.</description>
+    </item>
+    
+    <item>
       <title>Memory profiling – simple examples</title>
       <link>https://sskelkar.github.io/2016-02-04-memory-profiling-simple-examples/</link>
       <pubDate>Thu, 04 Feb 2016 00:00:00 +0530</pubDate>
       
       <guid>https://sskelkar.github.io/2016-02-04-memory-profiling-simple-examples/</guid>
       <description>Recently I have been trying to learn different memory profiling tools to monitor Java applications. I have looked into the command line tools that are shipped as part of JDK like jstat, jps, jvisualvm etc. Licensed tools like Yourkit provide wholesome information about a running JVM including memory usage, CPU time, thread count etc. Running a java application with -verbose:gc option prints memory usage of each generation after every garbage collection event.</description>
+    </item>
+    
+    <item>
+      <title>JPA Entity Relationships</title>
+      <link>https://sskelkar.github.io/2016-01-15-jpa-entity-relationships/</link>
+      <pubDate>Fri, 15 Jan 2016 00:00:00 +0530</pubDate>
+      
+      <guid>https://sskelkar.github.io/2016-01-15-jpa-entity-relationships/</guid>
+      <description>In a relational database, the relationships between two tables are defined by foreign keys. Typically, one table has a column that contains the primary key of another table’s row. In JPA, we deal with entity objects that are Java representations of database tables. So we need a different way for establishing relationship between two entities. JPA entity relationships define how these entities refer to each other.
+For the purpose of this article, I will work with JPA 2.</description>
+    </item>
+    
+    <item>
+      <title>Introduction to jdb</title>
+      <link>https://sskelkar.github.io/2016-01-11-introduction-to-jdb/</link>
+      <pubDate>Mon, 11 Jan 2016 00:00:00 +0530</pubDate>
+      
+      <guid>https://sskelkar.github.io/2016-01-11-introduction-to-jdb/</guid>
+      <description>jdb (Java Debugger) is a simple command-line debugger for Java classes that is provided as part of the JDK tools and utilities.
+jdb is based on a server-client model. While debugging, you have one JVM where the code is executed and another JVM where debugger runs. Either VMs can act as the server. There are two ways to start the debugger. You can directly fire up the debugger by giving the main class name with the jdb command.</description>
+    </item>
+    
+    <item>
+      <title>Step by step guide to set up a service discovery environment</title>
+      <link>https://sskelkar.github.io/2015-12-17-service-discovery-setup-guide/</link>
+      <pubDate>Thu, 17 Dec 2015 00:00:00 +0530</pubDate>
+      
+      <guid>https://sskelkar.github.io/2015-12-17-service-discovery-setup-guide/</guid>
+      <description>A step by step guide to set up a eureka service, to which we will register a demo server service and discover it from a demo client service.
+Steps to configure a eureka service  Create a new Gradle project for the eureka service. In https://start.spring.io/, select the starters for Eureka server.
+ In your project, navigate to src/main/resources. Rename the automatically generated application.properties file to bootstrap.yml.
+ Configure the bootstrap.</description>
+    </item>
+    
+    <item>
+      <title>How to set up a local spring cloud config server</title>
+      <link>https://sskelkar.github.io/2015-12-17-how-to-set-up-a-local-spring-cloud-config-server/</link>
+      <pubDate>Tue, 15 Dec 2015 00:00:00 +0530</pubDate>
+      
+      <guid>https://sskelkar.github.io/2015-12-17-how-to-set-up-a-local-spring-cloud-config-server/</guid>
+      <description>Steps to configure config server  Create a new Gradle project for the config server. In https://start.spring.io/, select the starters for config server. In your project, navigate to src/main/resources. Rename the automatically generated application.properties file to bootstrap.yml. Spring cloud config uses a Git backend by default to lookup property sources, i.e., config files. For this demo application, we will create a git repository on our local file system. Create an empty folder in your file system.</description>
+    </item>
+    
+    <item>
+      <title>Building with Gradle</title>
+      <link>https://sskelkar.github.io/2015-10-24-building-with-gradle/</link>
+      <pubDate>Sat, 24 Oct 2015 00:00:00 +0530</pubDate>
+      
+      <guid>https://sskelkar.github.io/2015-10-24-building-with-gradle/</guid>
+      <description>Gradle is a popular build tool to manage Java projects. Gradle’s build scripts are written in Groovy. The design of Gradle is aimed to be used as a language, not as a rigid framework. In this article, I want to give some basic idea about what a Gradle build script is composed of and some of the features provided by Gradle.
+Gradle is based upon two basic concepts: projects and tasks.</description>
+    </item>
+    
+    <item>
+      <title>Tail Recursion</title>
+      <link>https://sskelkar.github.io/2015-08-26-tail-recursion/</link>
+      <pubDate>Wed, 26 Aug 2015 00:00:00 +0530</pubDate>
+      
+      <guid>https://sskelkar.github.io/2015-08-26-tail-recursion/</guid>
+      <description>Tail recursion is one of those functional programming concepts that are likely to be unknown to someone coming from a Java background, like me. I encountered this term while skimming through the first few pages of SICP. After some quick R&amp;amp;D (i.e. googling), the following is a summary of what I have learnt.
+Before understanding tail recursion, we need to be familiar with the term tail call. Simply put, if in a function definition, the last instruction before returning is a function call, then that function call is called a tail call.</description>
+    </item>
+    
+    <item>
+      <title>How unit testing leads to improved code</title>
+      <link>https://sskelkar.github.io/2015-08-09-how-unit-testing-leads-to-improved-code/</link>
+      <pubDate>Sun, 09 Aug 2015 00:00:00 +0530</pubDate>
+      
+      <guid>https://sskelkar.github.io/2015-08-09-how-unit-testing-leads-to-improved-code/</guid>
+      <description>In Test Driven Development, the purpose of unit testing is to help us design our classes and not just to validate the correctness of our code. In this article I want to demonstrate how unit testing forces us to write better code, with help of an example. I will use Mockito for mocking.
+First, let me define the problem domain I’ll be using in the example. Suppose we have an online booking portal where customers make reservations for travel or accommodation.</description>
+    </item>
+    
+    <item>
+      <title>Scheming with the Little Schemer</title>
+      <link>https://sskelkar.github.io/2015-08-05-scheming-with-the-little-schemer/</link>
+      <pubDate>Wed, 05 Aug 2015 00:00:00 +0530</pubDate>
+      
+      <guid>https://sskelkar.github.io/2015-08-05-scheming-with-the-little-schemer/</guid>
+      <description>From a very long time, I have been an admirer of Lisp, an often praised but seldom used programming language. Common consensus about Lisp is that it is the kind of language you don’t need to know to get your daily tasks done, but any programmer worth his salt should be familiar with its concepts.
+For a beginner, perhaps the easiest way to get a taste of Lisp is to go through The Little Schemer.</description>
+    </item>
+    
+    <item>
+      <title>RIP Yahoo! Pipes</title>
+      <link>https://sskelkar.github.io/2015-07-23-rip-yahoo-pipes/</link>
+      <pubDate>Thu, 23 Jul 2015 00:00:00 +0530</pubDate>
+      
+      <guid>https://sskelkar.github.io/2015-07-23-rip-yahoo-pipes/</guid>
+      <description>Yahoo has announced it will shut down its web mashup application Pipes on September of this year. Pipes was a pretty useful application to combine web feeds from multiple sources. With an easy to use GUI, you could add filters, modify the fields present in a feed and render the Pipe in RSS, JSON or Atom formats. Consequently you could subscribe to a Pipe just like you would subscribe to any web feed.</description>
     </item>
     
     <item>
@@ -95,7 +214,8 @@ In an Angular application, user can create different kinds of components like: d
       <pubDate>Sun, 21 Feb 2010 09:52:13 +0100</pubDate>
       
       <guid>https://sskelkar.github.io/about/</guid>
-      <description>My name is Sojjwal Kelkar. I am a software developer based in Pune, India.</description>
+      <description>My name is Sojjwal Kelkar. I am a software developer based in Pune, India.
+   &amp;nbsp; &amp;#xf09b;   &amp;nbsp;    </description>
     </item>
     
   </channel>

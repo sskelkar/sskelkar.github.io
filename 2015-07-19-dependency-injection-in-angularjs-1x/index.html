@@ -188,10 +188,12 @@ blockquote,
   <small class="text-secondary">
   
   
-  Jul 2015
-    &nbsp;&#9679;&nbsp;
+  Posted on Jul 2015
+    by
+    <b>Sojjwal Kelkar</b>
+    &nbsp;|&nbsp;
   5 min read
-    &nbsp;&#x25CF;&nbsp;
+    &nbsp;&nbsp;
   </small>
   
 
@@ -213,13 +215,14 @@ blockquote,
 
 <p>In the above code we are creating a controller <code>MyController</code> on <code>MyModule</code> module. It depends on two services: <code>$http</code> and <code>MyService</code>. While <code>$http</code> is an inbuilt angular service. <code>MyService</code> must have been defined by the user somewhere in the code like this:</p>
 
-<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">module</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">angular</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">module</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;MyModule&#39;</span><span style="color:#000;font-weight:bold">);</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">module</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">angular</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">module</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;MyModule&#39;</span><span style="color:#000;font-weight:bold">);</span>
 <span style="color:#8f5902;font-style:italic">//MyService is created by calling angular.module.service method with the name of the service and a constructor function to create the service object.
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">module</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">service</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;MyService&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">function</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">{</span>
     <span style="color:#8f5902;font-style:italic">//MyService constructor code
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000;font-weight:bold">});</span>
 </code></pre></div>
-When the controller is loaded, Angular runtime automatically provides objects of <code>MyService</code> and <code>$http</code> services. This is how it works:</p>
+
+<p>When the controller is loaded, Angular runtime automatically provides objects of <code>MyService</code> and <code>$http</code> services. This is how it works:</p>
 
 <p>Angular run time internally maintains two cache objects: provider cache and instance cache, to hold a <em>provider</em> for an injectable component and the actual instance of that component.</p>
 
@@ -227,7 +230,7 @@ When the controller is loaded, Angular runtime automatically provides objects of
 
 <p>In above code, when we create a service by calling <code>module.service</code> method, Angular does not immediately create an object of this service. Instead, it creates a new property inside the provider cache object by appending ‘Provider’ string at the end of service name. This property is mapped to the constructor function passed to <code>module.service</code> method. So provider cache now looks somewhat like this (<em>NOTE: This representation is an over-simplification.</em>):</p>
 
-<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#000">providerCache</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#000">providerCache</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span>
     <span style="color:#000;font-weight:bold">...</span>
     <span style="color:#000">$httpProvider</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">...,</span>
     <span style="color:#000;font-weight:bold">...</span>
@@ -239,7 +242,8 @@ When the controller is loaded, Angular runtime automatically provides objects of
     <span style="color:#000;font-weight:bold">...</span> <span style="color:#8f5902;font-style:italic">//other providers
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000;font-weight:bold">};</span>
 </code></pre></div>
-When <code>MyService</code> is used somewhere in the application, the internal DI mechanism looks for <code>MyService</code> object in instance cache. If it is not present there, then it looks for <code>MyServiceProvider</code> in the provider cache. If the provider is found, an object is created using the constructor function and stored in the instance cache. The same object is passed to <code>MyController</code> and wherever else in the application <code>MyService</code> is used. This is because in Angular, <strong>all services are singleton</strong>. Lazy initialization of services allows the application to load up quickly and remain relatively lightweight.</p>
+
+<p>When <code>MyService</code> is used somewhere in the application, the internal DI mechanism looks for <code>MyService</code> object in instance cache. If it is not present there, then it looks for <code>MyServiceProvider</code> in the provider cache. If the provider is found, an object is created using the constructor function and stored in the instance cache. The same object is passed to <code>MyController</code> and wherever else in the application <code>MyService</code> is used. This is because in Angular, <strong>all services are singleton</strong>. Lazy initialization of services allows the application to load up quickly and remain relatively lightweight.</p>
 
 <p>Angular DI mechanism relies on two important services: <code>$provide</code> and <code>$injector</code>. Normally you don’t interact with them directly.</p>
 

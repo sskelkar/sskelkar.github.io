@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Coding Is Fun</title>
+      <link>https://sskelkar.github.io/tags/coding-is-fun/</link>
+      <pubDate>Sun, 23 Sep 2018 00:00:00 +0530</pubDate>
+      
+      <guid>https://sskelkar.github.io/tags/coding-is-fun/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Functional Programming</title>
       <link>https://sskelkar.github.io/tags/functional-programming/</link>
       <pubDate>Wed, 08 Nov 2017 00:00:00 +0530</pubDate>
@@ -32,7 +41,7 @@
     <item>
       <title>Java</title>
       <link>https://sskelkar.github.io/tags/java/</link>
-      <pubDate>Sat, 14 Oct 2017 00:00:00 +0530</pubDate>
+      <pubDate>Sat, 12 Jan 2019 00:00:00 +0530</pubDate>
       
       <guid>https://sskelkar.github.io/tags/java/</guid>
       <description></description>
@@ -48,9 +57,18 @@
     </item>
     
     <item>
+      <title>Spring</title>
+      <link>https://sskelkar.github.io/tags/spring/</link>
+      <pubDate>Sat, 12 Jan 2019 00:00:00 +0530</pubDate>
+      
+      <guid>https://sskelkar.github.io/tags/spring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Unit Testing</title>
       <link>https://sskelkar.github.io/tags/unit-testing/</link>
-      <pubDate>Sat, 14 Jan 2017 00:00:00 +0530</pubDate>
+      <pubDate>Sat, 12 Jan 2019 00:00:00 +0530</pubDate>
       
       <guid>https://sskelkar.github.io/tags/unit-testing/</guid>
       <description></description>
