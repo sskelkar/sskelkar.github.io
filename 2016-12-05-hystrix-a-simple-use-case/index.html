@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="https://sskelkar.github.io/css/bootstrap.min.css" />
 
   
-  <title>Tags | betweencurlybraces</title>
+  <title>Hystrix – a simple use case | betweencurlybraces</title>
   
 
   <style>
@@ -183,40 +183,34 @@ blockquote,
   
   <div class="container">
     <article>
-      <h1>Tags</h1>
-
-
-
+      <h1>Hystrix – a simple use case</h1>
+<p>
+  <small class="text-secondary">
   
   
-  
-  <p><a href="https://sskelkar.github.io/tags/java/"><code>java</code></a> 4</p>
-  
-
-  
-  
-  
-  <p><a href="https://sskelkar.github.io/tags/javascript/"><code>javascript</code></a> 3</p>
+  Dec 2016
+    &nbsp;&#9679;&nbsp;
+  3 min read
+    &nbsp;&#x25CF;&nbsp;
+  </small>
   
 
-  
-  
-  
-  <p><a href="https://sskelkar.github.io/tags/functional-programming/"><code>functional-programming</code></a> 2</p>
-  
+<small><code><a href="https://sskelkar.github.io/tags/java">Java</a></code></small>
 
-  
-  
-  
-  <p><a href="https://sskelkar.github.io/tags/angular/"><code>angular</code></a> 1</p>
-  
+</p>
+<p>Hystrix is a fault tolerance library that is very useful for managing failures in a distributed environment like microservices. Suppose we have a service <code>A</code> dependent  on service <code>B</code>, which is in turn dependent on service <code>C</code>.</p>
 
-  
-  
-  
-  <p><a href="https://sskelkar.github.io/tags/unit-testing/"><code>unit-testing</code></a> 1</p>
-  
+<pre><code>A -&gt; B -&gt; C
+</code></pre>
 
+<p>Let&rsquo;s say a call is made from <code>A</code> to <code>B</code>. To serve this request, <code>B</code> needs to call <code>C</code> but there’s a communication failure between them. If the call from <code>B</code> to <code>C</code> is wrapped in Hystrix mechanism, we prevent the failure being propagated to <code>A</code>. Because <code>B</code> couldn’t fetch the actual information from <code>C</code>, Hystrix gives us the option of declaring a fallback value to be used in this case, if feasible.</p>
+
+<p>In fact, Hystrix goes one step further. If we have a high volume of requests going from <code>B</code> to <code>C</code> per unit of time, and the rate of failure reaches some particular value say 50%, then Hystrix will stop any further requests for a period of time and instead return the fallback value immediately. In Hystrix terminology the circuit is said to be <code>open</code> in this case.</p>
+
+<p>After a pre-configured time has elapsed, Hyxtrix will attempt to process the next request by calling service <code>C</code>. This is the <code>half-open</code> state. If the call still fails, the system revert backs to <code>open</code> state. But if it is successful, the circuit is <code>closed</code> and for all subsequent requests, service <code>C</code> is called.</p>
+
+
+<a href="#top">Top</a>
     </article>
   </div>
 
