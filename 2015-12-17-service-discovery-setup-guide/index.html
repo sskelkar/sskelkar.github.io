@@ -205,16 +205,14 @@ blockquote,
 </p>
 
 
-<p>A step by step guide to set up a eureka service, to which we will register a demo server service and <em>discover</em> it from a demo client service.</p>
+<p>A step by step guide to set up a service discovery, to which we will register a demo server and <em>discover</em> it from a demo client service.</p>
 
-<h3 id="steps-to-configure-a-eureka-service">Steps to configure a eureka service</h3>
+<h3 id="steps-to-configure-a-eureka-service">Steps to configure a Eureka service</h3>
 
-<ol>
-<li><p>Create a new Gradle project for the eureka service. In <a href="https://start.spring.io/">https://start.spring.io/</a>, select the starters for Eureka server.</p></li>
+<p>a. Create a new Gradle project for the Eureka service. In <a href="https://start.spring.io/">https://start.spring.io/</a>, select the starters for <code>Eureka Server</code>.</p>
 
-<li><p>In your project, navigate to <code>src/main/resources</code>. Rename the automatically generated <code>application.properties</code> file to <code>bootstrap.yml</code>.</p></li>
-
-<li><p>Configure the <code>bootstrap.yml</code> as following:
+<p>b. In your project, navigate to <code>src/main/resources</code>. Rename the automatically generated <code>application.properties</code> file to <code>bootstrap.yml</code>.
+c. Configure the <code>bootstrap.yml</code> as following:
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000">spring</span><span style="color:#000;font-weight:bold">:</span>
   <span style="color:#000">application</span><span style="color:#000;font-weight:bold">:</span>
     <span style="color:#000">name</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">demo</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">eureka</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">server</span>
@@ -225,83 +223,73 @@ blockquote,
     <span style="color:#000">registerWithEureka</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">false</span>
     <span style="color:#000">fetchRegistry</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">false</span>
     <span style="color:#000">serviceUrl</span><span style="color:#000;font-weight:bold">:</span>
-      <span style="color:#000">defaultZone</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">http</span><span style="color:#000;font-weight:bold">:</span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#000">localhost</span><span style="color:#000;font-weight:bold">:</span><span style="color:#a40000">$</span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">server</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">port</span><span style="color:#000;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">eureka</span><span style="color:#ce5c00;font-weight:bold">/</span></code></pre></div></p></li>
-</ol>
+      <span style="color:#000">defaultZone</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">http</span><span style="color:#000;font-weight:bold">:</span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#000">localhost</span><span style="color:#000;font-weight:bold">:</span><span style="color:#a40000">$</span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">server</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">port</span><span style="color:#000;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">eureka</span><span style="color:#ce5c00;font-weight:bold">/</span></code></pre></div></p>
 
-<p>Here we declared the application name and port number for our eureka server as <code>8002</code>. Rest of the configuration tells this application to not to register itself with the available Eureka instance, which is this case is itself!</p>
+<p>Here we declared the application name, and port number for our eureka service as <code>8002</code>. Rest of the configuration tells this application to not to register itself with the available Eureka instance, which in this case is itself!</p>
 
-<ol>
-<li><p>Annotate the application’s main class with <code>@EnableEurekaServer</code>.</p></li>
+<p>d. Annotate the application’s main class with <code>@EnableEurekaServer</code>.</p>
 
-<li><p>Run the application. Your Eureka server is ready.</p></li>
-</ol>
+<p>e. Run the application. Your Eureka service is ready.</p>
 
-<h3 id="steps-to-configure-a-server-service-that-will-register-itself-to-eureka">Steps to configure a server service that will register itself to Eureka</h3>
+<h3 id="steps-to-configure-a-demo-server-that-will-register-itself-to-eureka">Steps to configure a demo server that will register itself to Eureka</h3>
 
-<ol>
-<li><p>Create a new Gradle project for the server service. In <a href="https://start.spring.io/">https://start.spring.io/</a>, select the starters for web and Eureka Discovery.</p></li>
+<p>a. Create a new Gradle project for the demo server. In <a href="https://start.spring.io/">https://start.spring.io/</a>, select the starters for web and Eureka Discovery.</p>
 
-<li><p>In your project, navigate to <code>src/main/resources</code>. Rename the automatically generated <code>application.properties</code> file to <code>bootstrap.yml</code>.</p></li>
-
-<li><p>Configure your <code>bootstrap.yml</code> like following:
+<p>b. In your project, navigate to <code>src/main/resources</code>. Rename the automatically generated <code>application.properties</code> file to <code>bootstrap.yml</code>.
+c. Configure your <code>bootstrap.yml</code> like following:
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000">spring</span><span style="color:#000;font-weight:bold">:</span>
   <span style="color:#000">application</span><span style="color:#000;font-weight:bold">:</span>
-    <span style="color:#000">name</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">demo</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">server</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">service</span>
+    <span style="color:#000">name</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">demo</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">server</span>
 <span style="color:#000">server</span><span style="color:#000;font-weight:bold">:</span>
   <span style="color:#000">port</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">8080</span>
 <span style="color:#000">eureka</span><span style="color:#000;font-weight:bold">:</span>
   <span style="color:#000">client</span><span style="color:#000;font-weight:bold">:</span>
     <span style="color:#000">serviceUrl</span><span style="color:#000;font-weight:bold">:</span>
-      <span style="color:#000">defaultZone</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">http</span><span style="color:#000;font-weight:bold">:</span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#000">localhost</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">8002</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">eureka</span><span style="color:#ce5c00;font-weight:bold">/</span></code></pre></div></p></li>
-</ol>
+      <span style="color:#000">defaultZone</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">http</span><span style="color:#000;font-weight:bold">:</span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#000">localhost</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">8002</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">eureka</span><span style="color:#ce5c00;font-weight:bold">/</span></code></pre></div></p>
 
-<p>Spring Cloud based services have a <code>spring.application.name</code> property. It is used to pull down configuration from the Configuration server, to identify the service to Eureka, and is referenceable in numerous other contexts when building Spring Cloud based applications. This value typically lives in <code>src/main/resources/bootstrap.yml</code>, which is picked up earlier in the initialization than the normal <code>src/main/resources/application.yml</code>.
-4. Annotate the application’s main class with <code>@EnableDiscoveryClient</code>.</p>
+<p>Spring Cloud based services have a <code>spring.application.name</code> property. It is used to pull down configuration from the Configuration server, to identify the service to Eureka, and can be referenced in numerous other contexts when building Spring Cloud based applications. This value typically lives in <code>src/main/resources/bootstrap.yml</code>, which is picked up earlier in the initialization than the normal <code>src/main/resources/application.yml</code>.</p>
 
-<ol>
-<li><p>Let&rsquo;s also quickly write a rest endpoint that we will call from the client service. Create a controller class with following content:
+<p>d. Annotate the application’s main class with <code>@EnableDiscoveryClient</code>.</p>
+
+<p>e. Let&rsquo;s also quickly write a rest endpoint that we will call from the client service. Create a controller class with following content:
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#5c35cc;font-weight:bold">@RestController</span>
 <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">DemoServerController</span> <span style="color:#ce5c00;font-weight:bold">{</span>
     <span style="color:#5c35cc;font-weight:bold">@RequestMapping</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">value</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;/greet&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">method</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">RequestMethod</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">GET</span><span style="color:#ce5c00;font-weight:bold">)</span>
     <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">String</span> <span style="color:#000">greet</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#5c35cc;font-weight:bold">@RequestParam</span> <span style="color:#000">String</span> <span style="color:#000">name</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
         <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#4e9a06">&#34;Hello &#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">name</span><span style="color:#ce5c00;font-weight:bold">;</span>
     <span style="color:#ce5c00;font-weight:bold">}</span>
-<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div></p></li>
+<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div></p>
 
-<li><p>Run the application. In the command prompt you will see the service registering itself to the Eureka service.</p></li>
-</ol>
+<p>f. Run the application. In the command prompt you will see the service registering itself to the Eureka service.</p>
 
-<h3 id="steps-to-configure-a-client-service">Steps to configure a client service</h3>
+<h3 id="steps-to-configure-a-demo-client">Steps to configure a demo client</h3>
 
-<ol>
-<li><p>Create a new Gradle project for the server service. In <a href="https://start.spring.io/">https://start.spring.io/</a>, select the starters for web, Feign and Eureka Discovery.</p></li>
+<p>a. Create a new Gradle project for the demo client service. In <a href="https://start.spring.io/">https://start.spring.io/</a>, select the starters for web, Feign and Eureka Discovery.</p>
 
-<li><p>In your project, navigate to <code>src/main/resources</code>. Rename the automatically generated <code>application.properties</code> file to <code>bootstrap.yml</code> and configure it as following:
+<p>b. In your project, navigate to <code>src/main/resources</code>. Rename the automatically generated <code>application.properties</code> file to <code>bootstrap.yml</code> and configure it as following:
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000">spring</span><span style="color:#000;font-weight:bold">:</span>
   <span style="color:#000">application</span><span style="color:#000;font-weight:bold">:</span>
-    <span style="color:#000">name</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">demo</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">client</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">service</span>
+    <span style="color:#000">name</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">demo</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">client</span>
     
 <span style="color:#000">server</span><span style="color:#000;font-weight:bold">:</span>
   <span style="color:#000">port</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">8111</span> 
 <span style="color:#000">eureka</span><span style="color:#000;font-weight:bold">:</span>
   <span style="color:#000">client</span><span style="color:#000;font-weight:bold">:</span>
     <span style="color:#000">serviceUrl</span><span style="color:#000;font-weight:bold">:</span>
-      <span style="color:#000">defaultZone</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">http</span><span style="color:#000;font-weight:bold">:</span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#000">localhost</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">8002</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">eureka</span><span style="color:#ce5c00;font-weight:bold">/</span></code></pre></div></p></li>
+      <span style="color:#000">defaultZone</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">http</span><span style="color:#000;font-weight:bold">:</span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#000">localhost</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">8002</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">eureka</span><span style="color:#ce5c00;font-weight:bold">/</span></code></pre></div></p>
 
-<li><p>Annotate the application’s main class with <code>@EnableDiscoveryClient</code> and <code>@EnableFeignClients</code>.</p></li>
+<p>c. Annotate the application’s main class with <code>@EnableDiscoveryClient</code> and <code>@EnableFeignClients</code>.</p>
 
-<li><p>Our aim is to call <code>demo-server-service</code>’s API via our client service. So we need to create an interface that will acts as our REST client for talking to <code>demo-server-service</code>. Create an interface as following:
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#5c35cc;font-weight:bold">@FeignClient</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;demo-server-service&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+<p>d. Our aim is to call <code>demo-server</code>’s API via our client service. So we need to create an interface that will acts as our REST client for talking to <code>demo-server</code>. Create an interface as following:
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#5c35cc;font-weight:bold">@FeignClient</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;demo-server&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
 <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">interface</span> <span style="color:#000">DemoServerClient</span> <span style="color:#ce5c00;font-weight:bold">{</span>
     <span style="color:#5c35cc;font-weight:bold">@RequestMapping</span><span style="color:#ce5c00;font-weight:bold">(</span> <span style="color:#000">method</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">RequestMethod</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">GET</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">value</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;/greet&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
     <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">String</span> <span style="color:#000">greet</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#5c35cc;font-weight:bold">@RequestParam</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;name&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">String</span> <span style="color:#000">name</span><span style="color:#ce5c00;font-weight:bold">);</span> 
-<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div></p></li>
-</ol>
+<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div></p>
 
-<p>We have annotated the interface with <code>@FeignClient</code> that takes the name of the target service as it is registered at the Eureka service. The signature of greet method is identical to the way it is declared in <code>demo-server-service</code>’s public API.</p>
+<p>We have annotated the interface with <code>@FeignClient</code> that takes the name of the target service as it is registered at the Eureka service. The signature of greet method is identical to the way it is declared in <code>demo-server</code>’s public API.</p>
 
-<ol>
-<li>Now to verify that everything is working fine, lets create a rest endpoint in our client service, which will delegate its call to <code>demo-server-service</code>’s <code>greet</code> method.
+<p>e. Now to verify that everything is working fine, lets create a rest endpoint in our client service, which will delegate its call to <code>demo-server</code>’s <code>greet</code> method.
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#5c35cc;font-weight:bold">@RestController</span>
 <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">DemoClientController</span> <span style="color:#ce5c00;font-weight:bold">{</span>
     <span style="color:#5c35cc;font-weight:bold">@Autowired</span>
@@ -311,17 +299,14 @@ blockquote,
     <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">String</span> <span style="color:#000">hello</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#5c35cc;font-weight:bold">@RequestParam</span> <span style="color:#000">String</span> <span style="color:#000">name</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
         <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">demoServerClient</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">greet</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">name</span><span style="color:#ce5c00;font-weight:bold">);</span>
     <span style="color:#ce5c00;font-weight:bold">}</span>
-<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div></li>
-</ol>
+<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div></p>
 
 <p>Note that Spring will automatically inject an implementation for <code>DemoServerClient</code> interface.</p>
 
-<ol>
-<li>Hit <a href="http://localhost:8111/hello?name=World">http://localhost:8111/hello?name=World</a> from your browser and it will print “Hello World”.</li>
-</ol>
+<p>f. Hit <a href="http://localhost:8111/hello?name=World">http://localhost:8111/hello?name=World</a> from your browser and it will print “Hello World”.</p>
 
 <blockquote>
-<p>Important: Before trying the API from client service, make sure that both <code>demo-server-service</code> and <code>demo-client-service</code> are registered at the Eureka service.</p>
+<p>Important: Before trying the API from client service, make sure that both <code>demo-server</code> and <code>demo-client</code> are registered at the Eureka service.</p>
 </blockquote>
 
 

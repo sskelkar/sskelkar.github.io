@@ -94,10 +94,9 @@ jdb is based on a server-client model. While debugging, you have one JVM where t
       <pubDate>Thu, 17 Dec 2015 00:00:00 +0530</pubDate>
       
       <guid>https://sskelkar.github.io/2015-12-17-service-discovery-setup-guide/</guid>
-      <description>A step by step guide to set up a eureka service, to which we will register a demo server service and discover it from a demo client service.
-Steps to configure a eureka service  Create a new Gradle project for the eureka service. In https://start.spring.io/, select the starters for Eureka server.
- In your project, navigate to src/main/resources. Rename the automatically generated application.properties file to bootstrap.yml.
- Configure the bootstrap.</description>
+      <description>A step by step guide to set up a service discovery, to which we will register a demo server and discover it from a demo client service.
+Steps to configure a Eureka service a. Create a new Gradle project for the Eureka service. In https://start.spring.io/, select the starters for Eureka Server.
+b. In your project, navigate to src/main/resources. Rename the automatically generated application.properties file to bootstrap.yml. c. Configure the bootstrap.</description>
     </item>
     
     <item>
