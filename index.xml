@@ -183,7 +183,7 @@ For a beginner, perhaps the easiest way to get a taste of Lisp is to go through 
       <pubDate>Thu, 23 Jul 2015 00:00:00 +0530</pubDate>
       
       <guid>https://sskelkar.github.io/2015-07-23-rip-yahoo-pipes/</guid>
-      <description>Yahoo has announced it will shut down its web mashup application Pipes on September of this year. Pipes was a pretty useful application to combine web feeds from multiple sources. With an easy to use GUI, you could add filters, modify the fields present in a feed and render the Pipe in RSS, JSON or Atom formats. Consequently you could subscribe to a Pipe just like you would subscribe to any web feed.</description>
+      <description>Yahoo has announced it will shut down its web mashup application Pipes on September of this year. Pipes was a pretty useful application to combine web feeds from multiple sources. With an easy to use GUI, you could add filters, modify the fields present in a feed and render the Pipe in RSS, JSON or Atom formats. So you could subscribe to a Pipe just like you would subscribe to any web feed.</description>
     </item>
     
     <item>
