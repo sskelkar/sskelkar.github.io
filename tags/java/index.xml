@@ -30,16 +30,6 @@
     </item>
     
     <item>
-      <title>Hystrix – a simple use case</title>
-      <link>https://sskelkar.github.io/2016-12-05-hystrix-a-simple-use-case/</link>
-      <pubDate>Mon, 05 Dec 2016 00:00:00 +0530</pubDate>
-      
-      <guid>https://sskelkar.github.io/2016-12-05-hystrix-a-simple-use-case/</guid>
-      <description>Hystrix is a fault tolerance library that is very useful for managing failures in a distributed environment like microservices. Suppose we have a service A dependent on service B, which is in turn dependent on service C.
-A -&amp;gt; B -&amp;gt; C  Let&amp;rsquo;s say a call is made from A to B. To serve this request, B needs to call C but there’s a communication failure between them. If the call from B to C is wrapped in Hystrix mechanism, we prevent the failure being propagated to A.</description>
-    </item>
-    
-    <item>
       <title>Running time intensive operations in parallel with RxJava Observables</title>
       <link>https://sskelkar.github.io/2016-09-01-rxjava-observables/</link>
       <pubDate>Thu, 01 Sep 2016 00:00:00 +0530</pubDate>
