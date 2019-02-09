@@ -123,9 +123,7 @@ jdb is based on a server-client model. While debugging, you have one JVM where t
       <pubDate>Thu, 17 Dec 2015 00:00:00 +0530</pubDate>
       
       <guid>https://sskelkar.github.io/2015-12-17-service-discovery-setup-guide/</guid>
-      <description>A step by step guide to set up a service discovery, to which we will register a demo server and discover it from a demo client service.
-Steps to configure a Eureka server a. Create a new Gradle project for the Eureka server. In https://start.spring.io/, select the starters for Eureka Server.
-b. In your project, navigate to src/main/resources. Rename the automatically generated application.properties file to bootstrap.yml. c. Configure the bootstrap.</description>
+      <description>In a microservices environment we can run multiple instances of a service for resilience and scalability. In a cloud environment these instances can go up and down arbitrarily. So we need some kind of service discovery mechanism to keep track of running instances. When a service A needs to call a service B, it asks for the address of any running instance of service B from the service discovery. The service discovery can also load balance the incoming requests.</description>
     </item>
     
     <item>
