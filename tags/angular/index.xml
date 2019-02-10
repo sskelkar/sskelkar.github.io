@@ -13,10 +13,10 @@
     
     <item>
       <title>Dependency Injection in AngularJS 1.x</title>
-      <link>https://sskelkar.github.io/2015-07-19-dependency-injection-in-angularjs-1x/</link>
+      <link>https://sskelkar.github.io/dependency-injection-in-angularjs-1x/</link>
       <pubDate>Sun, 19 Jul 2015 00:00:00 +0530</pubDate>
       
-      <guid>https://sskelkar.github.io/2015-07-19-dependency-injection-in-angularjs-1x/</guid>
+      <guid>https://sskelkar.github.io/dependency-injection-in-angularjs-1x/</guid>
       <description>AngularJS Dependency Injection works like magic! You pass a service name in your controller constructor function and angular runtime promptly provides you with a suitable object. While this makes development process easier, it might be a little disconcerting if you don’t know what’s happening behind the scene. In this article, I will take a look at how angular DI works.
 In an Angular application, user can create different kinds of components like: directives, controllers, services etc.</description>
     </item>
