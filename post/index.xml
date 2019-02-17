@@ -151,7 +151,10 @@ jdb is based on a server-client model. While debugging, you have one JVM where t
       <pubDate>Tue, 15 Dec 2015 00:00:00 +0530</pubDate>
       
       <guid>https://sskelkar.github.io/how-to-set-up-a-local-spring-cloud-config-server/</guid>
-      <description>Steps to configure config server  Create a new Gradle project for the config server. In https://start.spring.io/, select the starters for config server. In your project, navigate to src/main/resources. Rename the automatically generated application.properties file to bootstrap.yml. Spring cloud config uses a Git backend by default to lookup property sources, i.e., config files. For this demo application, we will create a git repository on our local file system. Create an empty folder in your file system.</description>
+      <description>From the official documentation,
+ Spring Cloud Config provides server and client-side support for externalized configuration in a distributed system. With the Config Server you have a central place to manage external properties for applications across all environments.
+ Steps to configure config server a. Create a new Gradle project for the config server. In https://start.spring.io/, select the starters for config server.
+b. In your project, navigate to src/main/resources. Rename the automatically generated application.</description>
     </item>
     
     <item>

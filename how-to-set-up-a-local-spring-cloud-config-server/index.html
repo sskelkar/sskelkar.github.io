@@ -210,14 +210,24 @@ blockquote,
 </p>
 
 
+<p>From the <a href="https://spring.io/projects/spring-cloud-config">official documentation</a>,</p>
+
+<blockquote>
+<p>Spring Cloud Config provides server and client-side support for externalized configuration in a distributed system.
+With the Config Server you have a central place to manage external properties for applications across all environments.</p>
+</blockquote>
+
 <h3 id="steps-to-configure-config-server">Steps to configure config server</h3>
 
-<ol>
-<li>Create a new Gradle project for the config server. In <a href="https://start.spring.io/">https://start.spring.io/</a>, select the starters for config server.</li>
-<li>In your project, navigate to <code>src/main/resources</code>. Rename the automatically generated <code>application.properties</code> file to <code>bootstrap.yml</code>.</li>
-<li>Spring cloud config uses a Git backend by default to lookup property sources, i.e., config files. For this demo application, we will create a git repository on our local file system.</li>
-<li>Create an empty folder in your file system. Lets name it <code>config-repo</code>. Navigate to this repository via command prompt and execute <code>git init .</code> command. This will create an empty git repository in this folder.</li>
-<li>We need to provide our config server the location of this git repository. The default strategy for locating property sources is to clone a git repository declared against <code>spring.cloud.config.server.git.uri</code> property. So in our <code>bootstrap.yml</code>, we need to define this property in yaml format like this:
+<p>a. Create a new Gradle project for the config server. In <a href="https://start.spring.io/">https://start.spring.io/</a>, select the starters for config server.</p>
+
+<p>b. In your project, navigate to <code>src/main/resources</code>. Rename the automatically generated <code>application.properties</code> file to <code>bootstrap.yml</code>.</p>
+
+<p>c. Spring cloud config uses a Git backend by default to lookup property sources, i.e., config files. For this demo application, we will create a git repository on our local file system.</p>
+
+<p>d. Create an empty folder in your file system. Lets name it <code>config-repo</code>. Navigate to this repository via command prompt and execute <code>git init .</code> command. This will create an empty git repository in this folder.</p>
+
+<p>e. We need to provide our config server the location of this git repository. The default strategy for locating property sources is to clone a git repository declared against <code>spring.cloud.config.server.git.uri</code> property. So in our <code>bootstrap.yml</code>, we need to define this property in yaml format like this:
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000">spring</span><span style="color:#000;font-weight:bold">:</span>
   <span style="color:#000">cloud</span><span style="color:#000;font-weight:bold">:</span>
     <span style="color:#000">config</span><span style="color:#000;font-weight:bold">:</span>
@@ -226,29 +236,29 @@ blockquote,
           <span style="color:#000">uri</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87">file</span><span style="color:#000;font-weight:bold">:</span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">folder</span> <span style="color:#000">path</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">config</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">repo</span>
   
 <span style="color:#000">server</span><span style="color:#000;font-weight:bold">:</span>
-  <span style="color:#000">port</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">8003</span></code></pre></div></li>
-</ol>
+  <span style="color:#000">port</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">8003</span></code></pre></div></p>
 
-<p>We can also declare on which port number the config server should run. We have declared that as <code>8003</code> above.
-6. In your application’s main class add <code>@EnableConfigServer</code> annotation at the class level.
-7. When a microservice requests for its property source from a config server, the config server looks up for its property file in following manner. For example, if the name of the requesting service is <code>demo-service</code> and it is running in development profile, then the config server will look for a file with name <code>demo-service-development.yml</code> in the git repository to serve the properties for that service.
-8. Currently there are no property files in our git repository. Suppose that we are going to run a microservice named <code>my-service</code> in production mode, we need to create a file named <code>my-service-production.yml</code> in the git repository folder. Remember that simply creating the file in the folder doesn’t add it in the repository. To do that we need to execute following commands:
+<p>We can also declare on which port number the config server should run. We have declared that as <code>8003</code> above.</p>
+
+<p>f. In your application’s main class add <code>@EnableConfigServer</code> annotation at the class level.</p>
+
+<p>g. When a microservice requests for its property source from a config server, the config server looks up for its property file in following manner. For example, if the name of the requesting service is <code>demo-service</code> and it is running in development profile, then the config server will look for a file with name <code>demo-service-development.yml</code> in the git repository to serve the properties for that service.</p>
+
+<p>h. Currently there are no property files in our git repository. Suppose that we are going to run a microservice named <code>my-service</code> in production mode, we need to create a file named <code>my-service-production.yml</code> in the git repository folder. Remember that simply creating the file in the folder doesn’t add it in the repository. To do that we need to execute following commands:
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git add -A .
 git commit -m <span style="color:#4e9a06">&#34;some commit message&#34;</span></code></pre></div></p>
 
-<ol>
-<li>Lets add a dummy property <code>sample.property</code> in this file that we will use in our microservice.
+<p>i. Lets add a dummy property <code>sample.property</code> in this file that we will use in our microservice.
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sample:
-  property: foobar</code></pre></div></li>
-</ol>
+  property: foobar</code></pre></div></p>
 
 <h3 id="steps-to-configure-config-client">Steps to configure config client</h3>
 
-<ol>
-<li>Create another Gradle project. In <a href="https://start.spring.io/">https://start.spring.io/</a>, select the starters for config client and web.</li>
-<li>In your project, navigate to <code>src/main/resources</code>. Rename the automatically generated <code>application.properties</code> file to <code>bootstrap.yml</code>.</li>
+<p>a. Create another Gradle project. In <a href="https://start.spring.io/">https://start.spring.io/</a>, select the starters for config client and web.</p>
 
-<li><p>To fetch properties from the config server, we need declare to three things: our service name, the active profile and address of the config server. These tasks can be accomplished by adding following in <code>bootstrap.yml</code>:
+<p>b. In your project, navigate to <code>src/main/resources</code>. Rename the automatically generated <code>application.properties</code> file to <code>bootstrap.yml</code>.</p>
+
+<p>c. To fetch properties from the config server, we need declare to three things: our service name, the active profile and address of the config server. These tasks can be accomplished by adding following in <code>bootstrap.yml</code>:
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000">spring</span><span style="color:#000;font-weight:bold">:</span>
   <span style="color:#000">application</span><span style="color:#000;font-weight:bold">:</span>
     <span style="color:#000">name</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">my</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">service</span>
@@ -256,13 +266,13 @@ git commit -m <span style="color:#4e9a06">&#34;some commit message&#34;</span></
     <span style="color:#000">active</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">production</span>
   <span style="color:#000">cloud</span><span style="color:#000;font-weight:bold">:</span>
     <span style="color:#000">config</span><span style="color:#000;font-weight:bold">:</span>
-      <span style="color:#000">uri</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">http</span><span style="color:#000;font-weight:bold">:</span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#000">localhost</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">8003</span></code></pre></div></p></li>
+      <span style="color:#000">uri</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">http</span><span style="color:#000;font-weight:bold">:</span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#000">localhost</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">8003</span></code></pre></div></p>
 
-<li><p>Now, to use the properties in our application we can define a utility class by the name of <code>PropertyUtil</code> inside which we will read the external properties and using this class we can inject those property values wherever required throughout our application.</p></li>
+<p>d. Now, to use the properties in our application we can define a utility class by the name of <code>PropertyUtil</code> inside which we will read the external properties and using this class we can inject those property values wherever required throughout our application.</p>
 
-<li><p>So create a <code>PropertyUtil</code> class in the same package where application’s main class is present, or in a sub-package.</p></li>
+<p>e. So create a <code>PropertyUtil</code> class in the same package where application’s main class is present, or in a sub-package.</p>
 
-<li><p>The content of the <code>PropertyUtil</code> may be like this:
+<p>f. The content of the <code>PropertyUtil</code> may be like this:
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#5c35cc;font-weight:bold">@Configuration</span>
 <span style="color:#5c35cc;font-weight:bold">@ConfigurationProperties</span>
 <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">PropertyUtil</span> <span style="color:#ce5c00;font-weight:bold">{</span>
@@ -272,11 +282,11 @@ git commit -m <span style="color:#4e9a06">&#34;some commit message&#34;</span></
     <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">String</span> <span style="color:#000">getProperty</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
         <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">property</span><span style="color:#ce5c00;font-weight:bold">;</span>
     <span style="color:#ce5c00;font-weight:bold">}</span>
-<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div></p></li>
-</ol>
+<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div></p>
 
-<p><code>@Value</code> injects the external property into the private variable <code>property</code>. Note that <code>@Value</code> cannot be used with static variables.
-7. To demonstrate that the external property is fetched correctly, we can set up a rest controller as following:
+<p><code>@Value</code> injects the external property into the private variable <code>property</code>. Note that <code>@Value</code> cannot be used with static variables.</p>
+
+<p>g. To demonstrate that the external property is fetched correctly, we can set up a rest controller as following:
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#5c35cc;font-weight:bold">@RestController</span>
 <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">MyServiceController</span> <span style="color:#ce5c00;font-weight:bold">{</span>
     <span style="color:#5c35cc;font-weight:bold">@Autowired</span>
@@ -288,9 +298,7 @@ git commit -m <span style="color:#4e9a06">&#34;some commit message&#34;</span></
     <span style="color:#ce5c00;font-weight:bold">}</span>
 <span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div></p>
 
-<ol>
-<li>Now start the config-server application followed by <code>my-service</code> and hit <a href="http://localhost:8080">http://localhost:8080</a> on your browser. Text “foobar” will be displayed.</li>
-</ol>
+<p>h. Now start the config-server application followed by <code>my-service</code> and hit <a href="http://localhost:8080">http://localhost:8080</a> on your browser. Text “foobar” will be displayed.</p>
 
 
 <a href="#top">Top</a>
