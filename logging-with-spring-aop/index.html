@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.69.0" />
 
   
   <meta name="description" content="Personal blog of Sojjwal Kelkar">
@@ -209,27 +209,16 @@ blockquote,
 
 </p>
 <p>Aspect oriented programming (AOP) is a way of separating the business login in your code from cross cutting concerns. What is a cross cutting concern?</p>
-
 <p>Analogy time. A typical house has different rooms that have designated functions. We keep our stuff in the rooms where they make sense. The living room is an unlikely location for a dishwasher and a bathtub belongs in the bathroom. But the electric circuit runs throughout the house because it is not tied to the functionality of any specific room. Thus, the electric circuit is a cross-cutting concern.</p>
-
 <p>Similarly, an application code is composed of the business logic and some infrastructural code that is independent of the problem domain and may be scattered throughout the application. This may include logging, security or transaction management.</p>
-
 <p>In this blog post I will use AOP concepts to implement logging in a simple application. But first, lets get acquainted with some AOP jargon:</p>
-
 <p><strong>Aspect</strong>: A cross cutting concern. In our case it is logging.</p>
-
 <p><strong>Join point</strong>: The point in our program flow where the aspect kicks in. Spring AOP supports only method execution as join points.</p>
-
 <p><strong>Advice</strong>: Action taken by an aspect at a join point. In our case it will be a log statement. An advice can execute before and after a join point, and after a joint point completed normally or after a joint point exited with exception.</p>
-
 <p><strong>Pointcut</strong>: This is an expression that specifies some conditions about the location of the join points where the advice must be applied.</p>
-
 <p>The complete code of the toy application used in this blog is available in <a href="https://github.com/sskelkar/demo-aop">this github repo</a>.</p>
-
 <p>The main class is annotated with <code>@EnableAspectJAutoProxy</code> to enable support for handling of components marked with <code>@Aspect</code> annotation. This is important because we need to tell Spring that we are using annotation based AOP configuration.</p>
-
 <p>There is a class named <code>SelfDrivingCar</code> that calls several methods from its helper classes <code>Engine</code> and <code>Navigator</code> to finish a test drive. We want to log whenever these methods are called. If a method throws an exception, that must also be logged. If a method takes in an input, that must be logged as well.</p>
-
 <p>I have created an aspect class for this purpose, <code>com.maxxton.demo.aop.Logging</code>. I have declared three advices. Each advice has an associated pointcut that tells Spring where to apply that advice.
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#5c35cc;font-weight:bold">@Component</span>
 <span style="color:#5c35cc;font-weight:bold">@Aspect</span>
@@ -251,13 +240,9 @@ blockquote,
     <span style="color:#000">LOGGER</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">error</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Some problem occurred in &#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">joinPoint</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSignature</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">getName</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#34;, error message - &#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span>  <span style="color:#000">ex</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getMessage</span><span style="color:#ce5c00;font-weight:bold">());</span>
   <span style="color:#ce5c00;font-weight:bold">}</span>
 <span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div></p>
-
 <p>Consider the first advice <code>noArgumentMethodInvoked</code>. The pointcut expression for this advice is <code>execution(* com.maxxton.demo.car.*.*())</code>. It tells Spring to weave this advice to any method belonging to any class within the <code>com.maxxton.demo.car</code> package that doesn’t take any argument. The second advice has a more fine grained pointcut expression that contains two pointcut designators, <code>execution(* com.maxxton.demo.car.Navigator.move(..)) &amp;&amp; args(distance)</code>. It specifies the method <code>move</code> of <code>Navigator</code>, which takes at least one argument. <code>args</code> can be used to capture a method’s arguments. In this case it is a single argument <code>distance</code>. When the application starts and <code>move</code> method is called, the value of <code>distance</code> passed to it will be captured and passed to the advice <code>logDistance</code> where it can be logged.</p>
-
 <p>There is a third advice to log the exceptions thrown my any method belonging to any class within com.maxxton.demo package. The exception is captured by the advice its message can be logged inside the advice body.</p>
-
 <p>Here’s a screenshot of the logs on running this application:</p>
-
 <img src="https://sskelkar.github.io/post/images/spring-aop-1.png" alt="" class="" style="">
 
 
@@ -274,6 +259,8 @@ blockquote,
   ga('send', 'pageview');
   </script>
   <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
   
 
   

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Microservices on betweencurlybraces</title>
@@ -18,7 +18,7 @@
       
       <guid>https://sskelkar.github.io/hystrix-a-simple-use-case/</guid>
       <description>Hystrix is a fault tolerance library that is very useful for managing failures in a distributed environment like microservices. Suppose we have a service A dependent on service B, which is in turn dependent on service C.
-A -&amp;gt; B -&amp;gt; C  Let&amp;rsquo;s say a call is made from A to B. To serve this request, B needs to call C but there’s a communication failure between them. If the call from B to C is wrapped in Hystrix mechanism, we prevent the failure being propagated to A.</description>
+A -&amp;gt; B -&amp;gt; C Let&amp;rsquo;s say a call is made from A to B. To serve this request, B needs to call C but there’s a communication failure between them. If the call from B to C is wrapped in Hystrix mechanism, we prevent the failure being propagated to A.</description>
     </item>
     
     <item>

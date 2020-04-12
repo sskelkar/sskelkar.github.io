@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Java on betweencurlybraces</title>
@@ -26,8 +26,7 @@
       <pubDate>Sat, 14 Oct 2017 00:00:00 +0530</pubDate>
       
       <guid>https://sskelkar.github.io/using-thread-dumps-to-analyze-deadlocks/</guid>
-      <description>In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock: 
-The first thread calls methodA and acquires lock1. The second thread calls methodB and acquires lock2. Then the first thread calls methodB while at the same time the second thread calls methodA. Both are trying to acquire a lock that is already held by another thread, so neither can proceed further.</description>
+      <description>In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock: public class Deadlock { private Object lock1; private Object lock2; public Deadlock(Object lock1, Object lock2) { this.lock1 = lock1; this.lock2 = lock2; } public void methodA() { System.out.println(&amp;#34;trying to acquire lock1 from - &amp;#34; + Thread.currentThread().getName()); synchronized (lock1) { someLongRunningTask(); methodB(); } } public void methodB() { System.</description>
     </item>
     
     <item>

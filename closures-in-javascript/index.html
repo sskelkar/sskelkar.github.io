@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.69.0" />
 
   
   <meta name="description" content="Personal blog of Sojjwal Kelkar">
@@ -209,11 +209,8 @@ blockquote,
 
 </p>
 <p>A good understanding of closures is a must-have skill for any JavaScript programmer. So let&rsquo;s take a look at how they work with two simple examples.</p>
-
 <p>In JavaScript, functions are first class citizens. This means a function can be passed as an argument to another function, returned as the value from a function, assigned to a variable and stored in a data structure.</p>
-
 <p>We can even write a function within a function, and the inner function has access to the <em>environment</em> within which it was created. A closure is a combination of a function and the environment in which it was created. This means an inner function can hold the scope of parent function even if the parent function has returned. Following example will make it a little clear.</p>
-
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#204a87;font-weight:bold">function</span> <span style="color:#000">adderFactory</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
     <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">function</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
         <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">y</span><span style="color:#000;font-weight:bold">;</span>
@@ -226,17 +223,11 @@ blockquote,
 <span style="color:#000">console</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">log</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">addBy5</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">));</span>          <span style="color:#8f5902;font-style:italic">// prints &#34;7&#34;
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">console</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">log</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">addBy10</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">));</span>         <span style="color:#8f5902;font-style:italic">// prints &#34;12&#34;
 </span></code></pre></div>
-
 <p>In the above code, we have an outer function <code>adderFactory</code> with a local variable <code>x</code>. From this function, we return an unnamed function which refers to the variable <code>x</code>.</p>
-
 <p>We then call the <code>adderFactory</code> with value 5. <code>adderFactory</code> exits after returning the unnamed function, which we store in the variable <code>addBy5</code>. Now this variable <code>addBy5</code> is bound to a function that adds 5 to the number passed to it and returns the sum.</p>
-
 <p>Even after <code>adderFactory</code> has exited, the returned function still holds the value of <code>x</code> as 5. This is because a closure has been created.</p>
-
 <p>Similarly, after the next call to <code>adderFactory</code>, the returned function holds the value of <code>x</code> as 10. A call to this function will return 10 added to whatever number is passed to it.</p>
-
 <p>Now, let&rsquo;s create a closure with a slightly different syntax.</p>
-
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">doublify</span><span style="color:#000;font-weight:bold">;</span>
  
 <span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">function</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#000">multiplier</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
@@ -247,11 +238,8 @@ blockquote,
 <span style="color:#000">console</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">log</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">doublify</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">12</span><span style="color:#000;font-weight:bold">));</span> <span style="color:#8f5902;font-style:italic">// prints &#34;24&#34;
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">console</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">log</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">doublify</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">50</span><span style="color:#000;font-weight:bold">));</span> <span style="color:#8f5902;font-style:italic">// prints &#34;100&#34;
 </span></code></pre></div>
-
 <p>First we have a variable declaration in the global scope. Then we have an <strong>immediately invoked function expression</strong> that takes a parameter named <code>multiplier</code>. Inside the function we bind the variable <code>doublify</code> to a function that takes a number and returns the product of that number and the multiplier.</p>
-
 <p>After the anonymous function definition, we immediately call it and pass 2. This value is now bound to the inner function. Each time we call <code>doublify</code>, 2 is multiplied to the parameter passed to it.</p>
-
 <p>For someone coming from OOP background, a similarity between closures and objects will be immediately noticeable. Indeed, closures have been called as poor man’s objects <a href="https://news.ycombinator.com/item?id=926140">and vice-versa</a>!</p>
 
 
@@ -268,6 +256,8 @@ blockquote,
   ga('send', 'pageview');
   </script>
   <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
   
 
   

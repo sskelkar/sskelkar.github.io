@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>betweencurlybraces</title>
@@ -6,7 +6,7 @@
     <description>Recent content on betweencurlybraces</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 12 Jan 2019 00:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 21 Feb 2010 09:52:13 +0100</lastBuildDate>
     
 	<atom:link href="https://sskelkar.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -46,8 +46,7 @@ From a programming perspective, λ-calculus can be thought of as the smallest un
       <pubDate>Sat, 14 Oct 2017 00:00:00 +0530</pubDate>
       
       <guid>https://sskelkar.github.io/using-thread-dumps-to-analyze-deadlocks/</guid>
-      <description>In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock: 
-The first thread calls methodA and acquires lock1. The second thread calls methodB and acquires lock2. Then the first thread calls methodB while at the same time the second thread calls methodA. Both are trying to acquire a lock that is already held by another thread, so neither can proceed further.</description>
+      <description>In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock: public class Deadlock { private Object lock1; private Object lock2; public Deadlock(Object lock1, Object lock2) { this.lock1 = lock1; this.lock2 = lock2; } public void methodA() { System.out.println(&amp;#34;trying to acquire lock1 from - &amp;#34; + Thread.currentThread().getName()); synchronized (lock1) { someLongRunningTask(); methodB(); } } public void methodB() { System.</description>
     </item>
     
     <item>
@@ -66,7 +65,7 @@ The first thread calls methodA and acquires lock1. The second thread calls metho
       
       <guid>https://sskelkar.github.io/hystrix-a-simple-use-case/</guid>
       <description>Hystrix is a fault tolerance library that is very useful for managing failures in a distributed environment like microservices. Suppose we have a service A dependent on service B, which is in turn dependent on service C.
-A -&amp;gt; B -&amp;gt; C  Let&amp;rsquo;s say a call is made from A to B. To serve this request, B needs to call C but there’s a communication failure between them. If the call from B to C is wrapped in Hystrix mechanism, we prevent the failure being propagated to A.</description>
+A -&amp;gt; B -&amp;gt; C Let&amp;rsquo;s say a call is made from A to B. To serve this request, B needs to call C but there’s a communication failure between them. If the call from B to C is wrapped in Hystrix mechanism, we prevent the failure being propagated to A.</description>
     </item>
     
     <item>
@@ -134,7 +133,7 @@ jdb is based on a server-client model. While debugging, you have one JVM where t
       <pubDate>Fri, 01 Jan 2016 00:00:00 +0530</pubDate>
       
       <guid>https://sskelkar.github.io/apostrophe-abuse/</guid>
-      <description>  </description>
+      <description></description>
     </item>
     
     <item>
@@ -229,12 +228,12 @@ In an Angular application, user can create different kinds of components like: d
     </item>
     
     <item>
-      <title>They Mythical Man-Month</title>
+      <title>The Mythical Man-Month</title>
       <link>https://sskelkar.github.io/the-mythical-man-month/</link>
       <pubDate>Thu, 01 Jan 2015 00:00:00 +0530</pubDate>
       
       <guid>https://sskelkar.github.io/the-mythical-man-month/</guid>
-      <description>  </description>
+      <description></description>
     </item>
     
     <item>
@@ -261,8 +260,7 @@ In an Angular application, user can create different kinds of components like: d
       <pubDate>Sun, 21 Feb 2010 09:52:13 +0100</pubDate>
       
       <guid>https://sskelkar.github.io/about/</guid>
-      <description>My name is Sojjwal Kelkar. I am a software developer based in Pune, India.
-   &amp;nbsp; &amp;#xf09b;   &amp;nbsp;    </description>
+      <description>My name is Sojjwal Kelkar. I am a software developer based in Pune, India.</description>
     </item>
     
   </channel>
