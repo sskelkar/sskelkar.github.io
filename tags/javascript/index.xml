@@ -6,11 +6,7 @@
     <description>Recent content in JavaScript on betweencurlybraces</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 14 Jan 2017 00:00:00 +0530</lastBuildDate>
-    
-	<atom:link href="https://sskelkar.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 14 Jan 2017 00:00:00 +0530</lastBuildDate><atom:link href="https://sskelkar.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setting up a JavaScript project in 2017</title>
       <link>https://sskelkar.github.io/setting-up-a-javascript-project-in-2017/</link>
