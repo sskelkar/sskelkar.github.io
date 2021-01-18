@@ -6,15 +6,10 @@
     <description>Recent content in Posts on betweencurlybraces</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 Apr 2020 00:00:00 +0530</lastBuildDate><atom:link href="https://sskelkar.github.io/post/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Understanding a Postgres query plan</title>
-      <link>https://sskelkar.github.io/postgres-explain-analyze/</link>
-      <pubDate>Mon, 13 Apr 2020 00:00:00 +0530</pubDate>
-      
-      <guid>https://sskelkar.github.io/postgres-explain-analyze/</guid>
-      <description>A query plan is a sequence of steps used by a database to access data. Being able to read a query plan is key to understanding the performance of an SQL query. While tuning a query we need to know how the rows are being fetched from the tables? Are the indexes being used? What is the cost of joining to tables? A query plan provides with an answer for all of these questions.</description>
-    </item>
+    <lastBuildDate>Sat, 12 Jan 2019 00:00:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://sskelkar.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Database integration tests for a Spring application</title>
