@@ -265,7 +265,8 @@ In an Angular application, user can create different kinds of components like: d
       <pubDate>Sun, 21 Feb 2010 09:52:13 +0100</pubDate>
       
       <guid>https://sskelkar.github.io/about/</guid>
-      <description>My name is Sojjwal Kelkar. I am a software developer based in Pune, India.</description>
+      <description>My name is Sojjwal Kelkar. I am a software developer based in Berlin, Germany.
+   &amp;nbsp; &amp;#xf09b;   &amp;nbsp;    </description>
     </item>
     
   </channel>
