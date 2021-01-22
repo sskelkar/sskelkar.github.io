@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Using thread dumps to analyse deadlocks - Sojjwal Kelkar</title>
+  <meta name="description" content="In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock: public class Deadlock { private Object lock1; private Object lock2; public Deadlock(Object lock1, Object lock2) { this.lock1 = lock1; this.lock2 = lock2; } public void methodA() { System.out.println(&#34;trying to acquire lock1 from - &#34; &#43; Thread.currentThread().getName()); synchronized (lock1) { someLongRunningTask(); methodB(); } } public void methodB() { System.">
+  <meta name="author" content="Sojjwal Kelkar"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Sojjwal Kelkar",
+    
+    "url": "https:\/\/sskelkar.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/sskelkar.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/sskelkar.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/sskelkar.github.io\/post\/using-thread-dumps-to-analyze-deadlocks\/",
+          "name": "Using thread dumps to analyse deadlocks"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Sojjwal Kelkar"
+  },
+  "headline": "Using thread dumps to analyse deadlocks",
+  "description" : "In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock: public class Deadlock { private Object lock1; private Object lock2; public Deadlock(Object lock1, Object lock2) { this.lock1 = lock1; this.lock2 = lock2; } public void methodA() { System.out.println(\u0026#34;trying to acquire lock1 from - \u0026#34; \u002b Thread.currentThread().getName()); synchronized (lock1) { someLongRunningTask(); methodB(); } } public void methodB() { System.",
+  "inLanguage" : "en",
+  "wordCount":  371 ,
+  "datePublished" : "2017-10-14T00:00:00",
+  "dateModified" : "2017-10-14T00:00:00",
+  "image" : "https:\/\/sskelkar.github.io\/",
+  "keywords" : [ "Java" ],
+  "mainEntityOfPage" : "https:\/\/sskelkar.github.io\/post\/using-thread-dumps-to-analyze-deadlocks\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/sskelkar.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/sskelkar.github.io\/",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Using thread dumps to analyse deadlocks" />
+<meta property="og:description" content="In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock: public class Deadlock { private Object lock1; private Object lock2; public Deadlock(Object lock1, Object lock2) { this.lock1 = lock1; this.lock2 = lock2; } public void methodA() { System.out.println(&#34;trying to acquire lock1 from - &#34; &#43; Thread.currentThread().getName()); synchronized (lock1) { someLongRunningTask(); methodB(); } } public void methodB() { System.">
+<meta property="og:url" content="https://sskelkar.github.io/post/using-thread-dumps-to-analyze-deadlocks/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Sojjwal Kelkar" />
+
+  <meta name="twitter:title" content="Using thread dumps to analyse deadlocks" />
+  <meta name="twitter:description" content="In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock: public …">
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.79.0" />
+  <link rel="alternate" href="https://sskelkar.github.io/index.xml" type="application/rss+xml" title="Sojjwal Kelkar"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://sskelkar.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://sskelkar.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://sskelkar.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Tech Blog" href="/">Tech Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Cartoons" href="/cartoons">Cartoons</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header-section ">
+  
+  <div class="intro-header no-img">
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="post-heading">
+            <h1>Using thread dumps to analyse deadlocks</h1>
+            <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on Oct 14, 2017
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+  
+  
+</span>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+      <article role="main" class="blog-post">
+      
+        <p>In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock:
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Deadlock</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">Object</span> <span class="n">lock1</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">Object</span> <span class="n">lock2</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Deadlock</span><span class="o">(</span><span class="n">Object</span> <span class="n">lock1</span><span class="o">,</span> <span class="n">Object</span> <span class="n">lock2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">lock1</span> <span class="o">=</span> <span class="n">lock1</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">lock2</span> <span class="o">=</span> <span class="n">lock2</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">methodA</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;trying to acquire lock1 from - &#34;</span> <span class="o">+</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
+        <span class="kd">synchronized</span> <span class="o">(</span><span class="n">lock1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">someLongRunningTask</span><span class="o">();</span>
+            <span class="n">methodB</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">methodB</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;trying to acquire lock2 from - &#34;</span> <span class="o">+</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
+        <span class="kd">synchronized</span> <span class="o">(</span><span class="n">lock2</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">someLongRunningTask</span><span class="o">();</span>
+            <span class="n">methodA</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">someLongRunningTask</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">100</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span><span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Object</span> <span class="n">lock1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">();</span>
+        <span class="n">Object</span> <span class="n">lock2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">();</span>
+
+        <span class="k">new</span> <span class="n">Thread</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="n">Deadlock</span><span class="o">(</span><span class="n">lock1</span><span class="o">,</span> <span class="n">lock2</span><span class="o">).</span><span class="na">methodA</span><span class="o">()).</span><span class="na">start</span><span class="o">();</span>
+        <span class="k">new</span> <span class="n">Thread</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="n">Deadlock</span><span class="o">(</span><span class="n">lock1</span><span class="o">,</span> <span class="n">lock2</span><span class="o">).</span><span class="na">methodB</span><span class="o">()).</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+First thread calls <code>methodA</code> and acquires <code>lock1</code>. Second thread calls <code>methodB</code> and acquires <code>lock2</code>. Then the first thread calls <code>methodB</code> while at the same time the second thread calls <code>methodA</code>. Both are trying to acquire a lock that is already held by another thread, so neither can proceed further.</p>
+<p>Thread dumps can be very useful to identify the source of such deadlocks in an application. A typical thread dump gives us information, precise to  the method name and line number, where a thread is stuck trying to acquire a lock. To generate a thread dump, we can use the <code>jstack</code> utility provided by JVM.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">jstack -l &lt;pid&gt;
+</code></pre></div><p>We can use <code>jps</code> command to know the <code>pid</code> of the deadlocked Java process.</p>
+<p>Here’s a snippet of the thread dump of the above code, that gives us the deadlock information:</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">Found one Java-level deadlock:
+=============================
+&#34;Thread-1&#34;:
+  waiting to lock monitor 0x00007fc89a037b58 (object 0x000000076abda8f0, a java.lang.Object),
+  which is held by &#34;Thread-0&#34;
+&#34;Thread-0&#34;:
+  waiting to lock monitor 0x00007fc89a0350b8 (object 0x000000076abda900, a java.lang.Object),
+  which is held by &#34;Thread-1&#34;
+
+Java stack information for the threads listed above:
+===================================================
+&#34;Thread-1&#34;:
+  at jcip.Deadlock.methodA(Deadlock.java:15)
+  - waiting to lock &lt;0x000000076abda8f0&gt; (a java.lang.Object)
+  at jcip.Deadlock.methodB(Deadlock.java:24)
+  - locked &lt;0x000000076abda900&gt; (a java.lang.Object)
+  at jcip.Deadlock.lambda$main$1(Deadlock.java:41)
+  at jcip.Deadlock$$Lambda$2/1791741888.run(Unknown Source)
+  at java.lang.Thread.run(Thread.java:745)
+&#34;Thread-0&#34;:
+  at jcip.Deadlock.methodB(Deadlock.java:23)
+  - waiting to lock &lt;0x000000076abda900&gt; (a java.lang.Object)
+  at jcip.Deadlock.methodA(Deadlock.java:16)
+  - locked &lt;0x000000076abda8f0&gt; (a java.lang.Object)
+  at jcip.Deadlock.lambda$main$0(Deadlock.java:40)
+  at jcip.Deadlock$$Lambda$1/363771819.run(Unknown Source)
+  at java.lang.Thread.run(Thread.java:745)
+
+Found 1 deadlock.
+</code></pre></div>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://sskelkar.github.io//tags/java/">Java</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="/post/db-integration-tests-for-spring-app/">Database integration tests for a Spring application</a></li>
+                
+                    <li><a href="/post/rxjava-observables/">Running time intensive operations in parallel with RxJava Observables</a></li>
+                
+                    <li><a href="/post/logging-with-spring-aop/">Logging with Spring AOP</a></li>
+                
+                    <li><a href="/post/memory-profiling-simple-examples/">Memory profiling – simple examples</a></li>
+                
+                    <li><a href="/post/jpa-entity-relationships/">JPA Entity Relationships</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://sskelkar.github.io/post/setting-up-a-javascript-project-in-2017/" data-toggle="tooltip" data-placement="top" title="Setting up a JavaScript project in 2017">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://sskelkar.github.io/post/representing-natural-numbers-in-lambda-calculus/" data-toggle="tooltip" data-placement="top" title="Representing natural numbers in lambda calculus">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:sojjwalkelkar@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/sskelkar" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/sskelkar" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Sojjwal Kelkar
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          &bull;&nbsp;Powered by Hugo&nbsp;&bull;&nbsp;
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://sskelkar.github.io/js/main.js"></script>
+<script src="https://sskelkar.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://sskelkar.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

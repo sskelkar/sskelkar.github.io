@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>JPA Entity Relationships - Sojjwal Kelkar</title>
+  <meta name="description" content="In a relational database, the relationships between two tables are defined by foreign keys. Typically, one table has a column that contains the primary key of another table’s row. In JPA, we deal with entity objects that are Java representations of database tables. So we need a different way for establishing relationship between two entities. JPA entity relationships define how these entities refer to each other.
+For the purpose of this article, I will work with JPA 2.">
+  <meta name="author" content="Sojjwal Kelkar"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Sojjwal Kelkar",
+    
+    "url": "https:\/\/sskelkar.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/sskelkar.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/sskelkar.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/sskelkar.github.io\/post\/jpa-entity-relationships\/",
+          "name": "J p a entity relationships"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Sojjwal Kelkar"
+  },
+  "headline": "JPA Entity Relationships",
+  "description" : "In a relational database, the relationships between two tables are defined by foreign keys. Typically, one table has a column that contains the primary key of another table’s row. In JPA, we deal with entity objects that are Java representations of database tables. So we need a different way for establishing relationship between two entities. JPA entity relationships define how these entities refer to each other.\nFor the purpose of this article, I will work with JPA 2.",
+  "inLanguage" : "en",
+  "wordCount":  1292 ,
+  "datePublished" : "2016-01-15T00:00:00",
+  "dateModified" : "2016-01-15T00:00:00",
+  "image" : "https:\/\/sskelkar.github.io\/",
+  "keywords" : [ "Java, Spring, Database" ],
+  "mainEntityOfPage" : "https:\/\/sskelkar.github.io\/post\/jpa-entity-relationships\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/sskelkar.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/sskelkar.github.io\/",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="JPA Entity Relationships" />
+<meta property="og:description" content="In a relational database, the relationships between two tables are defined by foreign keys. Typically, one table has a column that contains the primary key of another table’s row. In JPA, we deal with entity objects that are Java representations of database tables. So we need a different way for establishing relationship between two entities. JPA entity relationships define how these entities refer to each other.
+For the purpose of this article, I will work with JPA 2.">
+<meta property="og:url" content="https://sskelkar.github.io/post/jpa-entity-relationships/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Sojjwal Kelkar" />
+
+  <meta name="twitter:title" content="JPA Entity Relationships" />
+  <meta name="twitter:description" content="In a relational database, the relationships between two tables are defined by foreign keys. Typically, one table has a column that contains the primary key of another table’s row. In JPA, we deal with …">
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.79.0" />
+  <link rel="alternate" href="https://sskelkar.github.io/index.xml" type="application/rss+xml" title="Sojjwal Kelkar"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://sskelkar.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://sskelkar.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://sskelkar.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Tech Blog" href="/">Tech Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Cartoons" href="/cartoons">Cartoons</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header-section ">
+  
+  <div class="intro-header no-img">
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="post-heading">
+            <h1>JPA Entity Relationships</h1>
+            <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on Jan 15, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;7&nbsp;minutes
+  
+  
+  
+  
+</span>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+      <article role="main" class="blog-post">
+      
+        <p>In a relational database, the relationships between two tables are defined by foreign keys. Typically, one table has a column that contains the primary key of another table’s row. In JPA, we deal with entity objects that are Java representations of database tables. So we need a different way for establishing relationship between two entities. JPA entity relationships define how these entities refer to each other.</p>
+<p>For the purpose of this article, I will work with JPA 2.0 and a table structure as following.
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">team</span><span class="p">(</span><span class="n">team_id</span> <span class="nb">NUMBER</span><span class="p">,</span> <span class="n">name</span> <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">20</span><span class="p">));</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">team</span><span class="p">(</span><span class="n">team_id</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;india&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">team</span><span class="p">(</span><span class="n">team_id</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;australia&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">team</span><span class="p">(</span><span class="n">team_id</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;england&#39;</span><span class="p">);</span>
+
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">player</span><span class="p">(</span><span class="n">player_id</span> <span class="nb">NUMBER</span><span class="p">,</span> <span class="n">name</span> <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">team_id</span> <span class="nb">NUMBER</span><span class="p">,</span> <span class="n">age</span> <span class="nb">NUMBER</span><span class="p">,</span> <span class="k">role</span> <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">20</span><span class="p">));</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">player</span><span class="p">(</span><span class="n">player_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">team_id</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="k">role</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;sachin&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s1">&#39;batsman&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">player</span><span class="p">(</span><span class="n">player_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">team_id</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="k">role</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;dhoni&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="s1">&#39;wicketkeeper&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">player</span><span class="p">(</span><span class="n">player_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">team_id</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="k">role</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;clarke&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="s1">&#39;batsman&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">player</span><span class="p">(</span><span class="n">player_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">team_id</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="k">role</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;rogers&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="s1">&#39;batsman&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">player</span><span class="p">(</span><span class="n">player_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">team_id</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="k">role</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;cook&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="s1">&#39;batsman&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">player</span><span class="p">(</span><span class="n">player_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">team_id</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="k">role</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="s1">&#39;batsman&#39;</span><span class="p">);</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">player_stat</span><span class="p">(</span><span class="n">player_stat_id</span> <span class="nb">NUMBER</span><span class="p">,</span> <span class="n">player_id</span> <span class="nb">NUMBER</span><span class="p">,</span> <span class="n">runs</span> <span class="nb">NUMBER</span><span class="p">,</span> <span class="n">wickets</span> <span class="nb">NUMBER</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">player_stat</span><span class="p">(</span><span class="n">player_stat_id</span><span class="p">,</span> <span class="n">player_id</span><span class="p">,</span> <span class="n">runs</span><span class="p">,</span> <span class="n">wickets</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">300</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">player_stat</span><span class="p">(</span><span class="n">player_stat_id</span><span class="p">,</span> <span class="n">player_id</span><span class="p">,</span> <span class="n">runs</span><span class="p">,</span> <span class="n">wickets</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">player_stat</span><span class="p">(</span><span class="n">player_stat_id</span><span class="p">,</span> <span class="n">player_id</span><span class="p">,</span> <span class="n">runs</span><span class="p">,</span> <span class="n">wickets</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7000</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">player_stat</span><span class="p">(</span><span class="n">player_stat_id</span><span class="p">,</span> <span class="n">player_id</span><span class="p">,</span> <span class="n">runs</span><span class="p">,</span> <span class="n">wickets</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">player_stat</span><span class="p">(</span><span class="n">player_stat_id</span><span class="p">,</span> <span class="n">player_id</span><span class="p">,</span> <span class="n">runs</span><span class="p">,</span> <span class="n">wickets</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9000</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span></code></pre></div>
+A team can have multiple players. A player can have a statistic.</p>
+<h3 id="one-to-one">One to one</h3>
+<p>Each player has a player statistic, unless the player hasn’t made his debut yet. So we have a one to one relationship between a player and his statistics, and a <code>Player</code> entity will have a dependency on a <code>PlayerStat</code> instance. In relational database, this relationship could have been expressed by a foreign key in <code>player_stat</code> table, referring to a primary key in <code>player</code> table. But in object oriented paradigm, a <code>Player</code> object will have a reference of a <code>PlayerStat</code> instance. We can create our entities as following:
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;player&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Player</span> <span class="o">{</span>
+  <span class="nd">@Id</span>
+  <span class="nd">@Column</span><span class="o">(</span><span class="n">columnDefinition</span><span class="o">=</span><span class="s">&#34;player_id&#34;</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;player_id&#34;</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
+  
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">Long</span> <span class="n">age</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">role</span><span class="o">;</span>
+  
+  <span class="nd">@OneToOne</span><span class="o">(</span><span class="n">mappedBy</span><span class="o">=</span><span class="s">&#34;player&#34;</span><span class="o">)</span>
+  <span class="nd">@JsonManagedReference</span>
+  <span class="kd">private</span> <span class="n">PlayerStat</span> <span class="n">playerStat</span><span class="o">;</span>
+  
+  <span class="c1">// getters and setters
+</span><span class="c1"></span><span class="o">}</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;player_stat&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PlayerStat</span> <span class="o">{</span>
+  <span class="nd">@Id</span>
+  <span class="nd">@Column</span><span class="o">(</span><span class="n">columnDefinition</span><span class="o">=</span><span class="s">&#34;player_stat_id&#34;</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;player_stat_id&#34;</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
+    
+  <span class="kd">private</span> <span class="n">Long</span> <span class="n">runs</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">Long</span> <span class="n">wickets</span><span class="o">;</span>
+
+  <span class="nd">@OneToOne</span>
+  <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;player_id&#34;</span><span class="o">)</span>
+  <span class="nd">@JsonBackReference</span>
+  <span class="kd">private</span> <span class="n">Player</span> <span class="n">player</span><span class="o">;</span>
+  
+  <span class="c1">// getters and setters
+</span><span class="c1"></span><span class="o">}</span></code></pre></div>
+Notice that in our table structure, <code>player_stat</code> has a reference of <code>player</code> table, thus making it the <em>owner</em> of the relationship between these two tables. Both entities in the above code have a field of the opposite type with <code>@OneToOne</code> annotation. The owning side, i.e. <code>PlayerStat</code> entity declares the JOIN column. While the non-owning entity <code>Player</code> has a <code>mappedBy</code> attribute to establish the inverse relationship.</p>
+<p>If both entities define a getter method for the member variable of the opposite type, we get a circular dependency if we try to serialize an object of either type. For this reason, we have used <code>@JsonManagedReference</code> and <code>@JsonBackReference</code> annotations. The former is used on a field that has to be serialized normally and the later is its counterpart that’s used on a field in the opposite type, that should be omitted from serialization.</p>
+<h3 id="one-to-many-many-to-one">One to many/ Many to one</h3>
+<p>A team can have multiple players, while each player can belong to only one team, then we have a one to many relationship. In relational database, multiple <code>player</code> rows would have the reference of a <code>team</code> row via foreign key. But in Java, the relationship is represented by a <code>Team</code> object holding a reference to a list of <code>Player</code> objects belonging to that team.
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;team&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Team</span> <span class="o">{</span>
+  <span class="nd">@Id</span>
+  <span class="nd">@Column</span><span class="o">(</span><span class="n">columnDefinition</span><span class="o">=</span><span class="s">&#34;team_id&#34;</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;team_id&#34;</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
+  
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+  <span class="nd">@OneToMany</span><span class="o">(</span><span class="n">mappedBy</span><span class="o">=</span><span class="s">&#34;team&#34;</span><span class="o">)</span>
+  <span class="nd">@JsonManagedReference</span>
+  <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Player</span><span class="o">&gt;</span> <span class="n">players</span><span class="o">;</span>
+  
+  <span class="c1">// getters and setters
+</span><span class="c1"></span><span class="o">}</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;player&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Player</span> <span class="o">{</span>
+  <span class="nd">@Id</span>
+  <span class="nd">@Column</span><span class="o">(</span><span class="n">columnDefinition</span><span class="o">=</span><span class="s">&#34;player_id&#34;</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;player_id&#34;</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
+  
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">Long</span> <span class="n">age</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">role</span><span class="o">;</span>
+  
+  <span class="nd">@ManyToOne</span>
+  <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;team_id&#34;</span><span class="o">)</span>
+  <span class="nd">@JsonBackReference</span>
+  <span class="kd">private</span> <span class="n">Team</span> <span class="n">team</span><span class="o">;</span>
+  
+  <span class="c1">// getters and setters
+</span><span class="c1"></span><span class="o">}</span></code></pre></div>
+In this case, since <code>player</code> holds a reference of <code>team</code>, it is the owning side of their mutual relationship. <code>Team</code> declares its players field with <code>@OneToMany</code> annotation and conversely, <code>Player</code> has a reference of <code>Team</code> under <code>@ManyToOne</code> annotation. Since, <code>Player</code> is the owning side, it declares the JOIN column with <code>@JoinColumn</code> annotation and <code>Table</code> has the <code>mappedBy</code> attribute.</p>
+<h3 id="many-to-many">Many to many</h3>
+<p>Suppose that the table <code>team</code> contains both national teams and private franchises. So that a team can have multiple players but an individual player can also belong to multiple teams. This relationship cannot be expressed with simple foreign keys between the two tables. Now we need a third table to hold the relationship. Our table structure will now look like:
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">team</span><span class="p">(</span><span class="n">team_id</span> <span class="nb">NUMBER</span><span class="p">,</span> <span class="n">name</span> <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">20</span><span class="p">));</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">team</span><span class="p">(</span><span class="n">team_id</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;India&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">team</span><span class="p">(</span><span class="n">team_id</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Australia&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">team</span><span class="p">(</span><span class="n">team_id</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Sydney&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">team</span><span class="p">(</span><span class="n">team_id</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Pune&#39;</span><span class="p">);</span>
+
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">player</span><span class="p">(</span><span class="n">player_id</span> <span class="nb">NUMBER</span><span class="p">,</span> <span class="n">name</span> <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">age</span> <span class="nb">NUMBER</span><span class="p">,</span> <span class="k">role</span> <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">20</span><span class="p">));</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">player</span><span class="p">(</span><span class="n">player_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="k">role</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;sachin&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s1">&#39;batsman&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">player</span><span class="p">(</span><span class="n">player_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="k">role</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;yuvraj&#39;</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="s1">&#39;allrounder&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">player</span><span class="p">(</span><span class="n">player_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="k">role</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;smith&#39;</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="s1">&#39;batsman&#39;</span><span class="p">);</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">team_player</span><span class="p">(</span><span class="n">team_id</span> <span class="nb">NUMBER</span><span class="p">,</span> <span class="n">player_id</span> <span class="nb">NUMBER</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">team_player</span><span class="p">(</span><span class="n">team_id</span><span class="p">,</span> <span class="n">player_id</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">team_player</span><span class="p">(</span><span class="n">team_id</span><span class="p">,</span> <span class="n">player_id</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">team_player</span><span class="p">(</span><span class="n">team_id</span><span class="p">,</span> <span class="n">player_id</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">team_player</span><span class="p">(</span><span class="n">team_id</span><span class="p">,</span> <span class="n">player_id</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">team_player</span><span class="p">(</span><span class="n">team_id</span><span class="p">,</span> <span class="n">player_id</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">team_player</span><span class="p">(</span><span class="n">team_id</span><span class="p">,</span> <span class="n">player_id</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span></code></pre></div></p>
+<p>In many to many, both entities will have a reference to a list of the other type.
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;team&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Team</span> <span class="o">{</span>
+  <span class="nd">@Id</span>
+  <span class="nd">@Column</span><span class="o">(</span><span class="n">columnDefinition</span><span class="o">=</span><span class="s">&#34;team_id&#34;</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;team_id&#34;</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
+  
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+  <span class="nd">@ManyToMany</span>
+  <span class="nd">@JoinTable</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;team_player&#34;</span><span class="o">,</span> <span class="n">joinColumns</span><span class="o">={</span><span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;team_id&#34;</span><span class="o">)},</span> <span class="n">inverseJoinColumns</span><span class="o">={</span><span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;player_id&#34;</span><span class="o">)})</span>
+  <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Player</span><span class="o">&gt;</span> <span class="n">players</span><span class="o">;</span>
+  
+  <span class="c1">// getters and setters
+</span><span class="c1"></span><span class="o">}</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;player&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Player</span> <span class="o">{</span>
+  <span class="nd">@Id</span>
+  <span class="nd">@Column</span><span class="o">(</span><span class="n">columnDefinition</span><span class="o">=</span><span class="s">&#34;player_id&#34;</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;player_id&#34;</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
+  
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>  
+  <span class="kd">private</span> <span class="n">Long</span> <span class="n">age</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">role</span><span class="o">;</span>
+  
+  <span class="nd">@ManyToMany</span><span class="o">(</span><span class="n">mappedBy</span><span class="o">=</span><span class="s">&#34;players&#34;</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Team</span><span class="o">&gt;</span> <span class="n">teams</span><span class="o">;</span>
+  
+  <span class="c1">// getters and setters
+</span><span class="c1"></span><span class="o">}</span></code></pre></div></p>
+<p>Both entities use <code>@ManyToMany</code> annotation. Since relationship is stored in a third table, neither team or player has the ownership. We can declare the join table in either entity. In <code>@JoinTable</code> annotation, we specify <code>joinColumns</code> attribute to declare the relationship between the join table and the table corresponding to this entity. <code>inverseJoinColumns</code> is used to declare the relationship between the join table and the other table. We declared <code>@JoinTable</code> in <code>Team</code> entity so <code>Player</code> has <code>mappedBy</code> attribute.</p>
+<h3 id="embeddable">Embeddable</h3>
+<p>If our entity has lots of attributes, we may group some of those attributes and separate them out in separate logical entities.</p>
+<p>In a typical example, suppose we have an <code>employee</code> table which among other things, also holds an employee’s address with help of columns like <code>house_number</code>, <code>street</code>, <code>locality</code> etc. Having all these attributes in the <code>Employee</code> entity may clutter up the entity class. In such a case we can move all address specific attributes to a separate <code>Address</code> entity. Our <code>Employee</code> will now hold just a single reference to an <code>Address</code> entity. Note that the <code>Address</code> entity is not backed by any database table, neither does it has any id attribute. So an <code>Address</code> entity object can be queried or persisted only in the context of its parent <code>Employee</code> instance.</p>
+<p>Now lets apply this concept to our player model. In <code>player</code> table we have <code>age</code> and <code>role</code> columns and we have corresponding attributes in the <code>Player</code> entity. We can move these two columns to a new <code>Profile</code> entity as declared below.
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Embeddable</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Profile</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="n">Long</span> <span class="n">age</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">role</span><span class="o">;</span>
+
+  <span class="c1">// getters and setters
+</span><span class="c1"></span><span class="o">}</span></code></pre></div></p>
+<p>And we can modify our <code>Player</code> class as following:
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;player&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Player</span> <span class="o">{</span>
+  <span class="nd">@Id</span>
+  <span class="nd">@Column</span><span class="o">(</span><span class="n">columnDefinition</span><span class="o">=</span><span class="s">&#34;player_id&#34;</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;player_id&#34;</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
+  
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+  
+  <span class="kd">private</span> <span class="n">Profile</span> <span class="n">profile</span><span class="o">;</span>
+  
+  <span class="c1">// getters and setters
+</span><span class="c1"></span><span class="o">}</span></code></pre></div></p>
+<p>This way our entities become more focused.</p>
+
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://sskelkar.github.io//tags/java/">Java</a>&nbsp;
+            
+              <a href="https://sskelkar.github.io//tags/spring/">Spring</a>&nbsp;
+            
+              <a href="https://sskelkar.github.io//tags/database/">Database</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="/post/postgres-explain-analyze/">Understanding a Postgres query plan</a></li>
+                
+                    <li><a href="/post/db-integration-tests-for-spring-app/">Database integration tests for a Spring application</a></li>
+                
+                    <li><a href="/post/using-thread-dumps-to-analyze-deadlocks/">Using thread dumps to analyse deadlocks</a></li>
+                
+                    <li><a href="/post/rxjava-observables/">Running time intensive operations in parallel with RxJava Observables</a></li>
+                
+                    <li><a href="/post/logging-with-spring-aop/">Logging with Spring AOP</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://sskelkar.github.io/post/introduction-to-jdb/" data-toggle="tooltip" data-placement="top" title="Introduction to jdb">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://sskelkar.github.io/post/memory-profiling-simple-examples/" data-toggle="tooltip" data-placement="top" title="Memory profiling – simple examples">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:sojjwalkelkar@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/sskelkar" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/sskelkar" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Sojjwal Kelkar
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          &bull;&nbsp;Powered by Hugo&nbsp;&bull;&nbsp;
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://sskelkar.github.io/js/main.js"></script>
+<script src="https://sskelkar.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://sskelkar.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

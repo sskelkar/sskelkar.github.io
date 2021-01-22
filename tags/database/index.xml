@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Database on betweencurlybraces</title>
+    <title>Database on Sojjwal Kelkar</title>
     <link>https://sskelkar.github.io/tags/database/</link>
-    <description>Recent content in Database on betweencurlybraces</description>
+    <description>Recent content in Database on Sojjwal Kelkar</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <managingEditor>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</managingEditor>
+    <webMaster>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</webMaster>
     <lastBuildDate>Mon, 13 Apr 2020 00:00:00 +0530</lastBuildDate><atom:link href="https://sskelkar.github.io/tags/database/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Understanding a Postgres query plan</title>
-      <link>https://sskelkar.github.io/postgres-explain-analyze/</link>
+      <link>https://sskelkar.github.io/post/postgres-explain-analyze/</link>
       <pubDate>Mon, 13 Apr 2020 00:00:00 +0530</pubDate>
-      
-      <guid>https://sskelkar.github.io/postgres-explain-analyze/</guid>
+      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
+      <guid>https://sskelkar.github.io/post/postgres-explain-analyze/</guid>
       <description>A query plan is a sequence of steps used by a database to access data. Being able to read a query plan is key to understanding the performance of an SQL query. While tuning a query we need to know how the rows are being fetched from the tables? Are the indexes being used? What is the cost of joining to tables? A query plan provides with an answer for all of these questions.</description>
+    </item>
+    
+    <item>
+      <title>JPA Entity Relationships</title>
+      <link>https://sskelkar.github.io/post/jpa-entity-relationships/</link>
+      <pubDate>Fri, 15 Jan 2016 00:00:00 +0530</pubDate>
+      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
+      <guid>https://sskelkar.github.io/post/jpa-entity-relationships/</guid>
+      <description>In a relational database, the relationships between two tables are defined by foreign keys. Typically, one table has a column that contains the primary key of another table’s row. In JPA, we deal with entity objects that are Java representations of database tables. So we need a different way for establishing relationship between two entities. JPA entity relationships define how these entities refer to each other.
+For the purpose of this article, I will work with JPA 2.</description>
     </item>
     
   </channel>

@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on betweencurlybraces</title>
+    <title>Tags on Sojjwal Kelkar</title>
     <link>https://sskelkar.github.io/tags/</link>
-    <description>Recent content in Tags on betweencurlybraces</description>
+    <description>Recent content in Tags on Sojjwal Kelkar</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <managingEditor>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</managingEditor>
+    <webMaster>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</webMaster>
     <lastBuildDate>Mon, 13 Apr 2020 00:00:00 +0530</lastBuildDate><atom:link href="https://sskelkar.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Database</title>
       <link>https://sskelkar.github.io/tags/database/</link>
       <pubDate>Mon, 13 Apr 2020 00:00:00 +0530</pubDate>
-      
+      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/tags/database/</guid>
       <description></description>
     </item>
@@ -20,7 +21,7 @@
       <title>Java</title>
       <link>https://sskelkar.github.io/tags/java/</link>
       <pubDate>Sat, 12 Jan 2019 00:00:00 +0530</pubDate>
-      
+      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/tags/java/</guid>
       <description></description>
     </item>
@@ -29,7 +30,7 @@
       <title>Spring</title>
       <link>https://sskelkar.github.io/tags/spring/</link>
       <pubDate>Sat, 12 Jan 2019 00:00:00 +0530</pubDate>
-      
+      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/tags/spring/</guid>
       <description></description>
     </item>
@@ -38,7 +39,7 @@
       <title>Unit Testing</title>
       <link>https://sskelkar.github.io/tags/unit-testing/</link>
       <pubDate>Sat, 12 Jan 2019 00:00:00 +0530</pubDate>
-      
+      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/tags/unit-testing/</guid>
       <description></description>
     </item>
@@ -47,7 +48,7 @@
       <title>Coding is fun</title>
       <link>https://sskelkar.github.io/tags/coding-is-fun/</link>
       <pubDate>Sun, 23 Sep 2018 00:00:00 +0530</pubDate>
-      
+      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/tags/coding-is-fun/</guid>
       <description></description>
     </item>
@@ -56,7 +57,7 @@
       <title>Functional Programming</title>
       <link>https://sskelkar.github.io/tags/functional-programming/</link>
       <pubDate>Wed, 08 Nov 2017 00:00:00 +0530</pubDate>
-      
+      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/tags/functional-programming/</guid>
       <description></description>
     </item>
@@ -65,7 +66,7 @@
       <title>JavaScript</title>
       <link>https://sskelkar.github.io/tags/javascript/</link>
       <pubDate>Sat, 14 Jan 2017 00:00:00 +0530</pubDate>
-      
+      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/tags/javascript/</guid>
       <description></description>
     </item>
@@ -74,7 +75,7 @@
       <title>Microservices</title>
       <link>https://sskelkar.github.io/tags/microservices/</link>
       <pubDate>Mon, 05 Dec 2016 00:00:00 +0530</pubDate>
-      
+      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/tags/microservices/</guid>
       <description></description>
     </item>
@@ -83,7 +84,7 @@
       <title>Cartoons</title>
       <link>https://sskelkar.github.io/tags/cartoons/</link>
       <pubDate>Mon, 01 Aug 2016 00:00:00 +0530</pubDate>
-      
+      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/tags/cartoons/</guid>
       <description></description>
     </item>
@@ -92,7 +93,7 @@
       <title>Angular</title>
       <link>https://sskelkar.github.io/tags/angular/</link>
       <pubDate>Sun, 19 Jul 2015 00:00:00 +0530</pubDate>
-      
+      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/tags/angular/</guid>
       <description></description>
     </item>

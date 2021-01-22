@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Running time intensive operations in parallel with RxJava Observables - Sojjwal Kelkar</title>
+  <meta name="description" content="Recently I delved into the RxJava library. In this post I will demonstrate how RxJava Observables can be used to execute two long running tasks in parallel, so as to reduce their overall execution time.
+While we can create threads for this purpose, an additional benefit of using Observables is that it provides a convenient way of collecting the results of the parallel tasks. With threads, this can get pretty complicated.">
+  <meta name="author" content="Sojjwal Kelkar"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Sojjwal Kelkar",
+    
+    "url": "https:\/\/sskelkar.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/sskelkar.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/sskelkar.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/sskelkar.github.io\/post\/rxjava-observables\/",
+          "name": "Running time intensive operations in parallel with rx java observables"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Sojjwal Kelkar"
+  },
+  "headline": "Running time intensive operations in parallel with RxJava Observables",
+  "description" : "Recently I delved into the RxJava library. In this post I will demonstrate how RxJava Observables can be used to execute two long running tasks in parallel, so as to reduce their overall execution time.\nWhile we can create threads for this purpose, an additional benefit of using Observables is that it provides a convenient way of collecting the results of the parallel tasks. With threads, this can get pretty complicated.",
+  "inLanguage" : "en",
+  "wordCount":  658 ,
+  "datePublished" : "2016-09-01T00:00:00",
+  "dateModified" : "2016-09-01T00:00:00",
+  "image" : "https:\/\/sskelkar.github.io\/",
+  "keywords" : [ "Java" ],
+  "mainEntityOfPage" : "https:\/\/sskelkar.github.io\/post\/rxjava-observables\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/sskelkar.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/sskelkar.github.io\/",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Running time intensive operations in parallel with RxJava Observables" />
+<meta property="og:description" content="Recently I delved into the RxJava library. In this post I will demonstrate how RxJava Observables can be used to execute two long running tasks in parallel, so as to reduce their overall execution time.
+While we can create threads for this purpose, an additional benefit of using Observables is that it provides a convenient way of collecting the results of the parallel tasks. With threads, this can get pretty complicated.">
+<meta property="og:url" content="https://sskelkar.github.io/post/rxjava-observables/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Sojjwal Kelkar" />
+
+  <meta name="twitter:title" content="Running time intensive operations in parallel with RxJava Observables" />
+  <meta name="twitter:description" content="Recently I delved into the RxJava library. In this post I will demonstrate how RxJava Observables can be used to execute two long running tasks in parallel, so as to reduce their overall execution …">
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.79.0" />
+  <link rel="alternate" href="https://sskelkar.github.io/index.xml" type="application/rss+xml" title="Sojjwal Kelkar"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://sskelkar.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://sskelkar.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://sskelkar.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Tech Blog" href="/">Tech Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Cartoons" href="/cartoons">Cartoons</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header-section ">
+  
+  <div class="intro-header no-img">
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="post-heading">
+            <h1>Running time intensive operations in parallel with RxJava Observables</h1>
+            <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on Sep 1, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+  
+  
+  
+  
+</span>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+      <article role="main" class="blog-post">
+      
+        <p>Recently I delved into the <a href="https://github.com/ReactiveX/RxJava">RxJava</a> library. In this post I will demonstrate how RxJava Observables can be used to execute two long running tasks in parallel, so as to reduce their overall execution time.</p>
+<p>While we can create threads for this purpose, an additional benefit of using Observables is that it provides a convenient way of collecting the results of the parallel tasks. With threads, this can get pretty complicated.
+Let&rsquo;s consider a situation where we have a consumer class that depends on the result of two or more expensive independent tasks.
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Producer1</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">produce</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;();</span>
+    
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">5</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Producer1 - &#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+      <span class="k">try</span> <span class="o">{</span>
+        <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">1000</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{}</span>
+      <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">list</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Producer2</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">produce</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;();</span>
+    
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">5</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Producer2 - &#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+      <span class="k">try</span> <span class="o">{</span>
+        <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">1000</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{}</span>
+      <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">list</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></div></p>
+<p>Note that the <code>produce()</code> method of each producer is going to take approx 5 seconds to execute. The time required to consume them sequentially would be the aggregate of the execution time of each producer.
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SequentialConsumer</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">consume</span><span class="o">(</span><span class="n">Producer1</span> <span class="n">p1</span><span class="o">,</span> <span class="n">Producer2</span> <span class="n">p2</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Long</span> <span class="n">start</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+    
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+    <span class="n">result</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">p1</span><span class="o">.</span><span class="na">produce</span><span class="o">());</span>
+    <span class="n">result</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">p2</span><span class="o">.</span><span class="na">produce</span><span class="o">());</span>
+    
+    <span class="n">Long</span> <span class="n">end</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+    
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Serial time elapsed: &#34;</span> <span class="o">+</span> <span class="o">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="o">)/</span><span class="n">1000</span> <span class="o">+</span> <span class="s">&#34; seconds&#34;</span><span class="o">);</span> <span class="c1">// prints 10 seconds
+</span><span class="c1"></span>    <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></div></p>
+<p>Now let&rsquo;s rewrite the above code using Observables. First, we need to identify the tasks that can be parallelized, and wrap them inside RxJava Observable objects. In our case, we will convert the <code>produce()</code> method invocations to Observable tasks by wrapping them in <code>Observable.just()</code> methods. Additionally, we would also like to defer the execution of our Observable tasks so that we can control when they get invoked. So we wrap our tasks inside <code>Observable.defer()</code>.</p>
+<p>The way Observer model works is, we have an Observable which emits some information. And we have a subscriber or observer, that listens to the Observable and consumes the information emitted by it. So we need our Observable tasks to be subscribed on, so that the results emitted by them can be processed. We also need to execute them in parallel, which can be done by executing them in separate threads. This can be done by calling <code>subscribeOn(Schedulers.newThread())</code>.</p>
+<p>Next, with the help of <code>Observable.zip()</code> function, we can specify how to collect or combine the results emitted by multiple Observables, once they are finished executing. The combined result itself is also returned as an Observable.</p>
+<p>We pass our Observables to the zip method and a lambda expression whose input parameters are the individual results of the corresponding Observables in the same order as they were passed. For example, let&rsquo;s say we have three Observables o1, o2 and o3. They emit results o1Result, o2Result and o3Result. These results can be combined with help of the zip operator as following:
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Observable</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">o1</span><span class="o">;</span>
+<span class="n">Observable</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">o2</span><span class="o">;</span>
+<span class="n">Observable</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">o3</span><span class="o">;</span>
+
+<span class="n">Observable</span><span class="o">.</span><span class="na">zip</span><span class="o">(</span><span class="n">o1</span><span class="o">,</span> <span class="n">o2</span><span class="o">,</span> <span class="n">o3</span><span class="o">,</span> <span class="o">(</span><span class="n">o1Result</span><span class="o">,</span> <span class="n">o2Result</span><span class="o">,</span> <span class="n">o3Result</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+  <span class="c1">// some code
+</span><span class="c1"></span><span class="o">});</span></code></pre></div></p>
+<p>In our example, the two Observables will each emit a list of Integers, which we can collect in another ArrayList and return from the <code>consume()</code> method.
+We need to pause our main thread until all the parallel tasks are completed, so that we can collect their results. This can be done using the <code>toBlocking()</code> operator.
+Finally, we  call the <code>single()</code> method to trigger the execution of our Observables and return the combined list of integers.</p>
+<p>Here’s the complete code:
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ParallelConsumer</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">consume</span><span class="o">(</span><span class="n">Producer1</span> <span class="n">p1</span><span class="o">,</span> <span class="n">Producer2</span> <span class="n">p2</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Long</span> <span class="n">start</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+    
+    <span class="n">Observable</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span> <span class="n">task1</span> <span class="o">=</span> <span class="n">Observable</span><span class="o">.</span><span class="na">defer</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="n">Observable</span><span class="o">.</span><span class="na">just</span><span class="o">(</span><span class="n">p1</span><span class="o">.</span><span class="na">produce</span><span class="o">())).</span><span class="na">subscribeOn</span><span class="o">(</span><span class="n">Schedulers</span><span class="o">.</span><span class="na">newThread</span><span class="o">());</span>
+    <span class="n">Observable</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span> <span class="n">task2</span> <span class="o">=</span> <span class="n">Observable</span><span class="o">.</span><span class="na">defer</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="n">Observable</span><span class="o">.</span><span class="na">just</span><span class="o">(</span><span class="n">p2</span><span class="o">.</span><span class="na">produce</span><span class="o">())).</span><span class="na">subscribeOn</span><span class="o">(</span><span class="n">Schedulers</span><span class="o">.</span><span class="na">newThread</span><span class="o">());</span>
+    
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">Observable</span><span class="o">.</span><span class="na">zip</span><span class="o">(</span><span class="n">task1</span><span class="o">,</span> <span class="n">task2</span><span class="o">,</span> <span class="o">(</span><span class="n">result1</span><span class="o">,</span> <span class="n">result2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+      <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+      <span class="n">list</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">result1</span><span class="o">);</span>
+      <span class="n">list</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">result2</span><span class="o">);</span>
+      
+      <span class="k">return</span> <span class="n">list</span><span class="o">;</span>
+    <span class="o">}).</span><span class="na">toBlocking</span><span class="o">().</span><span class="na">single</span><span class="o">();</span>
+    
+    <span class="n">Long</span> <span class="n">end</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Serial time elapsed: &#34;</span> <span class="o">+</span> <span class="o">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="o">)/</span><span class="n">1000</span> <span class="o">+</span> <span class="s">&#34; seconds&#34;</span><span class="o">);</span> <span class="c1">// prints 5 seconds
+</span><span class="c1"></span>    
+    <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></div></p>
+
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://sskelkar.github.io//tags/java/">Java</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="/post/db-integration-tests-for-spring-app/">Database integration tests for a Spring application</a></li>
+                
+                    <li><a href="/post/using-thread-dumps-to-analyze-deadlocks/">Using thread dumps to analyse deadlocks</a></li>
+                
+                    <li><a href="/post/logging-with-spring-aop/">Logging with Spring AOP</a></li>
+                
+                    <li><a href="/post/memory-profiling-simple-examples/">Memory profiling – simple examples</a></li>
+                
+                    <li><a href="/post/jpa-entity-relationships/">JPA Entity Relationships</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://sskelkar.github.io/post/logging-with-spring-aop/" data-toggle="tooltip" data-placement="top" title="Logging with Spring AOP">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://sskelkar.github.io/post/hystrix-a-simple-use-case/" data-toggle="tooltip" data-placement="top" title="Hystrix – a simple use case">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:sojjwalkelkar@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/sskelkar" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/sskelkar" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Sojjwal Kelkar
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          &bull;&nbsp;Powered by Hugo&nbsp;&bull;&nbsp;
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://sskelkar.github.io/js/main.js"></script>
+<script src="https://sskelkar.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://sskelkar.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

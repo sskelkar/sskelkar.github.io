@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>How to set up a local spring cloud config server - Sojjwal Kelkar</title>
+  <meta name="description" content="From the official documentation,
+ Spring Cloud Config provides server and client-side support for externalized configuration in a distributed system. With the Config Server you have a central place to manage external properties for applications across all environments.
+ Steps to configure config server a. Create a new Gradle project for the config server. In https://start.spring.io/, select the starters for config server.
+b. In your project, navigate to src/main/resources. Rename the automatically generated application.">
+  <meta name="author" content="Sojjwal Kelkar"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Sojjwal Kelkar",
+    
+    "url": "https:\/\/sskelkar.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/sskelkar.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/sskelkar.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/sskelkar.github.io\/post\/how-to-set-up-a-local-spring-cloud-config-server\/",
+          "name": "How to set up a local spring cloud config server"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Sojjwal Kelkar"
+  },
+  "headline": "How to set up a local spring cloud config server",
+  "description" : "From the official documentation,\n Spring Cloud Config provides server and client-side support for externalized configuration in a distributed system. With the Config Server you have a central place to manage external properties for applications across all environments.\n Steps to configure config server a. Create a new Gradle project for the config server. In https:\/\/start.spring.io\/, select the starters for config server.\nb. In your project, navigate to src\/main\/resources. Rename the automatically generated application.",
+  "inLanguage" : "en",
+  "wordCount":  641 ,
+  "datePublished" : "2015-12-15T00:00:00",
+  "dateModified" : "2015-12-15T00:00:00",
+  "image" : "https:\/\/sskelkar.github.io\/",
+  "keywords" : [ "Java, Microservices" ],
+  "mainEntityOfPage" : "https:\/\/sskelkar.github.io\/post\/how-to-set-up-a-local-spring-cloud-config-server\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/sskelkar.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/sskelkar.github.io\/",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="How to set up a local spring cloud config server" />
+<meta property="og:description" content="From the official documentation,
+ Spring Cloud Config provides server and client-side support for externalized configuration in a distributed system. With the Config Server you have a central place to manage external properties for applications across all environments.
+ Steps to configure config server a. Create a new Gradle project for the config server. In https://start.spring.io/, select the starters for config server.
+b. In your project, navigate to src/main/resources. Rename the automatically generated application.">
+<meta property="og:url" content="https://sskelkar.github.io/post/how-to-set-up-a-local-spring-cloud-config-server/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Sojjwal Kelkar" />
+
+  <meta name="twitter:title" content="How to set up a local spring cloud config server" />
+  <meta name="twitter:description" content="From the official documentation,
+ Spring Cloud Config provides server and client-side support for externalized configuration in a distributed system. With the Config Server you have a central place to …">
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.79.0" />
+  <link rel="alternate" href="https://sskelkar.github.io/index.xml" type="application/rss+xml" title="Sojjwal Kelkar"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://sskelkar.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://sskelkar.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://sskelkar.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Tech Blog" href="/">Tech Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Cartoons" href="/cartoons">Cartoons</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header-section ">
+  
+  <div class="intro-header no-img">
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="post-heading">
+            <h1>How to set up a local spring cloud config server</h1>
+            <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on Dec 15, 2015
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+  
+  
+  
+  
+</span>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+      <article role="main" class="blog-post">
+      
+        <p>From the <a href="https://spring.io/projects/spring-cloud-config">official documentation</a>,</p>
+<blockquote>
+<p>Spring Cloud Config provides server and client-side support for externalized configuration in a distributed system.
+With the Config Server you have a central place to manage external properties for applications across all environments.</p>
+</blockquote>
+<h3 id="steps-to-configure-config-server">Steps to configure config server</h3>
+<p>a. Create a new Gradle project for the config server. In <a href="https://start.spring.io/,">https://start.spring.io/,</a> select the starters for config server.</p>
+<p>b. In your project, navigate to <code>src/main/resources</code>. Rename the automatically generated <code>application.properties</code> file to <code>bootstrap.yml</code>.</p>
+<p>c. Spring cloud config uses a Git backend by default to lookup property sources, i.e., config files. For this demo application, we will create a git repository on our local file system.</p>
+<p>d. Create an empty folder in your file system. Lets name it <code>config-repo</code>. Navigate to this repository via command prompt and execute <code>git init .</code> command. This will create an empty git repository in this folder.</p>
+<p>e. We need to provide our config server the location of this git repository. The default strategy for locating property sources is to clone a git repository declared against <code>spring.cloud.config.server.git.uri</code> property. So in our <code>bootstrap.yml</code>, we need to define this property in yaml format like this:
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">spring</span><span class="p">:</span>
+  <span class="n">cloud</span><span class="p">:</span>
+    <span class="n">config</span><span class="p">:</span>
+      <span class="n">server</span><span class="p">:</span>
+        <span class="n">git</span><span class="p">:</span>
+          <span class="n">uri</span><span class="p">:</span> <span class="nb">file</span><span class="p">:</span><span class="o">//</span><span class="p">(</span><span class="n">folder</span> <span class="n">path</span><span class="p">)</span><span class="o">/</span><span class="n">config</span><span class="o">-</span><span class="n">repo</span>
+  
+<span class="n">server</span><span class="p">:</span>
+  <span class="n">port</span><span class="p">:</span> <span class="mi">8003</span></code></pre></div></p>
+<p>We can also declare on which port number the config server should run. We have declared that as <code>8003</code> above.</p>
+<p>f. In your application’s main class add <code>@EnableConfigServer</code> annotation at the class level.</p>
+<p>g. When a microservice requests for its property source from a config server, the config server looks up for its property file in following manner. For example, if the name of the requesting service is <code>demo-service</code> and it is running in development profile, then the config server will look for a file with name <code>demo-service-development.yml</code> in the git repository to serve the properties for that service.</p>
+<p>h. Currently there are no property files in our git repository. Suppose that we are going to run a microservice named <code>my-service</code> in production mode, we need to create a file named <code>my-service-production.yml</code> in the git repository folder. Remember that simply creating the file in the folder doesn’t add it in the repository. To do that we need to execute following commands:
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">git add -A .
+git commit -m <span class="s2">&#34;some commit message&#34;</span></code></pre></div></p>
+<p>i. Lets add a dummy property <code>sample.property</code> in this file that we will use in our microservice.
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sample:
+  property: foobar</code></pre></div></p>
+<h3 id="steps-to-configure-config-client">Steps to configure config client</h3>
+<p>a. Create another Gradle project. In <a href="https://start.spring.io/,">https://start.spring.io/,</a> select the starters for config client and web.</p>
+<p>b. In your project, navigate to <code>src/main/resources</code>. Rename the automatically generated <code>application.properties</code> file to <code>bootstrap.yml</code>.</p>
+<p>c. To fetch properties from the config server, we need declare to three things: our service name, the active profile and address of the config server. These tasks can be accomplished by adding following in <code>bootstrap.yml</code>:
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">spring</span><span class="p">:</span>
+  <span class="n">application</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">my</span><span class="o">-</span><span class="n">service</span>
+  <span class="n">profiles</span><span class="p">:</span>
+    <span class="n">active</span><span class="p">:</span> <span class="n">production</span>
+  <span class="n">cloud</span><span class="p">:</span>
+    <span class="n">config</span><span class="p">:</span>
+      <span class="n">uri</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8003</span></code></pre></div></p>
+<p>d. Now, to use the properties in our application we can define a utility class by the name of <code>PropertyUtil</code> inside which we will read the external properties and using this class we can inject those property values wherever required throughout our application.</p>
+<p>e. So create a <code>PropertyUtil</code> class in the same package where application’s main class is present, or in a sub-package.</p>
+<p>f. The content of the <code>PropertyUtil</code> may be like this:
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="nd">@ConfigurationProperties</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PropertyUtil</span> <span class="o">{</span>
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${sample.property}&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">property</span><span class="o">;</span>
+ 
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getProperty</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">property</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div></p>
+<p><code>@Value</code> injects the external property into the private variable <code>property</code>. Note that <code>@Value</code> cannot be used with static variables.</p>
+<p>g. To demonstrate that the external property is fetched correctly, we can set up a rest controller as following:
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@RestController</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyServiceController</span> <span class="o">{</span>
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="n">PropertyUtil</span> <span class="n">property</span><span class="o">;</span>
+ 
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span><span class="o">=</span><span class="s">&#34;/&#34;</span><span class="o">,</span> <span class="n">method</span><span class="o">=</span><span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">property</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">property</span><span class="o">.</span><span class="na">getProperty</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div></p>
+<p>h. Now start the config-server application followed by <code>my-service</code> and hit http://localhost:8080 on your browser. Text “foobar” will be displayed.</p>
+
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://sskelkar.github.io//tags/java/">Java</a>&nbsp;
+            
+              <a href="https://sskelkar.github.io//tags/microservices/">Microservices</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="/post/db-integration-tests-for-spring-app/">Database integration tests for a Spring application</a></li>
+                
+                    <li><a href="/post/using-thread-dumps-to-analyze-deadlocks/">Using thread dumps to analyse deadlocks</a></li>
+                
+                    <li><a href="/post/hystrix-a-simple-use-case/">Hystrix – a simple use case</a></li>
+                
+                    <li><a href="/post/rxjava-observables/">Running time intensive operations in parallel with RxJava Observables</a></li>
+                
+                    <li><a href="/post/logging-with-spring-aop/">Logging with Spring AOP</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://sskelkar.github.io/post/building-with-gradle/" data-toggle="tooltip" data-placement="top" title="Building with Gradle">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://sskelkar.github.io/post/service-discovery-setup-guide/" data-toggle="tooltip" data-placement="top" title="Step by step guide to set up a service discovery environment">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:sojjwalkelkar@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/sskelkar" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/sskelkar" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Sojjwal Kelkar
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          &bull;&nbsp;Powered by Hugo&nbsp;&bull;&nbsp;
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://sskelkar.github.io/js/main.js"></script>
+<script src="https://sskelkar.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://sskelkar.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

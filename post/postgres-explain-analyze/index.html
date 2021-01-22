@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Understanding a Postgres query plan - Sojjwal Kelkar</title>
+  <meta name="description" content="A query plan is a sequence of steps used by a database to access data. Being able to read a query plan is key to understanding the performance of an SQL query. While tuning a query we need to know how the rows are being fetched from the tables? Are the indexes being used? What is the cost of joining to tables? A query plan provides with an answer for all of these questions.">
+  <meta name="author" content="Sojjwal Kelkar"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Sojjwal Kelkar",
+    
+    "url": "https:\/\/sskelkar.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/sskelkar.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/sskelkar.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/sskelkar.github.io\/post\/postgres-explain-analyze\/",
+          "name": "Understanding a postgres query plan"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Sojjwal Kelkar"
+  },
+  "headline": "Understanding a Postgres query plan",
+  "description" : "A query plan is a sequence of steps used by a database to access data. Being able to read a query plan is key to understanding the performance of an SQL query. While tuning a query we need to know how the rows are being fetched from the tables? Are the indexes being used? What is the cost of joining to tables? A query plan provides with an answer for all of these questions.",
+  "inLanguage" : "en",
+  "wordCount":  2174 ,
+  "datePublished" : "2020-04-13T00:00:00",
+  "dateModified" : "2020-04-13T00:00:00",
+  "image" : "https:\/\/sskelkar.github.io\/",
+  "keywords" : [ "Database" ],
+  "mainEntityOfPage" : "https:\/\/sskelkar.github.io\/post\/postgres-explain-analyze\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/sskelkar.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/sskelkar.github.io\/",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Understanding a Postgres query plan" />
+<meta property="og:description" content="A query plan is a sequence of steps used by a database to access data. Being able to read a query plan is key to understanding the performance of an SQL query. While tuning a query we need to know how the rows are being fetched from the tables? Are the indexes being used? What is the cost of joining to tables? A query plan provides with an answer for all of these questions.">
+<meta property="og:url" content="https://sskelkar.github.io/post/postgres-explain-analyze/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Sojjwal Kelkar" />
+
+  <meta name="twitter:title" content="Understanding a Postgres query plan" />
+  <meta name="twitter:description" content="A query plan is a sequence of steps used by a database to access data. Being able to read a query plan is key to understanding the performance of an SQL query. While tuning a query we need to know how …">
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.79.0" />
+  <link rel="alternate" href="https://sskelkar.github.io/index.xml" type="application/rss+xml" title="Sojjwal Kelkar"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://sskelkar.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://sskelkar.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://sskelkar.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Tech Blog" href="/">Tech Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Cartoons" href="/cartoons">Cartoons</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header-section ">
+  
+  <div class="intro-header no-img">
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="post-heading">
+            <h1>Understanding a Postgres query plan</h1>
+            <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on Apr 13, 2020
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;11&nbsp;minutes
+  
+  
+  
+  
+</span>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+      <article role="main" class="blog-post">
+      
+        <p>A query plan is a sequence of steps used by a database to access data. Being able to read a query plan is key to understanding the performance of an SQL query. While tuning a query we need to know how the rows are being fetched from the tables? Are the indexes being used? What is the cost of joining to tables? A query plan provides with an answer for all of these questions.</p>
+<p>In postgres we get the query plan by prepending a query with <code>EXPLAIN</code>. Example:
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">explain</span> <span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">from</span> <span class="n">orders</span> <span class="k">where</span> <span class="n">created_at</span> <span class="o">&gt;</span> <span class="s1">&#39;2020-01-01&#39;</span><span class="p">;</span>
+
+                                    <span class="n">QUERY</span> <span class="n">PLAN</span>
+<span class="c1">-----------------------------------------------------------------------------------
+</span><span class="c1"></span> <span class="k">Aggregate</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">6105004</span><span class="p">.</span><span class="mi">83</span><span class="p">..</span><span class="mi">6105004</span><span class="p">.</span><span class="mi">84</span> <span class="k">rows</span><span class="o">=</span><span class="mi">1</span> <span class="n">width</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+   <span class="o">-&gt;</span>  <span class="n">Seq</span> <span class="n">Scan</span> <span class="k">on</span> <span class="n">orders</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="p">..</span><span class="mi">6092726</span><span class="p">.</span><span class="mi">20</span> <span class="k">rows</span><span class="o">=</span><span class="mi">4911451</span> <span class="n">width</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+         <span class="n">Filter</span><span class="p">:</span> <span class="p">(</span><span class="n">created_at</span> <span class="o">&gt;</span> <span class="s1">&#39;2020-01-01 00:00:00&#39;</span><span class="p">::</span><span class="k">timestamp</span> <span class="k">without</span> <span class="n">time</span> <span class="k">zone</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">3</span> <span class="k">rows</span><span class="p">)</span></code></pre></div></p>
+<p>A database can employ various algorithms to fetch rows and join tables. So a query plan can be dense with jargon. Let&rsquo;s go through some of the common terms that appear in a query plan and understand why the planner favors some particular fetching mechanism over others.</p>
+<p>But first, we need to understand the structure of a query plan. From the <a href="https://www.postgresql.org/docs/12/using-explain.html">official documentation</a>:</p>
+<blockquote>
+<p>The structure of a query plan is a tree of plan nodes. Nodes at the bottom level of the tree are scan nodes: they return raw rows from a table. There are different types of scan nodes for different table access methods: sequential scans, index scans, and bitmap index scans. [&hellip;] If the query requires joining, aggregation, sorting, or other operations on the raw rows, then there will be additional nodes above the scan nodes to perform these operations. Again, there is usually more than one possible way to do these operations, so different node types can appear here too. The output of EXPLAIN has one line for each node in the plan tree, showing the basic node type plus the cost estimates that the planner made for the execution of that plan node. [&hellip;] The very first line (the summary line for the topmost node) has the estimated total execution cost for the plan; it is this number that the planner seeks to minimize.</p>
+</blockquote>
+<p>Let&rsquo;s break this down in simple terms. A query plan is structured as a tree. Each branch of this tree is called a &lsquo;plan node&rsquo;. In the query plan, each of these nodes begin with an <code>-&gt;</code> arrow. The nodes at the lowest level correspond to how rows are fetched from a table. Each node on a higher level performs some operation on its child nodes. For example, if we have a query as following: <code>select count(*) from students where age &gt; 10 and mentor_id = 1</code>. One of the possible ways this query can be processed is to fetch a set of all students whose age is greater than 10. Fetch another set of students whose mentor_id is 1. Then an AND operation is performed on both sets to get the final result. In this case, the query plan will have two bottom level nodes and with a parent node for the AND operation. There can be higher level nodes for any type of operations, like SORT, LIMIT, JOIN etc. that can be performed on raw rows.</p>
+<p>Now let&rsquo;s go through each aspect of a query plan in more detail.</p>
+<h2 id="fetching-raw-rows">Fetching raw rows</h2>
+<p>A database can fetch rows from a table in different ways. This depends on factors such as whether appropriate indexes exist, the volume of rows to be fetched, the size of the table in question etc.</p>
+<h4 id="sequential-scan">Sequential scan</h4>
+<p><div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">explain</span> <span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">created_at</span> <span class="o">&lt;</span> <span class="s1">&#39;2020-01-01&#39;</span><span class="p">;</span>
+                                    <span class="n">QUERY</span> <span class="n">PLAN</span>
+<span class="c1">-----------------------------------------------------------------------------------
+</span><span class="c1"></span> <span class="k">Aggregate</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">3363</span><span class="p">.</span><span class="mi">19</span><span class="p">..</span><span class="mi">3363</span><span class="p">.</span><span class="mi">20</span> <span class="k">rows</span><span class="o">=</span><span class="mi">1</span> <span class="n">width</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+   <span class="o">-&gt;</span>  <span class="n">Seq</span> <span class="n">Scan</span> <span class="k">on</span> <span class="n">users</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="p">..</span><span class="mi">3350</span><span class="p">.</span><span class="mi">90</span> <span class="k">rows</span><span class="o">=</span><span class="mi">4916</span> <span class="n">width</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+         <span class="n">Filter</span><span class="p">:</span> <span class="p">(</span><span class="n">created_at</span> <span class="o">&lt;</span> <span class="s1">&#39;2020-01-01 00:00:00&#39;</span><span class="p">::</span><span class="k">timestamp</span> <span class="k">without</span> <span class="n">time</span> <span class="k">zone</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">3</span> <span class="k">rows</span><span class="p">)</span></code></pre></div>
+In a sequential (or full) table scan, all table rows are loaded into the memory. If the query has any filtering criteria, they will be applied in-memory on the appropriate columns. The rows that satisfy the filtering condition are transmitted further. This method is used when indexes are not present on columns present in the query predicate (where clause). In the above example, all user rows are fetched and the rows that fail on the created_at condition are discarded.</p>
+<p>Even though a sequential scan may seem like a slow way of fetching data, a query planner may employ this approach even when an index is present on the filtering column. This may happen if:</p>
+<ul>
+<li>A table has very few rows. An index scan requires random seeks. If the whole table can fit within a few pages, it is just cheaper to load all those pages into memory, thus avoiding the overhead of random seeks.</li>
+<li>A query would return a large percentage of table rows. If suppose you&rsquo;ve a query that would return 90% of all rows in a large table. In such a case, each page contains several rows that satisfy the query predicate. Again, fetching the whole page at once trumps over performing random seek that would access the same page several times.</li>
+</ul>
+<p>Databases maintain query statistics to determine when to use sequential scan over index scan.</p>
+<h4 id="index-scan">Index scan</h4>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">explain</span> <span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">created_at</span> <span class="o">&gt;</span> <span class="s1">&#39;2020-01-01&#39;</span><span class="p">;</span>
+                                    <span class="n">QUERY</span> <span class="n">PLAN</span>
+<span class="c1">-----------------------------------------------------------------------------------
+</span><span class="c1"></span> <span class="k">Aggregate</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">319490</span><span class="p">.</span><span class="mi">21</span><span class="p">..</span><span class="mi">319490</span><span class="p">.</span><span class="mi">22</span> <span class="k">rows</span><span class="o">=</span><span class="mi">1</span> <span class="n">width</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+   <span class="o">-&gt;</span>  <span class="k">Index</span> <span class="k">Only</span> <span class="n">Scan</span> <span class="k">using</span> <span class="n">index_users_created_at</span> <span class="k">on</span> <span class="n">users</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">56</span><span class="p">..</span><span class="mi">317433</span><span class="p">.</span><span class="mi">32</span> <span class="k">rows</span><span class="o">=</span><span class="mi">822758</span> <span class="n">width</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+         <span class="k">Index</span> <span class="n">Cond</span><span class="p">:</span> <span class="p">(</span><span class="n">created_at</span> <span class="o">&gt;</span> <span class="s1">&#39;2020-04-01 00:00:00&#39;</span><span class="p">::</span><span class="k">timestamp</span> <span class="k">without</span> <span class="n">time</span> <span class="k">zone</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">3</span> <span class="k">rows</span><span class="p">)</span></code></pre></div>
+<p>For an index scan to work an index must be present on the column used in the query predicate. The database uses that index to get the reference of all the tuples (rows) that satisfy the query predicate. Then the corresponding data page is accessed in the heap to fetch the rest of the required data from each tuple.</p>
+<p>Suppose that a query has multiple predicates and all the columns in those predicates have indexes on them. The planner would typically not perform index scans for all the predicates. It would use index scan only on one of those columns and perform in-memory filtering for the remaining predicates.</p>
+<p>An index scan is used for queries that have an ORDER BY condition that matches the index order. This saves an extra sorting step.</p>
+<h4 id="bitmap-scan">Bitmap scan</h4>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">explain</span> <span class="k">select</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">users</span> <span class="k">WHERE</span> <span class="n">created_at</span> <span class="o">&lt;</span> <span class="s1">&#39;2020-04-01&#39;</span><span class="p">;</span>
+
+                                  <span class="n">QUERY</span> <span class="n">PLAN</span>
+<span class="c1">------------------------------------------------------------------------------
+</span><span class="c1"></span> <span class="n">Bitmap</span> <span class="n">Heap</span> <span class="n">Scan</span> <span class="k">on</span> <span class="n">users</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">10</span><span class="p">.</span><span class="mi">00</span><span class="p">..</span><span class="mi">20</span><span class="p">.</span><span class="mi">20</span> <span class="k">rows</span><span class="o">=</span><span class="mi">50</span> <span class="n">width</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+   <span class="k">Recheck</span> <span class="n">Cond</span><span class="p">:</span> <span class="p">(</span><span class="n">created_at</span> <span class="o">&lt;</span> <span class="s1">&#39;2020-04-01&#39;</span><span class="p">)</span>
+   <span class="o">-&gt;</span>  <span class="n">Bitmap</span> <span class="k">Index</span> <span class="n">Scan</span> <span class="k">on</span> <span class="n">users_created_at</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="p">..</span><span class="mi">09</span><span class="p">.</span><span class="mi">00</span> <span class="k">rows</span><span class="o">=</span><span class="mi">50</span> <span class="n">width</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+         <span class="k">Index</span> <span class="n">Cond</span><span class="p">:</span> <span class="p">(</span><span class="n">created_at</span> <span class="o">&lt;</span> <span class="s1">&#39;2020-04-01&#39;</span><span class="p">)</span></code></pre></div>
+<p>A plain index scan fetches one tuple-pointer at a time from the index and immediately visits that tuple in the table. This may mean a single page is visited multiple times if several tuples are located in it. A more optimal use of I/O operations would be to visit a page only once and fetch all desired tuples from it. A bitmap scan does just that.</p>
+<p>A bitmap index scan fetches all the tuple-pointers from the index at once and sorts them using a bitmap data structure. A bitmap heap scan visits each heap page only only once to fetch all desired tuples from it.</p>
+<p>This method of row scanning has an overhead of maintaining the in-memory bitmap. If the bitmap gets too large, then we maintain only the references of the heap pages that contain matching tuples instead of keeping track of individual tuples within those pages. The whole page is loaded and the tuples are filtered on Recheck Condition to get the desired data.</p>
+<h2 id="joining-tables">Joining tables</h2>
+<h4 id="nested-loop-join">Nested loop join</h4>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">explain</span> <span class="k">select</span> <span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">name</span> <span class="k">from</span> <span class="n">players</span> <span class="n">p</span> <span class="k">join</span> <span class="n">teams</span> <span class="n">t</span> <span class="k">on</span> <span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">team_id</span><span class="p">);</span>
+                                   <span class="n">QUERY</span> <span class="n">PLAN</span>
+<span class="c1">------------------------------------------------------------------------------
+</span><span class="c1"></span> <span class="n">Nested</span> <span class="n">Loop</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">56</span><span class="p">..</span><span class="mi">2761623</span><span class="p">.</span><span class="mi">95</span> <span class="k">rows</span><span class="o">=</span><span class="mi">36867792</span> <span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+   <span class="o">-&gt;</span>  <span class="n">Seq</span> <span class="n">Scan</span> <span class="k">on</span> <span class="n">teams</span> <span class="n">t</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="p">..</span><span class="mi">5528</span><span class="p">.</span><span class="mi">03</span> <span class="k">rows</span><span class="o">=</span><span class="mi">44303</span> <span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+   <span class="o">-&gt;</span>  <span class="n">Materialize</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">29</span><span class="p">..</span><span class="mi">8</span><span class="p">.</span><span class="mi">51</span> <span class="k">rows</span><span class="o">=</span><span class="mi">10</span> <span class="n">width</span><span class="o">=</span><span class="mi">244</span><span class="p">)</span>
+     <span class="o">-&gt;</span>  <span class="k">Index</span> <span class="k">Only</span> <span class="n">Scan</span> <span class="k">using</span> <span class="n">index_players_on_team_id</span> <span class="k">on</span> <span class="n">players</span> <span class="n">p</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">56</span><span class="p">..</span><span class="mi">47</span><span class="p">.</span><span class="mi">13</span> <span class="k">rows</span><span class="o">=</span><span class="mi">1508</span> <span class="n">width</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+           <span class="k">Index</span> <span class="n">Cond</span><span class="p">:</span> <span class="p">(</span><span class="n">team_id</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">id</span><span class="p">)</span></code></pre></div>
+<p>This method of joining two tables is preferred when one side of the join has few rows. In the above query plan all the tables are fetched via sequential scan. Then for each team id, an index scan is performed on the players table to fetch the corresponding rows.</p>
+<p>In a nested loop join is performed on two nodes. A node can be a table or an intermediary step in a query plan. The second node of the join is looped over for each row in the first node. This method works better when the second node (the one that is being looped over) can be index scanned. The join column value from each row of the first node (team id in the above example) serves as the key for the index scan of the second node.</p>
+<p>In the above query plan, there&rsquo;s a &lsquo;Materialize&rsquo; node above the index scan on players table. Because in a nested loop join the second relation is accessed several times, the Materialize node saves its data in memory after the first pass. The same in-memory data is used in each subsequent pass.</p>
+<p>Nested loop join is the only method of joining tables if the join condition does not use the equality operator.</p>
+<h4 id="hash-join">Hash join</h4>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">explain</span> <span class="k">select</span> <span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">name</span> <span class="k">from</span> <span class="n">players</span> <span class="n">p</span> <span class="k">join</span> <span class="n">teams</span> <span class="n">t</span> <span class="k">on</span> <span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">team_id</span><span class="p">);</span>
+                                   <span class="n">QUERY</span> <span class="n">PLAN</span>
+<span class="c1">------------------------------------------------------------------------------
+</span><span class="c1"></span> <span class="n">Hash</span> <span class="k">Join</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">6082</span><span class="p">.</span><span class="mi">38</span><span class="p">..</span><span class="mi">1557549</span><span class="p">.</span><span class="mi">17</span> <span class="k">rows</span><span class="o">=</span><span class="mi">36867792</span> <span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+   <span class="n">Hash</span> <span class="n">Cond</span><span class="p">:</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">team_id</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">id</span><span class="p">)</span>
+   <span class="o">-&gt;</span>  <span class="k">Index</span> <span class="k">Only</span> <span class="n">Scan</span> <span class="k">using</span> <span class="n">index_players_on_team_id</span> <span class="k">on</span> <span class="n">players</span> <span class="n">p</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">56</span><span class="p">..</span><span class="mi">1454680</span><span class="p">.</span><span class="mi">32</span> <span class="k">rows</span><span class="o">=</span><span class="mi">36867792</span> <span class="n">width</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+   <span class="o">-&gt;</span>  <span class="n">Hash</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">5528</span><span class="p">.</span><span class="mi">03</span><span class="p">..</span><span class="mi">5528</span><span class="p">.</span><span class="mi">03</span> <span class="k">rows</span><span class="o">=</span><span class="mi">44303</span> <span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+         <span class="o">-&gt;</span>  <span class="n">Seq</span> <span class="n">Scan</span> <span class="k">on</span> <span class="n">teams</span> <span class="n">t</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="p">..</span><span class="mi">5528</span><span class="p">.</span><span class="mi">03</span> <span class="k">rows</span><span class="o">=</span><span class="mi">44303</span> <span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></div>
+<p>In a hash join, the relation on the right side of the join is scanned and loaded into an in-memory hash table using its join attribute as the hash key. Then the left relation is scanned and the join attribute is used to look up matching row of the second relation in the hash table.</p>
+<p>This join method can be used when the join condition uses the equality operator, both sides of the join are large and the hash can fit in the memory.</p>
+<h4 id="merge-join">Merge join</h4>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">explain</span> <span class="k">select</span> <span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">name</span> <span class="k">from</span> <span class="n">players</span> <span class="n">p</span> <span class="k">join</span> <span class="n">teams</span> <span class="n">t</span> <span class="k">on</span> <span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">team_id</span><span class="p">);</span>
+                                   <span class="n">QUERY</span> <span class="n">PLAN</span>
+<span class="c1">------------------------------------------------------------------------------
+</span><span class="c1"></span> <span class="n">Merge</span> <span class="k">Join</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">198</span><span class="p">.</span><span class="mi">11</span><span class="p">..</span><span class="mi">268</span><span class="p">.</span><span class="mi">19</span> <span class="k">rows</span><span class="o">=</span><span class="mi">10</span> <span class="n">width</span><span class="o">=</span><span class="mi">488</span><span class="p">)</span>
+   <span class="n">Merge</span> <span class="n">Cond</span><span class="p">:</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">team_id</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">id</span><span class="p">)</span>
+   <span class="o">-&gt;</span>  <span class="k">Index</span> <span class="n">Scan</span> <span class="k">using</span> <span class="n">index_players_on_team_id</span> <span class="k">on</span> <span class="n">players</span> <span class="n">p</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">29</span><span class="p">..</span><span class="mi">656</span><span class="p">.</span><span class="mi">28</span> <span class="k">rows</span><span class="o">=</span><span class="mi">101</span> <span class="n">width</span><span class="o">=</span><span class="mi">244</span><span class="p">)</span>
+   <span class="o">-&gt;</span>  <span class="n">Sort</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">197</span><span class="p">.</span><span class="mi">83</span><span class="p">..</span><span class="mi">200</span><span class="p">.</span><span class="mi">33</span> <span class="k">rows</span><span class="o">=</span><span class="mi">1000</span> <span class="n">width</span><span class="o">=</span><span class="mi">244</span><span class="p">)</span>
+         <span class="n">Sort</span> <span class="k">Key</span><span class="p">:</span> <span class="n">t</span><span class="p">.</span><span class="n">id</span>
+         <span class="o">-&gt;</span>  <span class="n">Seq</span> <span class="n">Scan</span> <span class="k">on</span> <span class="n">teams</span> <span class="n">t</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="p">..</span><span class="mi">148</span><span class="p">.</span><span class="mi">00</span> <span class="k">rows</span><span class="o">=</span><span class="mi">1000</span> <span class="n">width</span><span class="o">=</span><span class="mi">244</span><span class="p">)</span></code></pre></div>
+<p>In this join method, both relations are first sorted on the join attribute. Then the two relations are scanned in parallel to find the matching rows. This method can be used when the join condition uses the equality operator, both sides of the join are large but can be efficiently sorted on the join attribute.</p>
+<p>In the above example, players is sorted using the index on team_id column. The team table could also be sorted on its primary key. But in this instance, the query planner preferred a sequential scan and sort. A sequential scan and sort is preferable than an index sort when the table is large and cost of the nonsequential disk access required by the index scan is higher than a simple full scan and sorting.</p>
+<h2 id="cost-estimation">Cost estimation</h2>
+<p>Each node is accompanied by a cost estimation that takes the form <code>(cost=10.00..20.00 rows=1 width=8)</code>. The costs are measured in an arbitrary unit determined by the planner&rsquo;s cost parameters. One of the ways the cost can be measured is in the unit of disk page fetches. The cost of an upper level node includes the cost of all its child nodes. Brief description of each field in the cost estimation:</p>
+<ul>
+<li>cost: This is a range of the estimated start-up cost and the estimated total cost. The start-up cost is the time spent before the tranmission of output rows begin. This may include the time required for sorting. The total cost is the time estimation for transmitting all eligible rows assuming the query would run to completion. Meaning, there may be a LIMIT clause in an outer query that would limit the number of transmitted rows. But the estimates don&rsquo;t consider these scenarios.</li>
+<li>rows: Estimated number of rows emitted by a plan node</li>
+<li>width: Estimated average width of rows emitted by a plan node in bytes.</li>
+</ul>
+<h2 id="explain-analyze">EXPLAIN ANALYZE</h2>
+<p><code>EXPLAIN</code> by itself just provides the query plan with cost estimation. If we execute a query with <code>EXPLAIN ANALYZE</code>, the query is actually executed. In each plan node, the true row count and the true run time is displayed along with the estimates. So that we can check the accuracy of the planner&rsquo;s estimation.
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">explain</span> <span class="k">analyze</span> <span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">created_at</span> <span class="o">&gt;</span> <span class="s1">&#39;2020-04-01&#39;</span><span class="p">;</span>
+                                  <span class="n">QUERY</span> <span class="n">PLAN</span>
+<span class="c1">------------------------------------------------------------------------------
+</span><span class="c1"></span> <span class="k">Aggregate</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">3356</span><span class="p">.</span><span class="mi">22</span><span class="p">..</span><span class="mi">3356</span><span class="p">.</span><span class="mi">23</span> <span class="k">rows</span><span class="o">=</span><span class="mi">1</span> <span class="n">width</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="p">(</span><span class="n">actual</span> <span class="n">time</span><span class="o">=</span><span class="mi">7</span><span class="p">.</span><span class="mi">357</span><span class="p">..</span><span class="mi">7</span><span class="p">.</span><span class="mi">358</span> <span class="k">rows</span><span class="o">=</span><span class="mi">1</span> <span class="n">loops</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+   <span class="o">-&gt;</span>  <span class="n">Seq</span> <span class="n">Scan</span> <span class="k">on</span> <span class="n">users</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="p">..</span><span class="mi">3350</span><span class="p">.</span><span class="mi">90</span> <span class="k">rows</span><span class="o">=</span><span class="mi">2126</span> <span class="n">width</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="n">actual</span> <span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">007</span><span class="p">..</span><span class="mi">7</span><span class="p">.</span><span class="mi">241</span> <span class="k">rows</span><span class="o">=</span><span class="mi">2132</span> <span class="n">loops</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+         <span class="n">Filter</span><span class="p">:</span> <span class="p">(</span><span class="n">created_at</span> <span class="o">&gt;</span> <span class="s1">&#39;2020-04-01 00:00:00&#39;</span><span class="p">::</span><span class="k">timestamp</span> <span class="k">without</span> <span class="n">time</span> <span class="k">zone</span><span class="p">)</span>
+         <span class="k">Rows</span> <span class="n">Removed</span> <span class="k">by</span> <span class="n">Filter</span><span class="p">:</span> <span class="mi">37060</span>
+ <span class="n">Planning</span> <span class="n">Time</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">159</span> <span class="n">ms</span>
+ <span class="n">Execution</span> <span class="n">Time</span><span class="p">:</span> <span class="mi">7</span><span class="p">.</span><span class="mi">379</span> <span class="n">ms</span>
+<span class="p">(</span><span class="mi">6</span> <span class="k">rows</span><span class="p">)</span></code></pre></div></p>
+<p>Depending on the query plan, EXPLAIN ANALYZE provides much richer information than just actual costs. This includes:</p>
+<ul>
+<li>The number of actual loops performed in a nested loop join</li>
+<li>If sorting was involved, then the algorithm and the amount of memory used for sorting</li>
+<li>If hash joins were involved, the number of hash buckets and the peak memory used for hash tables</li>
+<li>Rows rejected by a filter condition or an index recheck</li>
+</ul>
+
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://sskelkar.github.io//tags/database/">Database</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="/post/jpa-entity-relationships/">JPA Entity Relationships</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://sskelkar.github.io/post/db-integration-tests-for-spring-app/" data-toggle="tooltip" data-placement="top" title="Database integration tests for a Spring application">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:sojjwalkelkar@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/sskelkar" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/sskelkar" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Sojjwal Kelkar
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          &bull;&nbsp;Powered by Hugo&nbsp;&bull;&nbsp;
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://sskelkar.github.io/js/main.js"></script>
+<script src="https://sskelkar.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://sskelkar.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+
