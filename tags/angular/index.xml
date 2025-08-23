@@ -4,19 +4,16 @@
     <title>Angular on Sojjwal Kelkar</title>
     <link>https://sskelkar.github.io/tags/angular/</link>
     <description>Recent content in Angular on Sojjwal Kelkar</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <managingEditor>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</managingEditor>
-    <webMaster>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</webMaster>
-    <lastBuildDate>Sun, 19 Jul 2015 00:00:00 +0530</lastBuildDate><atom:link href="https://sskelkar.github.io/tags/angular/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 19 Jul 2015 00:00:00 +0530</lastBuildDate>
+    <atom:link href="https://sskelkar.github.io/tags/angular/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Dependency Injection in AngularJS 1.x</title>
       <link>https://sskelkar.github.io/post/dependency-injection-in-angularjs-1x/</link>
       <pubDate>Sun, 19 Jul 2015 00:00:00 +0530</pubDate>
-      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/dependency-injection-in-angularjs-1x/</guid>
-      <description>AngularJS Dependency Injection works like magic! You pass a service name in your controller constructor function and angular runtime promptly provides you with a suitable object. While this makes development process easier, it might be a little disconcerting if you don’t know what’s happening behind the scene. In this article, I will take a look at how angular DI works.
-In an Angular application, user can create different kinds of components like: directives, controllers, services etc.</description>
+      <description>&lt;p&gt;AngularJS Dependency Injection works like magic! You pass a service name in your controller constructor function and angular runtime promptly provides you with a suitable object. While this makes development process easier, it might be a little disconcerting if you don’t know what’s happening behind the scene. In this article, I will take a look at how angular DI works.&lt;/p&gt;&#xA;&lt;p&gt;In an Angular application, user can create different kinds of components like: directives, controllers, services etc. More often than not, a component has a dependency on other components. Let&amp;rsquo;s take a look at this sample controller:&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

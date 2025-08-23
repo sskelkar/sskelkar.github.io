@@ -4,50 +4,37 @@
     <title>Functional Programming on Sojjwal Kelkar</title>
     <link>https://sskelkar.github.io/tags/functional-programming/</link>
     <description>Recent content in Functional Programming on Sojjwal Kelkar</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <managingEditor>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</managingEditor>
-    <webMaster>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</webMaster>
-    <lastBuildDate>Wed, 08 Nov 2017 00:00:00 +0530</lastBuildDate><atom:link href="https://sskelkar.github.io/tags/functional-programming/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 08 Nov 2017 00:00:00 +0530</lastBuildDate>
+    <atom:link href="https://sskelkar.github.io/tags/functional-programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Representing natural numbers in lambda calculus</title>
       <link>https://sskelkar.github.io/post/representing-natural-numbers-in-lambda-calculus/</link>
       <pubDate>Wed, 08 Nov 2017 00:00:00 +0530</pubDate>
-      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/representing-natural-numbers-in-lambda-calculus/</guid>
-      <description>One of the joys of reading SICP is that apart from the main subject matter, we come across many tangential topics that are interesting in their own right. One such topic is mentioned in Exercise 2.6: Church numerals. Named after the mathematician Alonzo Church, Church numerals are a way of representing natural numbers in lambda calculus. But what is λ-calculus?
-From a programming perspective, λ-calculus can be thought of as the smallest universal programming language.</description>
+      <description>&lt;p&gt;One of the joys of reading &lt;a href=&#34;https://mitpress.mit.edu/sicp/full-text/book/book.html&#34;&gt;SICP&lt;/a&gt; is that apart from the main subject matter, we come across many tangential topics that are interesting in their own right. One such topic is mentioned in &lt;code&gt;Exercise 2.6&lt;/code&gt;: Church numerals. Named after the mathematician Alonzo Church, Church numerals are a way of representing natural numbers in lambda calculus. But what is λ-calculus?&lt;/p&gt;&#xA;&lt;p&gt;From a programming perspective, λ-calculus can be thought of as the smallest universal programming language. It lacks some of the common features that one would expect in a programming language like, primitives, booleans, numbers etc. In this language, variable substitution and functions are used as the building blocks to express everything else. Even numbers! In this post we will get a glimpse of how this is achieved.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Tail Recursion</title>
       <link>https://sskelkar.github.io/post/tail-recursion/</link>
       <pubDate>Wed, 26 Aug 2015 00:00:00 +0530</pubDate>
-      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/tail-recursion/</guid>
-      <description>Tail recursion is one of those functional programming concepts that are likely to be unknown to someone coming from a Java background, like me. I encountered this term while skimming through the first few pages of SICP. After some quick R&amp;amp;D (i.e. googling), the following is a summary of what I have learnt.
-Before understanding tail recursion, we need to be familiar with the term tail call. Simply put, if in a function definition, the last instruction before returning is a function call, then that function call is called a tail call.</description>
+      <description>&lt;p&gt;Tail recursion is one of those functional programming concepts that are likely to be unknown to someone coming from a Java background, like me. I encountered this term while skimming through the first few pages of &lt;a href=&#34;https://mitpress.mit.edu/sicp/full-text/book/book.html&#34;&gt;SICP&lt;/a&gt;. After some quick R&amp;amp;D (i.e. googling), the following is a summary of what I have learnt.&lt;/p&gt;&#xA;&lt;p&gt;Before understanding tail recursion, we need to be familiar with the term &lt;strong&gt;tail call&lt;/strong&gt;. Simply put, if in a function definition, the last instruction before returning is a function call, then that function call is called a tail call.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Scheming with the Little Schemer</title>
       <link>https://sskelkar.github.io/post/scheming-with-the-little-schemer/</link>
       <pubDate>Wed, 05 Aug 2015 00:00:00 +0530</pubDate>
-      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/scheming-with-the-little-schemer/</guid>
-      <description>From a very long time, I have been an admirer of Lisp, an often praised but seldom used programming language. Common consensus about Lisp is that it is the kind of language you don’t need to know to get your daily tasks done, but any programmer worth his salt should be familiar with its concepts.
-For a beginner, perhaps the easiest way to get a taste of Lisp is to go through The Little Schemer.</description>
+      <description>&lt;p&gt;From a very long time, I have been an admirer of Lisp, an often praised but seldom used programming language. Common consensus about Lisp is that it is the kind of language you don’t need to know to get your daily tasks done, but any programmer worth his salt should be familiar with its concepts.&lt;/p&gt;&#xA;&lt;p&gt;For a beginner, perhaps the easiest way to get a taste of Lisp is to go through &lt;a href=&#34;https://mitpress.mit.edu/books/little-schemer&#34;&gt;The Little Schemer&lt;/a&gt;. As programming books go, this is quite an unusual one. Programmers like to say that they don’t really learn something new, unless they have written some code in it. The Little Schemer takes this idea up a notch. There are no formal definitions (but there are some &amp;ldquo;commandments&amp;rdquo;!) and very little explanation. The book is composed of nothing but (often humorously phrased) coding problems from beginning to end. You need to fire up your compiler and start writing code from the get go. The idea is to let the readers pickup functional programming concepts intuitively rather than teaching them explicitly. You can use any implementation of Lisp dialects like Scheme or Common Lisp to work out the problems. &lt;a href=&#34;http://www.gnu.org/software/mit-scheme/&#34;&gt;MIT/GNU Scheme&lt;/a&gt; worked fine for me.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Closures in JavaScript</title>
       <link>https://sskelkar.github.io/post/closures-in-javascript/</link>
       <pubDate>Mon, 20 Jul 2015 00:00:00 +0530</pubDate>
-      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/closures-in-javascript/</guid>
-      <description>A good understanding of closures is a must-have skill for any JavaScript programmer. So let&amp;rsquo;s take a look at how they work with two simple examples.
-In JavaScript, functions are first class citizens. This means a function can be passed as an argument to another function, returned as the value from a function, assigned to a variable and stored in a data structure.
-We can even write a function within a function, and the inner function has access to the environment within which it was created.</description>
+      <description>&lt;p&gt;A good understanding of closures is a must-have skill for any JavaScript programmer. So let&amp;rsquo;s take a look at how they work with two simple examples.&lt;/p&gt;&#xA;&lt;p&gt;In JavaScript, functions are first class citizens. This means a function can be passed as an argument to another function, returned as the value from a function, assigned to a variable and stored in a data structure.&lt;/p&gt;&#xA;&lt;p&gt;We can even write a function within a function, and the inner function has access to the &lt;em&gt;environment&lt;/em&gt; within which it was created. A closure is a combination of a function and the environment in which it was created. This means an inner function can hold the scope of parent function even if the parent function has returned. Following example will make it a little clear.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

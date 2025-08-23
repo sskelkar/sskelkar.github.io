@@ -4,8 +4,8 @@
     <title>Categories on Sojjwal Kelkar</title>
     <link>https://sskelkar.github.io/categories/</link>
     <description>Recent content in Categories on Sojjwal Kelkar</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <managingEditor>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</managingEditor>
-    <webMaster>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</webMaster><atom:link href="https://sskelkar.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="https://sskelkar.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

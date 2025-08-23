@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en" itemscope itemtype="http://schema.org/WebPage">
   <head>
@@ -7,9 +9,54 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Using thread dumps to analyse deadlocks - Sojjwal Kelkar</title>
-  <meta name="description" content="In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock: public class Deadlock { private Object lock1; private Object lock2; public Deadlock(Object lock1, Object lock2) { this.lock1 = lock1; this.lock2 = lock2; } public void methodA() { System.out.println(&#34;trying to acquire lock1 from - &#34; &#43; Thread.currentThread().getName()); synchronized (lock1) { someLongRunningTask(); methodB(); } } public void methodB() { System.">
-  <meta name="author" content="Sojjwal Kelkar"/><script type="application/ld+json">
+ 
+
+
+      <title>Using thread dumps to analyse deadlocks - </title>
+
+  <meta name="description" content="In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock:
+public class Deadlock {
+    private Object lock1;
+    private Object lock2;
+
+    public Deadlock(Object lock1, Object lock2) {
+        this.lock1 = lock1;
+        this.lock2 = lock2;
+    }
+
+    public void methodA() {
+        System.out.println(&#34;trying to acquire lock1 from - &#34; &#43; Thread.currentThread().getName());
+        synchronized (lock1) {
+            someLongRunningTask();
+            methodB();
+        }
+    }
+
+    public void methodB() {
+        System.out.println(&#34;trying to acquire lock2 from - &#34; &#43; Thread.currentThread().getName());
+        synchronized (lock2) {
+            someLongRunningTask();
+            methodA();
+        }
+    }
+
+    private void someLongRunningTask() {
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[]args) {
+        Object lock1 = new Object();
+        Object lock2 = new Object();
+
+        new Thread(() -&gt; new Deadlock(lock1, lock2).methodA()).start();
+        new Thread(() -&gt; new Deadlock(lock1, lock2).methodB()).start();
+    }
+}
+First thread calls methodA and acquires lock1. Second thread calls methodB and acquires lock2. Then the first thread calls methodB while at the same time the second thread calls methodA. Both are trying to acquire a lock that is already held by another thread, so neither can proceed further."><script type="application/ld+json">
 {
     "@context": "http://schema.org",
     "@type": "WebSite",
@@ -57,11 +104,11 @@
     "name" : "Sojjwal Kelkar"
   },
   "headline": "Using thread dumps to analyse deadlocks",
-  "description" : "In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock: public class Deadlock { private Object lock1; private Object lock2; public Deadlock(Object lock1, Object lock2) { this.lock1 = lock1; this.lock2 = lock2; } public void methodA() { System.out.println(\u0026#34;trying to acquire lock1 from - \u0026#34; \u002b Thread.currentThread().getName()); synchronized (lock1) { someLongRunningTask(); methodB(); } } public void methodB() { System.",
+  "description" : "In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock: public class Deadlock { private Object lock1; private Object lock2; public Deadlock(Object lock1, Object lock2) { this.lock1 = lock1; this.lock2 = lock2; } public void methodA() { System.out.println(\u0026#34;trying to acquire lock1 from - \u0026#34; \u002b Thread.currentThread().getName()); synchronized (lock1) { someLongRunningTask(); methodB(); } } public void methodB() { System.out.println(\u0026#34;trying to acquire lock2 from - \u0026#34; \u002b Thread.currentThread().getName()); synchronized (lock2) { someLongRunningTask(); methodA(); } } private void someLongRunningTask() { try { Thread.sleep(100); } catch (InterruptedException e) { e.printStackTrace(); } } public static void main(String[]args) { Object lock1 = new Object(); Object lock2 = new Object(); new Thread(() -\u0026gt; new Deadlock(lock1, lock2).methodA()).start(); new Thread(() -\u0026gt; new Deadlock(lock1, lock2).methodB()).start(); } } First thread calls methodA and acquires lock1. Second thread calls methodB and acquires lock2. Then the first thread calls methodB while at the same time the second thread calls methodA. Both are trying to acquire a lock that is already held by another thread, so neither can proceed further.\n",
   "inLanguage" : "en",
   "wordCount":  371 ,
-  "datePublished" : "2017-10-14T00:00:00",
-  "dateModified" : "2017-10-14T00:00:00",
+  "datePublished" : "2017-10-14T00:00:00\u002b05:30",
+  "dateModified" : "2017-10-14T00:00:00\u002b05:30",
   "image" : "https:\/\/sskelkar.github.io\/",
   "keywords" : [ "Java" ],
   "mainEntityOfPage" : "https:\/\/sskelkar.github.io\/post\/using-thread-dumps-to-analyze-deadlocks\/",
@@ -78,24 +125,66 @@
 }
 </script>
 
+
 <meta property="og:title" content="Using thread dumps to analyse deadlocks" />
-<meta property="og:description" content="In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock: public class Deadlock { private Object lock1; private Object lock2; public Deadlock(Object lock1, Object lock2) { this.lock1 = lock1; this.lock2 = lock2; } public void methodA() { System.out.println(&#34;trying to acquire lock1 from - &#34; &#43; Thread.currentThread().getName()); synchronized (lock1) { someLongRunningTask(); methodB(); } } public void methodB() { System.">
+<meta property="og:description" content="In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock:
+public class Deadlock {
+    private Object lock1;
+    private Object lock2;
+
+    public Deadlock(Object lock1, Object lock2) {
+        this.lock1 = lock1;
+        this.lock2 = lock2;
+    }
+
+    public void methodA() {
+        System.out.println(&#34;trying to acquire lock1 from - &#34; &#43; Thread.currentThread().getName());
+        synchronized (lock1) {
+            someLongRunningTask();
+            methodB();
+        }
+    }
+
+    public void methodB() {
+        System.out.println(&#34;trying to acquire lock2 from - &#34; &#43; Thread.currentThread().getName());
+        synchronized (lock2) {
+            someLongRunningTask();
+            methodA();
+        }
+    }
+
+    private void someLongRunningTask() {
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[]args) {
+        Object lock1 = new Object();
+        Object lock2 = new Object();
+
+        new Thread(() -&gt; new Deadlock(lock1, lock2).methodA()).start();
+        new Thread(() -&gt; new Deadlock(lock1, lock2).methodB()).start();
+    }
+}
+First thread calls methodA and acquires lock1. Second thread calls methodB and acquires lock2. Then the first thread calls methodB while at the same time the second thread calls methodA. Both are trying to acquire a lock that is already held by another thread, so neither can proceed further.">
 <meta property="og:url" content="https://sskelkar.github.io/post/using-thread-dumps-to-analyze-deadlocks/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Sojjwal Kelkar" />
 
   <meta name="twitter:title" content="Using thread dumps to analyse deadlocks" />
-  <meta name="twitter:description" content="In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock: public …">
-  <meta name="twitter:card" content="summary" />
-  <meta name="generator" content="Hugo 0.79.0" />
-  <link rel="alternate" href="https://sskelkar.github.io/index.xml" type="application/rss+xml" title="Sojjwal Kelkar"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://sskelkar.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <meta name="twitter:description" content="In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock:
+public …">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="generator" content="Hugo 0.148.2">
+  <link rel="alternate" href="https://sskelkar.github.io/index.xml" type="application/rss+xml" title="Sojjwal Kelkar"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.6.0/css/all.css" integrity="sha384-h/hnnw1Bi4nbpD6kE7nYfCXzovi622sY5WBxww8ARKwpdLj5kUWjRuyiXaD1U2JT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="https://sskelkar.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
   <link rel="stylesheet" href="https://sskelkar.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://sskelkar.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
-
-
 
   </head>
   <body>
@@ -248,57 +337,55 @@
 <div class="container" role="main">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      
       <article role="main" class="blog-post">
-      
         <p>In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock:
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Deadlock</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="n">Object</span> <span class="n">lock1</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">Object</span> <span class="n">lock2</span><span class="o">;</span>
-
-    <span class="kd">public</span> <span class="nf">Deadlock</span><span class="o">(</span><span class="n">Object</span> <span class="n">lock1</span><span class="o">,</span> <span class="n">Object</span> <span class="n">lock2</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">lock1</span> <span class="o">=</span> <span class="n">lock1</span><span class="o">;</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">lock2</span> <span class="o">=</span> <span class="n">lock2</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">methodA</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;trying to acquire lock1 from - &#34;</span> <span class="o">+</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
-        <span class="kd">synchronized</span> <span class="o">(</span><span class="n">lock1</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">someLongRunningTask</span><span class="o">();</span>
-            <span class="n">methodB</span><span class="o">();</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">methodB</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;trying to acquire lock2 from - &#34;</span> <span class="o">+</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
-        <span class="kd">synchronized</span> <span class="o">(</span><span class="n">lock2</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">someLongRunningTask</span><span class="o">();</span>
-            <span class="n">methodA</span><span class="o">();</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">someLongRunningTask</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">try</span> <span class="o">{</span>
-            <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">100</span><span class="o">);</span>
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span><span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Object</span> <span class="n">lock1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">();</span>
-        <span class="n">Object</span> <span class="n">lock2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">();</span>
-
-        <span class="k">new</span> <span class="n">Thread</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="n">Deadlock</span><span class="o">(</span><span class="n">lock1</span><span class="o">,</span> <span class="n">lock2</span><span class="o">).</span><span class="na">methodA</span><span class="o">()).</span><span class="na">start</span><span class="o">();</span>
-        <span class="k">new</span> <span class="n">Thread</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="n">Deadlock</span><span class="o">(</span><span class="n">lock1</span><span class="o">,</span> <span class="n">lock2</span><span class="o">).</span><span class="na">methodB</span><span class="o">()).</span><span class="na">start</span><span class="o">();</span>
-    <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Deadlock</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Object lock1;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Object lock2;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Deadlock</span>(Object lock1, Object lock2) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lock1</span> <span style="color:#f92672">=</span> lock1;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lock2</span> <span style="color:#f92672">=</span> lock2;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">methodA</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;trying to acquire lock1 from - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">synchronized</span> (lock1) {
+</span></span><span style="display:flex;"><span>            someLongRunningTask();
+</span></span><span style="display:flex;"><span>            methodB();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">methodB</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;trying to acquire lock2 from - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">synchronized</span> (lock2) {
+</span></span><span style="display:flex;"><span>            someLongRunningTask();
+</span></span><span style="display:flex;"><span>            methodA();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">someLongRunningTask</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>            Thread.<span style="color:#a6e22e">sleep</span>(100);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (InterruptedException e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span>args) {
+</span></span><span style="display:flex;"><span>        Object lock1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+</span></span><span style="display:flex;"><span>        Object lock2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">new</span> Deadlock(lock1, lock2).<span style="color:#a6e22e">methodA</span>()).<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">new</span> Deadlock(lock1, lock2).<span style="color:#a6e22e">methodB</span>()).<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
 First thread calls <code>methodA</code> and acquires <code>lock1</code>. Second thread calls <code>methodB</code> and acquires <code>lock2</code>. Then the first thread calls <code>methodB</code> while at the same time the second thread calls <code>methodA</code>. Both are trying to acquire a lock that is already held by another thread, so neither can proceed further.</p>
 <p>Thread dumps can be very useful to identify the source of such deadlocks in an application. A typical thread dump gives us information, precise to  the method name and line number, where a thread is stuck trying to acquire a lock. To generate a thread dump, we can use the <code>jstack</code> utility provided by JVM.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">jstack -l &lt;pid&gt;
-</code></pre></div><p>We can use <code>jps</code> command to know the <code>pid</code> of the deadlocked Java process.</p>
+<pre tabindex="0"><code>jstack -l &lt;pid&gt;
+</code></pre><p>We can use <code>jps</code> command to know the <code>pid</code> of the deadlocked Java process.</p>
 <p>Here’s a snippet of the thread dump of the above code, that gives us the deadlock information:</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">Found one Java-level deadlock:
+<pre tabindex="0"><code>Found one Java-level deadlock:
 =============================
 &#34;Thread-1&#34;:
   waiting to lock monitor 0x00007fc89a037b58 (object 0x000000076abda8f0, a java.lang.Object),
@@ -327,12 +414,13 @@ Java stack information for the threads listed above:
   at java.lang.Thread.run(Thread.java:745)
 
 Found 1 deadlock.
-</code></pre></div>
+</code></pre>
 
         
           <div class="blog-tags">
             
-              <a href="https://sskelkar.github.io//tags/java/">Java</a>&nbsp;
+              
+              <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
             
           </div>
         
@@ -382,7 +470,10 @@ Found 1 deadlock.
 
 
       
-        
+      
+      
+      
+      
         
       
 
@@ -390,53 +481,18 @@ Found 1 deadlock.
   </div>
 </div>
 
-      
-<footer>
+      <footer>
   <div class="container">
+    
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <ul class="list-inline text-center footer-links">
           
-              <li>
-                <a href="mailto:sojjwalkelkar@gmail.com" title="Email me">
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/sskelkar" title="GitHub">
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a href="https://linkedin.com/in/sskelkar" title="LinkedIn">
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
           
-          <li>
-            <a href="" title="RSS">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
+          
           
         </ul>
         <p class="credits copyright text-muted">
-          
-            
-              Sojjwal Kelkar
-            
           
 
           &nbsp;&bull;&nbsp;&copy;
@@ -444,10 +500,10 @@ Found 1 deadlock.
             2020
           
 
-
-
-
-
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
+          
         </p>
         
         <p class="credits theme-by text-muted">
@@ -457,16 +513,17 @@ Found 1 deadlock.
       </div>
     </div>
   </div>
-</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 
 <script src="https://sskelkar.github.io/js/main.js"></script>
 <script src="https://sskelkar.github.io/js/highlight.min.js"></script>
 <script> hljs.initHighlightingOnLoad(); </script>
-<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://sskelkar.github.io/js/load-photoswipe.js"></script>
+
 
 
 

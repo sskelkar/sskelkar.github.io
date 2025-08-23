@@ -4,40 +4,30 @@
     <title>Microservices on Sojjwal Kelkar</title>
     <link>https://sskelkar.github.io/tags/microservices/</link>
     <description>Recent content in Microservices on Sojjwal Kelkar</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <managingEditor>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</managingEditor>
-    <webMaster>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</webMaster>
-    <lastBuildDate>Mon, 05 Dec 2016 00:00:00 +0530</lastBuildDate><atom:link href="https://sskelkar.github.io/tags/microservices/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 05 Dec 2016 00:00:00 +0530</lastBuildDate>
+    <atom:link href="https://sskelkar.github.io/tags/microservices/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hystrix – a simple use case</title>
       <link>https://sskelkar.github.io/post/hystrix-a-simple-use-case/</link>
       <pubDate>Mon, 05 Dec 2016 00:00:00 +0530</pubDate>
-      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/hystrix-a-simple-use-case/</guid>
-      <description>Hystrix is a fault tolerance library that is very useful for managing failures in a distributed environment like microservices. Suppose we have a service A dependent on service B, which is in turn dependent on service C.
-A -&amp;gt; B -&amp;gt; C Let&amp;rsquo;s say a call is made from A to B. To serve this request, B needs to call C but there’s a communication failure between them. If the call from B to C is wrapped in Hystrix mechanism, we prevent the failure being propagated to A.</description>
+      <description>&lt;p&gt;Hystrix is a fault tolerance library that is very useful for managing failures in a distributed environment like microservices. Suppose we have a service &lt;code&gt;A&lt;/code&gt; dependent  on service &lt;code&gt;B&lt;/code&gt;, which is in turn dependent on service &lt;code&gt;C&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;A -&amp;gt; B -&amp;gt; C&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Let&amp;rsquo;s say a call is made from &lt;code&gt;A&lt;/code&gt; to &lt;code&gt;B&lt;/code&gt;. To serve this request, &lt;code&gt;B&lt;/code&gt; needs to call &lt;code&gt;C&lt;/code&gt; but there’s a communication failure between them. If the call from &lt;code&gt;B&lt;/code&gt; to &lt;code&gt;C&lt;/code&gt; is wrapped in Hystrix mechanism, we prevent the failure being propagated to &lt;code&gt;A&lt;/code&gt;. Because &lt;code&gt;B&lt;/code&gt; couldn’t fetch the actual information from &lt;code&gt;C&lt;/code&gt;, Hystrix gives us the option of declaring a fallback value to be used in this case, if feasible.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Step by step guide to set up a service discovery environment</title>
       <link>https://sskelkar.github.io/post/service-discovery-setup-guide/</link>
       <pubDate>Thu, 17 Dec 2015 00:00:00 +0530</pubDate>
-      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/service-discovery-setup-guide/</guid>
-      <description>In a microservices environment we can run multiple instances of a service for resilience and scalability. In a cloud environment these instances can go up and down arbitrarily. So we need some kind of service discovery mechanism to keep track of running instances. When a service A needs to call a service B, it asks for the address of any running instance of service B from the service discovery. The service discovery can also load balance the incoming requests.</description>
+      <description>&lt;p&gt;In a microservices environment we can run multiple instances of a service for resilience and scalability.&#xA;In a cloud environment these instances can go up and down arbitrarily.&#xA;So we need some kind of service discovery mechanism to keep track of running instances. When a service A needs to call a service B,&#xA;it asks for the address of any running instance of service B from the service discovery. The service discovery can also load balance the&#xA;incoming requests. In this post I demonstrate how to setup a service discovery environment with &lt;a href=&#34;https://github.com/Netflix/eureka&#34;&gt;Netflix Eureka&lt;/a&gt;.&#xA;When ever a service instance spins up, it registers itself with Eureka and sends regular heartbeats to confirm its availability.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>How to set up a local spring cloud config server</title>
       <link>https://sskelkar.github.io/post/how-to-set-up-a-local-spring-cloud-config-server/</link>
       <pubDate>Tue, 15 Dec 2015 00:00:00 +0530</pubDate>
-      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/how-to-set-up-a-local-spring-cloud-config-server/</guid>
-      <description>From the official documentation,
- Spring Cloud Config provides server and client-side support for externalized configuration in a distributed system. With the Config Server you have a central place to manage external properties for applications across all environments.
- Steps to configure config server a. Create a new Gradle project for the config server. In https://start.spring.io/, select the starters for config server.
-b. In your project, navigate to src/main/resources. Rename the automatically generated application.</description>
+      <description>&lt;p&gt;From the &lt;a href=&#34;https://spring.io/projects/spring-cloud-config&#34;&gt;official documentation&lt;/a&gt;,&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Spring Cloud Config provides server and client-side support for externalized configuration in a distributed system.&#xA;With the Config Server you have a central place to manage external properties for applications across all environments.&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h3 id=&#34;steps-to-configure-config-server&#34;&gt;Steps to configure config server&lt;/h3&gt;&#xA;&lt;p&gt;a. Create a new Gradle project for the config server. In &lt;a href=&#34;https://start.spring.io/&#34;&gt;https://start.spring.io/&lt;/a&gt;, select the starters for config server.&lt;/p&gt;&#xA;&lt;p&gt;b. In your project, navigate to &lt;code&gt;src/main/resources&lt;/code&gt;. Rename the automatically generated &lt;code&gt;application.properties&lt;/code&gt; file to &lt;code&gt;bootstrap.yml&lt;/code&gt;.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

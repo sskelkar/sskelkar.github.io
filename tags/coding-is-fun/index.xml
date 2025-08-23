@@ -1,51 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Coding is fun on Sojjwal Kelkar</title>
+    <title>Coding Is Fun on Sojjwal Kelkar</title>
     <link>https://sskelkar.github.io/tags/coding-is-fun/</link>
-    <description>Recent content in Coding is fun on Sojjwal Kelkar</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <managingEditor>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</managingEditor>
-    <webMaster>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</webMaster>
-    <lastBuildDate>Sun, 23 Sep 2018 00:00:00 +0530</lastBuildDate><atom:link href="https://sskelkar.github.io/tags/coding-is-fun/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Coding Is Fun on Sojjwal Kelkar</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 23 Sep 2018 00:00:00 +0530</lastBuildDate>
+    <atom:link href="https://sskelkar.github.io/tags/coding-is-fun/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The small pleasures of programming</title>
       <link>https://sskelkar.github.io/post/small-pleasures-of-programming/</link>
       <pubDate>Sun, 23 Sep 2018 00:00:00 +0530</pubDate>
-      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/small-pleasures-of-programming/</guid>
-      <description>It’s not just pulling off a complex engineering feat that makes programmers love their jobs. There are small pleasures to be had even in your day to day tasks, if you look for them.
-Seasoned programmers know the thrill of recognising the possibility to introduce an abstraction over duplication. A task as simple as renaming a variable can be the difference between obscurantism and lucidity. It’s the boy scout principle in action.</description>
+      <description>&lt;p&gt;It’s not just pulling off a complex engineering feat that makes programmers love their jobs. There are small pleasures to be had even in your day to day tasks, if you look for them.&lt;/p&gt;&#xA;&lt;p&gt;Seasoned programmers know the thrill of recognising the possibility to introduce an abstraction over duplication.&#xA;A task as simple as renaming a variable can be the difference between obscurantism and lucidity.&#xA;It’s the boy scout principle in action. Making your code a bit more pleasant to revisit.&#xA;The joy one derives in these simple improvements is akin to &lt;a href=&#34;https://en.wikipedia.org/wiki/Am%C3%A9lie&#34;&gt;Amelie&lt;/a&gt;’s &lt;em&gt;les petits plaisirs&lt;/em&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Representing natural numbers in lambda calculus</title>
       <link>https://sskelkar.github.io/post/representing-natural-numbers-in-lambda-calculus/</link>
       <pubDate>Wed, 08 Nov 2017 00:00:00 +0530</pubDate>
-      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/representing-natural-numbers-in-lambda-calculus/</guid>
-      <description>One of the joys of reading SICP is that apart from the main subject matter, we come across many tangential topics that are interesting in their own right. One such topic is mentioned in Exercise 2.6: Church numerals. Named after the mathematician Alonzo Church, Church numerals are a way of representing natural numbers in lambda calculus. But what is λ-calculus?
-From a programming perspective, λ-calculus can be thought of as the smallest universal programming language.</description>
+      <description>&lt;p&gt;One of the joys of reading &lt;a href=&#34;https://mitpress.mit.edu/sicp/full-text/book/book.html&#34;&gt;SICP&lt;/a&gt; is that apart from the main subject matter, we come across many tangential topics that are interesting in their own right. One such topic is mentioned in &lt;code&gt;Exercise 2.6&lt;/code&gt;: Church numerals. Named after the mathematician Alonzo Church, Church numerals are a way of representing natural numbers in lambda calculus. But what is λ-calculus?&lt;/p&gt;&#xA;&lt;p&gt;From a programming perspective, λ-calculus can be thought of as the smallest universal programming language. It lacks some of the common features that one would expect in a programming language like, primitives, booleans, numbers etc. In this language, variable substitution and functions are used as the building blocks to express everything else. Even numbers! In this post we will get a glimpse of how this is achieved.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Scheming with the Little Schemer</title>
       <link>https://sskelkar.github.io/post/scheming-with-the-little-schemer/</link>
       <pubDate>Wed, 05 Aug 2015 00:00:00 +0530</pubDate>
-      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/scheming-with-the-little-schemer/</guid>
-      <description>From a very long time, I have been an admirer of Lisp, an often praised but seldom used programming language. Common consensus about Lisp is that it is the kind of language you don’t need to know to get your daily tasks done, but any programmer worth his salt should be familiar with its concepts.
-For a beginner, perhaps the easiest way to get a taste of Lisp is to go through The Little Schemer.</description>
+      <description>&lt;p&gt;From a very long time, I have been an admirer of Lisp, an often praised but seldom used programming language. Common consensus about Lisp is that it is the kind of language you don’t need to know to get your daily tasks done, but any programmer worth his salt should be familiar with its concepts.&lt;/p&gt;&#xA;&lt;p&gt;For a beginner, perhaps the easiest way to get a taste of Lisp is to go through &lt;a href=&#34;https://mitpress.mit.edu/books/little-schemer&#34;&gt;The Little Schemer&lt;/a&gt;. As programming books go, this is quite an unusual one. Programmers like to say that they don’t really learn something new, unless they have written some code in it. The Little Schemer takes this idea up a notch. There are no formal definitions (but there are some &amp;ldquo;commandments&amp;rdquo;!) and very little explanation. The book is composed of nothing but (often humorously phrased) coding problems from beginning to end. You need to fire up your compiler and start writing code from the get go. The idea is to let the readers pickup functional programming concepts intuitively rather than teaching them explicitly. You can use any implementation of Lisp dialects like Scheme or Common Lisp to work out the problems. &lt;a href=&#34;http://www.gnu.org/software/mit-scheme/&#34;&gt;MIT/GNU Scheme&lt;/a&gt; worked fine for me.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>RIP Yahoo! Pipes</title>
       <link>https://sskelkar.github.io/post/rip-yahoo-pipes/</link>
       <pubDate>Thu, 23 Jul 2015 00:00:00 +0530</pubDate>
-      <author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/rip-yahoo-pipes/</guid>
-      <description>Yahoo has announced it will shut down its web mashup application Pipes on September of this year. Pipes was a pretty useful application to combine web feeds from multiple sources. With an easy to use GUI, you could add filters, modify the fields present in a feed and render the Pipe in RSS, JSON or Atom formats. So you could subscribe to a Pipe just like you would subscribe to any web feed.</description>
+      <description>&lt;p&gt;Yahoo has announced it will shut down its web mashup application Pipes on September of this year. Pipes was a pretty useful application to combine web feeds from multiple sources. With an easy to use GUI, you could add filters, modify the fields present in a feed and render the Pipe in RSS, JSON or Atom formats. So you could subscribe to a Pipe just like you would subscribe to any web feed.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
