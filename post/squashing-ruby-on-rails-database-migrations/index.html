@@ -12,13 +12,19 @@
  
 
 
-      <title>The small pleasures of programming - </title>
+      <title>Squashing ruby on rails database migrations - </title>
 
-  <meta name="description" content="It’s not just pulling off a complex engineering feat that makes programmers love their jobs. There are small pleasures to be had even in your day to day tasks, if you look for them.
-Seasoned programmers know the thrill of recognising the possibility to introduce an abstraction over duplication.
-A task as simple as renaming a variable can be the difference between obscurantism and lucidity.
-It’s the boy scout principle in action. Making your code a bit more pleasant to revisit.
-The joy one derives in these simple improvements is akin to Amelie’s les petits plaisirs."><script type="application/ld+json">
+  <meta name="description" content="Why do it?
+There are several reasons why you&rsquo;d want to squash the database migrations in your Ruby on Rails application:
+
+
+In a long running project you may end up with hundreds of files in your db/migrate folder over time. Carrying these legacy
+migrations incurs maintenance overhead. For example, when upgrading the Rails version, you may need to modify those old migrations for
+syntax changes.
+
+
+If your build process involves recreating the database to run the tests, it would need to run all of these old migrations. Running a lot
+of migrations would slow down the build time."><script type="application/ld+json">
 {
     "@context": "http://schema.org",
     "@type": "WebSite",
@@ -53,8 +59,8 @@ The joy one derives in these simple improvements is akin to Amelie’s les petit
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@id": "https:\/\/sskelkar.github.io\/post\/small-pleasures-of-programming\/",
-          "name": "The small pleasures of programming"
+          "@id": "https:\/\/sskelkar.github.io\/post\/squashing-ruby-on-rails-database-migrations\/",
+          "name": "Squashing ruby on rails database migrations"
         }
     }]
 }
@@ -63,17 +69,17 @@ The joy one derives in these simple improvements is akin to Amelie’s les petit
   "@context": "http://schema.org",
   "@type": "Article",
   "author": {
-    "name" : ""
+    "name" : "Sojjwal Kelkar"
   },
-  "headline": "The small pleasures of programming",
-  "description" : "It’s not just pulling off a complex engineering feat that makes programmers love their jobs. There are small pleasures to be had even in your day to day tasks, if you look for them.\nSeasoned programmers know the thrill of recognising the possibility to introduce an abstraction over duplication. A task as simple as renaming a variable can be the difference between obscurantism and lucidity. It’s the boy scout principle in action. Making your code a bit more pleasant to revisit. The joy one derives in these simple improvements is akin to Amelie’s les petits plaisirs.\n",
+  "headline": "Squashing ruby on rails database migrations",
+  "description" : "Why do it? There are several reasons why you\u0026rsquo;d want to squash the database migrations in your Ruby on Rails application:\nIn a long running project you may end up with hundreds of files in your db\/migrate folder over time. Carrying these legacy migrations incurs maintenance overhead. For example, when upgrading the Rails version, you may need to modify those old migrations for syntax changes.\nIf your build process involves recreating the database to run the tests, it would need to run all of these old migrations. Running a lot of migrations would slow down the build time.\n",
   "inLanguage" : "en",
-  "wordCount":  316 ,
-  "datePublished" : "2018-09-23T00:00:00\u002b05:30",
-  "dateModified" : "2018-09-23T00:00:00\u002b05:30",
+  "wordCount":  671 ,
+  "datePublished" : "2021-02-13T00:00:00\u002b01:00",
+  "dateModified" : "2021-02-13T00:00:00\u002b01:00",
   "image" : "https:\/\/sskelkar.github.io\/",
-  "keywords" : [ "Coding is fun" ],
-  "mainEntityOfPage" : "https:\/\/sskelkar.github.io\/post\/small-pleasures-of-programming\/",
+  "keywords" : [ "Ruby on Rails" ],
+  "mainEntityOfPage" : "https:\/\/sskelkar.github.io\/post\/squashing-ruby-on-rails-database-migrations\/",
   "publisher" : {
     "@type": "Organization",
     "name" : "https:\/\/sskelkar.github.io\/",
@@ -88,19 +94,28 @@ The joy one derives in these simple improvements is akin to Amelie’s les petit
 </script>
 
 
-<meta property="og:title" content="The small pleasures of programming" />
-<meta property="og:description" content="It’s not just pulling off a complex engineering feat that makes programmers love their jobs. There are small pleasures to be had even in your day to day tasks, if you look for them.
-Seasoned programmers know the thrill of recognising the possibility to introduce an abstraction over duplication.
-A task as simple as renaming a variable can be the difference between obscurantism and lucidity.
-It’s the boy scout principle in action. Making your code a bit more pleasant to revisit.
-The joy one derives in these simple improvements is akin to Amelie’s les petits plaisirs.">
-<meta property="og:url" content="https://sskelkar.github.io/post/small-pleasures-of-programming/" />
+<meta property="og:title" content="Squashing ruby on rails database migrations" />
+<meta property="og:description" content="Why do it?
+There are several reasons why you&rsquo;d want to squash the database migrations in your Ruby on Rails application:
+
+
+In a long running project you may end up with hundreds of files in your db/migrate folder over time. Carrying these legacy
+migrations incurs maintenance overhead. For example, when upgrading the Rails version, you may need to modify those old migrations for
+syntax changes.
+
+
+If your build process involves recreating the database to run the tests, it would need to run all of these old migrations. Running a lot
+of migrations would slow down the build time.">
+<meta property="og:url" content="https://sskelkar.github.io/post/squashing-ruby-on-rails-database-migrations/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Sojjwal Kelkar" />
 
-  <meta name="twitter:title" content="The small pleasures of programming" />
-  <meta name="twitter:description" content="It’s not just pulling off a complex engineering feat that makes programmers love their jobs. There are small pleasures to be had even in your day to day tasks, if you look for them.
-Seasoned …">
+  <meta name="twitter:title" content="Squashing ruby on rails database migrations" />
+  <meta name="twitter:description" content="Why do it?
+There are several reasons why you&rsquo;d want to squash the database migrations in your Ruby on Rails application:
+
+
+In a long running project you may end up with hundreds of files in your …">
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="generator" content="Hugo 0.148.2">
   <link rel="alternate" href="https://sskelkar.github.io/index.xml" type="application/rss+xml" title="Sojjwal Kelkar"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
@@ -233,14 +248,14 @@ Seasoned …">
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           <div class="post-heading">
-            <h1>The small pleasures of programming</h1>
+            <h1>Squashing ruby on rails database migrations</h1>
             <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Sep 23, 2018
+  <i class="fas fa-calendar"></i>&nbsp;Posted on Feb 13, 2021
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
   
   
   
@@ -262,38 +277,86 @@ Seasoned …">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>It’s not just pulling off a complex engineering feat that makes programmers love their jobs. There are small pleasures to be had even in your day to day tasks, if you look for them.</p>
-<p>Seasoned programmers know the thrill of recognising the possibility to introduce an abstraction over duplication.
-A task as simple as renaming a variable can be the difference between obscurantism and lucidity.
-It’s the boy scout principle in action. Making your code a bit more pleasant to revisit.
-The joy one derives in these simple improvements is akin to <a href="https://en.wikipedia.org/wiki/Am%C3%A9lie">Amelie</a>’s <em>les petits plaisirs</em>.</p>
-<p><img src="https://thumbs.gfycat.com/AssuredGranularKestrel-small.gif" alt=""></p>
-<p>Recently, while working on some code I came across following conditional statement:</p>
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>order.<span style="color:#a6e22e">isItReserved</span>()) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>(isAdmin(user.<span style="color:#a6e22e">getUserType</span>()) <span style="color:#f92672">&amp;&amp;</span> order.<span style="color:#a6e22e">isItConfirmed</span>())) {
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// throw error</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#f92672">//</span> <span style="color:#66d9ef">do</span> something</span></span></code></pre></div>
-It took a while to wrap my head around this bit of convolution.
-After going through the unit tests and discussing with the QAs, I was able to summarise the required functionality as following:</p>
-<blockquote>
-<p>If order is reserved, or current user is admin and order is confirmed, then do some work, else throw error.</p></blockquote>
-<p>What followed was a small session of refactoring. Methods were renamed. A responsibility moved into a domain object. A classic adversary of readability – the “!” operator was eliminated. The result was:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (order.<span style="color:#a6e22e">isReserved</span>() <span style="color:#f92672">||</span> (user.<span style="color:#a6e22e">isAdmin</span>() <span style="color:#f92672">&amp;&amp;</span> order.<span style="color:#a6e22e">isConfirmed</span>())) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// do something</span>
-</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// throw error</span>
-</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
-<p>What is so special about this? If you read the conditional statement slowly, it reads almost exactly like the functional spec that’s written above in English! Code readability is a fundamental tenet to judge code quality. Making your code as readable to a human as it is to the machine is the ultimate ideal.</p>
-<p>Now functionally, the two code snippets work exactly the same and do what the client asked for. But the satisfaction one gets on making something elegant is an added bonus over making something merely utilitarian.</p>
+        <h2 id="why-do-it">Why do it?</h2>
+<p>There are several reasons why you&rsquo;d want to squash the database migrations in your Ruby on Rails application:</p>
+<ol>
+<li>
+<p>In a long running project you may end up with hundreds of files in your <code>db/migrate</code> folder over time. Carrying these legacy
+migrations incurs maintenance overhead. For example, when upgrading the Rails version, you may need to modify those old migrations for
+syntax changes.</p>
+</li>
+<li>
+<p>If your build process involves recreating the database to run the tests, it would need to run all of these old migrations. Running a lot
+of migrations would slow down the build time.</p>
+</li>
+<li>
+<p>The migration file names need to be in the format <code>YYYYMMDDHHMMSS_add_quantity_to_orders.rb</code>. The timestamp is used to determine
+the order in which the migrations are applied. Rails provides a generator
+to create such migration files automatically. But sometimes developers may create these files manually. If they make a mistake
+in the timestamp and commit the migration, it would mess up the ordering. For example, someone may accidentally add an extra digit in the timestamp and the migration
+may get applied on production. Then all subsequent migrations
+should also contain the extra digit to maintain the order of the migrations. In such a case it is better to squash the migrations and start over.</p>
+</li>
+<li>
+<p>The previous point also applies to any problems due to not following the best practices while creating migrations (eg. incorrectly using
+a model class in the migration). In all of such cases, we can squash the migrations and get a clean slate.</p>
+</li>
+</ol>
+<h2 id="what-to-do">What to do?</h2>
+<p>The purpose of migrations is to incrementally evolve an existing database. When setting up a new environment, they can create
+a new database with the desired schema and settings suitable for our application.</p>
+<p>The squashed migration is just a regular migration that replaces the existing migrations and becomes the starting point
+going forward. Just like any other
+migration, it is a subclass of <code>ActiveRecord::Migration</code> and follows the same naming convention.</p>
+<p>There are two important things to consider when creating the squashed migration:</p>
+<ol>
+<li>
+<p>On running the squashed migration in a new database, it should end up with the table structure and settings identical to other
+existing databases.</p>
+</li>
+<li>
+<p>You would need to run the squashed migration on the existing databases as well. Doing this on an existing
+database should have absolutely no effect. For example, the squashed migration should not accidentally recreate a production table.</p>
+</li>
+</ol>
+<h2 id="how-to-do-it">How to do it?</h2>
+<p>Rails maintains a schema file (located in <code>db/schema.rb</code>) that represents the current state of the database. Every time a migration runs,
+this file gets automatically updated to incorporate the changes introduced by that migration.</p>
+<ol>
+<li>
+<p>When creating the squashed migration, the first step could be to copy the contents of the schema file into its <code>up</code> or <code>change</code> method.</p>
+</li>
+<li>
+<p>Remember, this migration should not change anything if applied on an existing database. Therefore from each <code>create_table</code> statement,
+remove the <code>force</code> flag and add a <code>table_exists?</code> check to ensure that it won&rsquo;t try to recreate a table if it already exists.</p>
+</li>
+<li>
+<p>This also applies to any other database objects like enums, the table definitions may depend on. If Rails does not provide an &rsquo;exists?&rsquo; method
+for these objects, you may need to run plain SQL queries like this:</p>
+</li>
+</ol>
+<pre tabindex="0"><code>ActiveRecord::Base.connection.execute(&#34;select 1 from pg_type where typname = &#39;#{enum_type_name}&#39;&#34;).first.present?
+</code></pre><ol start="4">
+<li>
+<p>Similarly add checks on all <code>add_foreign_key</code> statements to ensure they are only created if they don&rsquo;t exist. Rails provides a
+<code>foreign_key_exists?</code> method that can be used here.</p>
+</li>
+<li>
+<p>While the schema file contains most of the information about the database schema, it does not capture everything. It does not support
+several features that may be provided by the database such as triggers, sequences, stored procedures etc. If the database is Postgres,
+schema file does not capture table level settings such as autovacuum_vacuum_scale_factor. It also lacks any information about
+table partitioning.</p>
+</li>
+</ol>
+<p>Due to this limitation, it is strongly recommended that you must scan through all of the old migration files to look for these features or settings.
+You&rsquo;d need to explicitly add them in your squashed migration.</p>
 
 
         
           <div class="blog-tags">
             
               
-              <a href="https://sskelkar.github.io/tags/coding-is-fun/">Coding is fun</a>&nbsp;
+              <a href="https://sskelkar.github.io/tags/ruby-on-rails/">Ruby on Rails</a>&nbsp;
             
           </div>
         
@@ -302,21 +365,6 @@ After going through the unit tests and discussing with the QAs, I was able to su
 
         
           
-            
-          
-
-          
-                  <h4 class="see-also">See also</h4>
-                  <ul>
-                
-                
-                    <li><a href="/post/representing-natural-numbers-in-lambda-calculus/">Representing natural numbers in lambda calculus</a></li>
-                
-                    <li><a href="/post/scheming-with-the-little-schemer/">Scheming with the Little Schemer</a></li>
-                
-                    <li><a href="/post/rip-yahoo-pipes/">RIP Yahoo! Pipes</a></li>
-                
-              </ul>
 
           
         
@@ -326,13 +374,9 @@ After going through the unit tests and discussing with the QAs, I was able to su
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="https://sskelkar.github.io/post/representing-natural-numbers-in-lambda-calculus/" data-toggle="tooltip" data-placement="top" title="Representing natural numbers in lambda calculus">&larr; Previous Post</a>
+              <a href="https://sskelkar.github.io/post/postgres-explain-analyze/" data-toggle="tooltip" data-placement="top" title="Understanding a Postgres query plan">&larr; Previous Post</a>
             </li>
           
-          
-            <li class="next">
-              <a href="https://sskelkar.github.io/post/db-integration-tests-for-spring-app/" data-toggle="tooltip" data-placement="top" title="Database integration tests for a Spring application">Next Post &rarr;</a>
-            </li>
           
         </ul>
       
