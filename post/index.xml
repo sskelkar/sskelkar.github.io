@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Sojjwal Kelkar</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 13 Feb 2021 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 12 May 2025 21:02:00 +0200</lastBuildDate>
     <atom:link href="https://sskelkar.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Software tenbagger</title>
+      <link>https://sskelkar.github.io/post/software-tenbagger/</link>
+      <pubDate>Mon, 12 May 2025 21:02:00 +0200</pubDate>
+      <guid>https://sskelkar.github.io/post/software-tenbagger/</guid>
+      <description>&lt;p&gt;&amp;ldquo;Tenbagger&amp;rdquo; is a term coined by legendary investor Peter Lynch to describe stocks that provide tenfold value on the initial investment.&#xA;As software engineers we make scores of decisions every day in the face of ever-evolving requirements, whose impact on the architecture might only become visible down the line.&#xA;It&amp;rsquo;s nice when a relatively low-effort code change ends up providing compounding benefits over a long time horizon.&lt;/p&gt;&#xA;&lt;p&gt;I am currently working on a critical component in a distributed system for a food-delivery app. One of its core responsibilities is to receive information from an upstream service and&#xA;pass it into downstream services. The feature requirements typically follow this pattern: customers can now provide a backup phone number, which should be shown on the delivery app.&#xA;So an order passing through a chain of systems can now contain a new field, which needs to be forwarded to relevant downstream services.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Squashing ruby on rails database migrations</title>
       <link>https://sskelkar.github.io/post/squashing-ruby-on-rails-database-migrations/</link>
