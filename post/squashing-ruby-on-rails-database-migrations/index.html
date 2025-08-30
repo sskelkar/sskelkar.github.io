@@ -14,7 +14,7 @@
 
       <title>Squashing ruby on rails database migrations - </title>
 
-  <meta name="description" content="Why do it?
+  <meta name="description" content="Why?
 There are several reasons why you&rsquo;d want to squash the database migrations in your Ruby on Rails application:
 
 
@@ -72,9 +72,9 @@ of migrations would slow down the build time."><script type="application/ld+json
     "name" : "Sojjwal Kelkar"
   },
   "headline": "Squashing ruby on rails database migrations",
-  "description" : "Why do it? There are several reasons why you\u0026rsquo;d want to squash the database migrations in your Ruby on Rails application:\nIn a long running project you may end up with hundreds of files in your db\/migrate folder over time. Carrying these legacy migrations incurs maintenance overhead. For example, when upgrading the Rails version, you may need to modify those old migrations for syntax changes.\nIf your build process involves recreating the database to run the tests, it would need to run all of these old migrations. Running a lot of migrations would slow down the build time.\n",
+  "description" : "Why? There are several reasons why you\u0026rsquo;d want to squash the database migrations in your Ruby on Rails application:\nIn a long running project you may end up with hundreds of files in your db\/migrate folder over time. Carrying these legacy migrations incurs maintenance overhead. For example, when upgrading the Rails version, you may need to modify those old migrations for syntax changes.\nIf your build process involves recreating the database to run the tests, it would need to run all of these old migrations. Running a lot of migrations would slow down the build time.\n",
   "inLanguage" : "en",
-  "wordCount":  671 ,
+  "wordCount":  664 ,
   "datePublished" : "2021-02-13T00:00:00\u002b01:00",
   "dateModified" : "2021-02-13T00:00:00\u002b01:00",
   "image" : "https:\/\/sskelkar.github.io\/",
@@ -95,7 +95,7 @@ of migrations would slow down the build time."><script type="application/ld+json
 
 
 <meta property="og:title" content="Squashing ruby on rails database migrations" />
-<meta property="og:description" content="Why do it?
+<meta property="og:description" content="Why?
 There are several reasons why you&rsquo;d want to squash the database migrations in your Ruby on Rails application:
 
 
@@ -111,7 +111,7 @@ of migrations would slow down the build time.">
 <meta property="og:site_name" content="Sojjwal Kelkar" />
 
   <meta name="twitter:title" content="Squashing ruby on rails database migrations" />
-  <meta name="twitter:description" content="Why do it?
+  <meta name="twitter:description" content="Why?
 There are several reasons why you&rsquo;d want to squash the database migrations in your Ruby on Rails application:
 
 
@@ -277,7 +277,7 @@ In a long running project you may end up with hundreds of files in your …">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <h2 id="why-do-it">Why do it?</h2>
+        <h2 id="why">Why?</h2>
 <p>There are several reasons why you&rsquo;d want to squash the database migrations in your Ruby on Rails application:</p>
 <ol>
 <li>
@@ -302,7 +302,7 @@ should also contain the extra digit to maintain the order of the migrations. In 
 a model class in the migration). In all of such cases, we can squash the migrations and get a clean slate.</p>
 </li>
 </ol>
-<h2 id="what-to-do">What to do?</h2>
+<h2 id="what">What?</h2>
 <p>The purpose of migrations is to incrementally evolve an existing database. When setting up a new environment, they can create
 a new database with the desired schema and settings suitable for our application.</p>
 <p>The squashed migration is just a regular migration that replaces the existing migrations and becomes the starting point
@@ -319,7 +319,7 @@ existing databases.</p>
 database should have absolutely no effect. For example, the squashed migration should not accidentally recreate a production table.</p>
 </li>
 </ol>
-<h2 id="how-to-do-it">How to do it?</h2>
+<h2 id="how">How?</h2>
 <p>Rails maintains a schema file (located in <code>db/schema.rb</code>) that represents the current state of the database. Every time a migration runs,
 this file gets automatically updated to incorporate the changes introduced by that migration.</p>
 <ol>
