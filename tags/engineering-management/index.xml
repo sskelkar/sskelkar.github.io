@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Engineering Management on Sojjwal Kelkar</title>
+    <link>http://localhost:1313/tags/engineering-management/</link>
+    <description>Recent content in Engineering Management on Sojjwal Kelkar</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 07 Sep 2025 00:00:00 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/engineering-management/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Keeping the Lights On: A Manager&#39;s Guide to Legacy Services</title>
+      <link>http://localhost:1313/post/quarterly-roadmaps-for-complex-services/</link>
+      <pubDate>Sun, 07 Sep 2025 00:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/post/quarterly-roadmaps-for-complex-services/</guid>
+      <description>&lt;p&gt;As a new engineering manager, inheriting a complex, unreliable, and legacy product can be a daunting experience. I recently went through this with a service called &amp;ldquo;Hurrier&amp;rdquo;. While Hurrier owned multiple tier-1 features, it was plagued with reliability issues and technical debt. This post outlines some of the guiding principles our team adopted to not only keep the lights on but also to steadily improve the health of the system.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

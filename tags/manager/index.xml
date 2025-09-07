@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Manager on Sojjwal Kelkar</title>
+    <link>https://sskelkar.github.io/tags/manager/</link>
+    <description>Recent content in Manager on Sojjwal Kelkar</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 07 Sep 2025 00:00:00 +0530</lastBuildDate>
+    <atom:link href="https://sskelkar.github.io/tags/manager/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Keeping the Lights On: A Manager&#39;s Guide to Legacy Services</title>
+      <link>https://sskelkar.github.io/post/quarterly-roadmaps-for-complex-services/</link>
+      <pubDate>Sun, 07 Sep 2025 00:00:00 +0530</pubDate>
+      <guid>https://sskelkar.github.io/post/quarterly-roadmaps-for-complex-services/</guid>
+      <description>&lt;p&gt;Last year I transitioned to the role of engineering manager on a complex, legacy service with a poor reliability record.&#xA;As a first-time manager I found it challenging to plan a roadmap that can balance tackling reliability issues and reducing technical debt on one hand, and building&#xA;new features on the other.&lt;/p&gt;&#xA;&lt;p&gt;Developer time is a very precious resource. As a manager, you want to spend it in a way that produces compounding benefits over time.&#xA;So I came up with some guiding principles to help me prioritize work in a way that keeps the system running, with hopefully fewer hiccups over time.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

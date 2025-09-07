@@ -1,0 +1,430 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+ 
+
+
+      <title>Keeping the Lights On: A Manager&#39;s Guide to Legacy Services - </title>
+
+  <meta name="description" content="Last year I transitioned to the role of engineering manager on a complex, legacy service with a poor reliability record.
+As a first-time manager I found it challenging to plan a roadmap that can balance tackling reliability issues and reducing technical debt on one hand, and building
+new features on the other.
+Developer time is a very precious resource. As a manager, you want to spend it in a way that produces compounding benefits over time.
+So I came up with some guiding principles to help me prioritize work in a way that keeps the system running, with hopefully fewer hiccups over time."><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Sojjwal Kelkar",
+    
+    "url": "https:\/\/sskelkar.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/sskelkar.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/sskelkar.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/sskelkar.github.io\/post\/quarterly-roadmaps-for-complex-services\/",
+          "name": "Keeping the lights on a manager\u0027s guide to legacy services"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Sojjwal Kelkar"
+  },
+  "headline": "Keeping the Lights On: A Manager\u0027s Guide to Legacy Services",
+  "description" : "Last year I transitioned to the role of engineering manager on a complex, legacy service with a poor reliability record. As a first-time manager I found it challenging to plan a roadmap that can balance tackling reliability issues and reducing technical debt on one hand, and building new features on the other.\nDeveloper time is a very precious resource. As a manager, you want to spend it in a way that produces compounding benefits over time. So I came up with some guiding principles to help me prioritize work in a way that keeps the system running, with hopefully fewer hiccups over time.\n",
+  "inLanguage" : "en",
+  "wordCount":  1061 ,
+  "datePublished" : "2025-09-07T00:00:00\u002b05:30",
+  "dateModified" : "2025-09-07T00:00:00\u002b05:30",
+  "image" : "https:\/\/sskelkar.github.io\/",
+  "keywords" : [ "Manager" ],
+  "mainEntityOfPage" : "https:\/\/sskelkar.github.io\/post\/quarterly-roadmaps-for-complex-services\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/sskelkar.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/sskelkar.github.io\/",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Keeping the Lights On: A Manager&#39;s Guide to Legacy Services" />
+<meta property="og:description" content="Last year I transitioned to the role of engineering manager on a complex, legacy service with a poor reliability record.
+As a first-time manager I found it challenging to plan a roadmap that can balance tackling reliability issues and reducing technical debt on one hand, and building
+new features on the other.
+Developer time is a very precious resource. As a manager, you want to spend it in a way that produces compounding benefits over time.
+So I came up with some guiding principles to help me prioritize work in a way that keeps the system running, with hopefully fewer hiccups over time.">
+<meta property="og:url" content="https://sskelkar.github.io/post/quarterly-roadmaps-for-complex-services/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Sojjwal Kelkar" />
+
+  <meta name="twitter:title" content="Keeping the Lights On: A Manager&#39;s Guide to Legacy Services" />
+  <meta name="twitter:description" content="Last year I transitioned to the role of engineering manager on a complex, legacy service with a poor reliability record.
+As a first-time manager I found it challenging to plan a roadmap that can …">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="generator" content="Hugo 0.148.2">
+  <link rel="alternate" href="https://sskelkar.github.io/index.xml" type="application/rss+xml" title="Sojjwal Kelkar"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.6.0/css/all.css" integrity="sha384-h/hnnw1Bi4nbpD6kE7nYfCXzovi622sY5WBxww8ARKwpdLj5kUWjRuyiXaD1U2JT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="https://sskelkar.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://sskelkar.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://sskelkar.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Tech Blog" href="/">Tech Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Cartoons" href="/cartoons">Cartoons</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header-section ">
+  
+  <div class="intro-header no-img">
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="post-heading">
+            <h1>Keeping the Lights On: A Manager&#39;s Guide to Legacy Services</h1>
+            <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on Sep 7, 2025
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;5&nbsp;minutes
+  
+  
+  
+  
+</span>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Last year I transitioned to the role of engineering manager on a complex, legacy service with a poor reliability record.
+As a first-time manager I found it challenging to plan a roadmap that can balance tackling reliability issues and reducing technical debt on one hand, and building
+new features on the other.</p>
+<p>Developer time is a very precious resource. As a manager, you want to spend it in a way that produces compounding benefits over time.
+So I came up with some guiding principles to help me prioritize work in a way that keeps the system running, with hopefully fewer hiccups over time.</p>
+<h3 id="strive-for-simplicity">Strive for Simplicity</h3>
+<p>A core reason for a legacy service&rsquo;s complexity is that it has accumulated features and code over many years. The cognitive load of understanding such code is too high.
+Perhaps the team has gone through a <a href="https://en.wikipedia.org/wiki/Ship_of_Theseus">Ship of Theseus</a>-style turnover.
+Now no one knows what is important and what should have been removed two years ago. It is of course scary to make changes in code that is
+poorly understood, lest we inadvertently break something.</p>
+<p>One of the biggest own-goals a team can make is to continue maintaining dead features. The effort spent trying not to break
+something that shouldn&rsquo;t exist in the first place is a heavy cost, both in development time and in architectural compromises.</p>
+<p>So the first step towards taming complexity is to actively seek simplicity.</p>
+<ul>
+<li><strong>Shed deprecated code:</strong> If you already have a complex system at hand, try to get to the point where every line of code
+is known to serve some useful purpose. Question every piece of obscure code. Talk to your clients: how are they using the information they consume
+from your service.
+In a large distributed system it is quite possible that service A does some expensive computation to produce a result that it thinks
+service B needs. But service B had already sunset that feature, or moved to a different source.
+So spend time identifying unnecessary code. Then delete, rinse, repeat.</li>
+<li><strong>Reverse engineer:</strong> Sometimes no one seems to know what&rsquo;s the purpose of a feature, be it the team owning the feature, its clients or relevant
+stakeholders from the org. I&rsquo;d go for deliberately breaking the feature in a controlled manner in a low risk environment, and perform chaos or A/B testing
+to find out whether it will be missed.</li>
+<li><strong>Re-evaluate the data model:</strong> A service&rsquo;s data model should reflect its reality and scale. The choices made at the inception of a project may no longer apply
+years down the line. It may be necessary to denormalize parts of the database, or switch to a different technology to improve performance and reduce complexity.</li>
+<li><strong>Migrate non-core responsibilities:</strong> We all know SOLID, YAGNI, KISS etc. But reality hits and compromises are made.
+A legacy system often accumulates responsibilities that don&rsquo;t belong to it. Especially in a fast-paced environment, non-ideal choices
+have to be made to deliver features quickly. But when the dust settles, be on the lookout for opportunities to migrate non-core functionalities
+to other, more appropriate services.</li>
+</ul>
+<h3 id="always-be-migrating">Always Be Migrating</h3>
+<p>Your service is a living system that is continuously piling up code, tech debt, and features. To keep it healthy, you must always be migrating: to newer library versions,
+to technologies that make sense in the present.</p>
+<p>Is the service using the latest version of its database? Are its libraries up-to-date? Stability does not mean immobility.
+Newer versions often come with significant performance improvements and security patches. There may be new features in the latest version of your framework that you aren&rsquo;t aware of.
+But using them may improve your API latency or reduce your operational cost.</p>
+<p>Check if your cloud provider is recommending any version upgrades. A resource that has reached the end of standard support may cost much more on extended support.</p>
+<p>Sometimes cloud providers may perform mandatory upgrades to apply security patches. We learned this the hard way when AWS
+automatically upgraded some of our databases. Because the upgrade wasn&rsquo;t planned, it broke some dependencies causing production outage.</p>
+<h3 id="avoid-knowledge-silos">Avoid Knowledge Silos</h3>
+<p>Sometimes a component is so mature and stable that there is no need to make any modifications to it.
+Consequently, the team&rsquo;s knowledge of how it works can fade over time because there has been no need to visit that part of the codebase.
+This creates a significant risk. To combat this, a few practices can be implemented:</p>
+<ul>
+<li><strong>Rotate tasks:</strong> Letting each team member take turns to own maintenance or upgrade tasks ensures that they all
+have at least a basic competency with every aspect of the service. The same applies to big initiatives and features.</li>
+<li><strong>Build gameday scenarios:</strong> Regularly conduct &ldquo;Gameday&rdquo; exercises, simulating failures in obscure parts of the system.
+This would force the team to explore the part of the code they had not visited before. Debugging issues in code is probably
+the second-best way to understand how it works, second only to writing it.</li>
+</ul>
+<h3 id="improve-observability">Improve Observability</h3>
+<p>In a continuously evolving system, you are never really fully done implementing the best possible observability. There is always
+something you can do to further reduce the mean time to detect (MTTD). You might have built a new endpoint or introduced a new class
+that needs to be covered with monitoring. Or you need to apply the lessons learned from the root cause analyses of previous incidents.</p>
+<p>Even if you think everything is covered, you can iterate upon it and monitor a new signal that helps you detect issues faster.</p>
+<p>Sometimes, monitoring for legacy systems is based on arbitrary system-level metrics. (For us, it was dead tuple counts in a database.)
+This can lead to alerts that don&rsquo;t correlate with any actual customer impact.
+A deliberate shift to a more customer-centric approach to observability is required.</p>
+<ul>
+<li><strong>Define SLOs for all user flows:</strong> Start by defining Service Level Objectives (SLOs) for all critical user flows.
+This forces a discussion about what a good customer experience looks like in measurable terms.</li>
+<li><strong>Alert on burn rate:</strong> Instead of alerting on noisy, low-level metrics, alert on the burn rate of the SLOs.
+This ensures that teams are only paged when there is a real and sustained impact on customers.</li>
+</ul>
+<p>Managing a legacy system is a marathon, not a sprint. The principles outlined here are not a silver bullet,
+but they provide a framework for making steady, incremental progress.</p>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://sskelkar.github.io/tags/manager/">Manager</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+          
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://sskelkar.github.io/post/software-tenbagger/" data-toggle="tooltip" data-placement="top" title="Software tenbagger">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+      
+      
+      
+      
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2025
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          &bull;&nbsp;Powered by Hugo&nbsp;&bull;&nbsp;
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://sskelkar.github.io/js/main.js"></script>
+<script src="https://sskelkar.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://sskelkar.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+
