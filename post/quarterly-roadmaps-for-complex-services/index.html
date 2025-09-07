@@ -12,7 +12,7 @@
  
 
 
-      <title>Keeping the Lights On: A Manager&#39;s Guide to Legacy Services - </title>
+      <title>A Manager&#39;s Guide to Keeping the Lights On - </title>
 
   <meta name="description" content="Last year I transitioned to the role of engineering manager on a complex, legacy service with a poor reliability record.
 As a first-time manager I found it challenging to plan a roadmap that can balance tackling reliability issues and reducing technical debt on one hand, and building
@@ -54,7 +54,7 @@ So I came up with some guiding principles to help me prioritize work in a way th
         "position": 3,
         "item": {
           "@id": "https:\/\/sskelkar.github.io\/post\/quarterly-roadmaps-for-complex-services\/",
-          "name": "Keeping the lights on a manager\u0027s guide to legacy services"
+          "name": "A manager\u0027s guide to keeping the lights on"
         }
     }]
 }
@@ -65,10 +65,10 @@ So I came up with some guiding principles to help me prioritize work in a way th
   "author": {
     "name" : "Sojjwal Kelkar"
   },
-  "headline": "Keeping the Lights On: A Manager\u0027s Guide to Legacy Services",
+  "headline": "A Manager\u0027s Guide to Keeping the Lights On",
   "description" : "Last year I transitioned to the role of engineering manager on a complex, legacy service with a poor reliability record. As a first-time manager I found it challenging to plan a roadmap that can balance tackling reliability issues and reducing technical debt on one hand, and building new features on the other.\nDeveloper time is a very precious resource. As a manager, you want to spend it in a way that produces compounding benefits over time. So I came up with some guiding principles to help me prioritize work in a way that keeps the system running, with hopefully fewer hiccups over time.\n",
   "inLanguage" : "en",
-  "wordCount":  1061 ,
+  "wordCount":  1108 ,
   "datePublished" : "2025-09-07T00:00:00\u002b05:30",
   "dateModified" : "2025-09-07T00:00:00\u002b05:30",
   "image" : "https:\/\/sskelkar.github.io\/",
@@ -88,7 +88,7 @@ So I came up with some guiding principles to help me prioritize work in a way th
 </script>
 
 
-<meta property="og:title" content="Keeping the Lights On: A Manager&#39;s Guide to Legacy Services" />
+<meta property="og:title" content="A Manager&#39;s Guide to Keeping the Lights On" />
 <meta property="og:description" content="Last year I transitioned to the role of engineering manager on a complex, legacy service with a poor reliability record.
 As a first-time manager I found it challenging to plan a roadmap that can balance tackling reliability issues and reducing technical debt on one hand, and building
 new features on the other.
@@ -98,7 +98,7 @@ So I came up with some guiding principles to help me prioritize work in a way th
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Sojjwal Kelkar" />
 
-  <meta name="twitter:title" content="Keeping the Lights On: A Manager&#39;s Guide to Legacy Services" />
+  <meta name="twitter:title" content="A Manager&#39;s Guide to Keeping the Lights On" />
   <meta name="twitter:description" content="Last year I transitioned to the role of engineering manager on a complex, legacy service with a poor reliability record.
 As a first-time manager I found it challenging to plan a roadmap that can …">
   <meta name="twitter:card" content="summary_large_image" />
@@ -233,14 +233,14 @@ As a first-time manager I found it challenging to plan a roadmap that can …">
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           <div class="post-heading">
-            <h1>Keeping the Lights On: A Manager&#39;s Guide to Legacy Services</h1>
+            <h1>A Manager&#39;s Guide to Keeping the Lights On</h1>
             <span class="post-meta">
   
   
   <i class="fas fa-calendar"></i>&nbsp;Posted on Sep 7, 2025
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;5&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;6&nbsp;minutes
   
   
   
@@ -302,7 +302,9 @@ But using them may improve your API latency or reduce your operational cost.</p>
 <p>Sometimes cloud providers may perform mandatory upgrades to apply security patches. We learned this the hard way when AWS
 automatically upgraded some of our databases. Because the upgrade wasn&rsquo;t planned, it broke some dependencies causing production outage.</p>
 <h3 id="avoid-knowledge-silos">Avoid Knowledge Silos</h3>
-<p>Sometimes a component is so mature and stable that there is no need to make any modifications to it.
+<p>In a critical service, where any outage can have potentially costly business impact, it is important that everyone in the team
+has a basic understanding of every aspect of the system. After all, it is not nice paging people for support when they&rsquo;re on vacation :).</p>
+<p>Also, sometimes a component is so mature and stable that there is no need to make any modifications to it.
 Consequently, the team&rsquo;s knowledge of how it works can fade over time because there has been no need to visit that part of the codebase.
 This creates a significant risk. To combat this, a few practices can be implemented:</p>
 <ul>
