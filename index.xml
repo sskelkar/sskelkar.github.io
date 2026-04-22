@@ -6,8 +6,15 @@
     <description>Recent content on Sojjwal Kelkar</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 07 Sep 2025 00:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 05 Oct 2025 22:01:56 +0200</lastBuildDate>
     <atom:link href="https://sskelkar.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ICs Using AI Agents Should Think Like Managers</title>
+      <link>https://sskelkar.github.io/post/ics-using-genai-should-think-like-managers/</link>
+      <pubDate>Sun, 05 Oct 2025 22:01:56 +0200</pubDate>
+      <guid>https://sskelkar.github.io/post/ics-using-genai-should-think-like-managers/</guid>
+      <description>&lt;p&gt;Developers new to agentic coding are at risk of having the wrong expectations. When they try coding agents for the first time, it feels like magic.  But cracks appear when AI is used without understanding its limitations. People tend to dismiss agentic coding if it doesn&amp;rsquo;t work &amp;ldquo;perfectly&amp;rdquo;. This is unfortunate, as coding agents are in fact very impressive.&lt;br&gt;&#xA;It is said that managers have been vibe coding forever. Now, if ICs are also vibe coding, are they like managers?&lt;/p&gt;</description>
+    </item>
     <item>
       <title>A Manager&#39;s Guide to Keeping the Lights On</title>
       <link>https://sskelkar.github.io/post/quarterly-roadmaps-for-complex-services/</link>

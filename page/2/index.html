@@ -181,6 +181,50 @@
           
           
             <article class="post-preview">
+    <a href="https://sskelkar.github.io/post/hystrix-a-simple-use-case/">
+        <h2 class="post-title">Hystrix – a simple use case</h2>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on Dec 5, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <p>Hystrix is a fault tolerance library that is very useful for managing failures in a distributed environment like microservices. Suppose we have a service <code>A</code> dependent  on service <code>B</code>, which is in turn dependent on service <code>C</code>.</p>
+<pre tabindex="0"><code>A -&gt; B -&gt; C
+</code></pre><p>Let&rsquo;s say a call is made from <code>A</code> to <code>B</code>. To serve this request, <code>B</code> needs to call <code>C</code> but there’s a communication failure between them. If the call from <code>B</code> to <code>C</code> is wrapped in Hystrix mechanism, we prevent the failure being propagated to <code>A</code>. Because <code>B</code> couldn’t fetch the actual information from <code>C</code>, Hystrix gives us the option of declaring a fallback value to be used in this case, if feasible.</p>
+        <a href="https://sskelkar.github.io/post/hystrix-a-simple-use-case/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+       
+       <a href="https://sskelkar.github.io/tags/microservices/">Microservices</a>&nbsp;
+         
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
     <a href="https://sskelkar.github.io/post/rxjava-observables/">
         <h2 class="post-title">Running time intensive operations in parallel with RxJava Observables</h2>
         
@@ -636,49 +680,6 @@ With the Config Server you have a central place to manage external properties fo
         
        
        <a href="https://sskelkar.github.io/tags/microservices/">Microservices</a>&nbsp;
-         
-    </div>
-    
-
-</article>
-          
-            <article class="post-preview">
-    <a href="https://sskelkar.github.io/post/building-with-gradle/">
-        <h2 class="post-title">Building with Gradle</h2>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Oct 24, 2015
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;6&nbsp;minutes
-  
-  
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        <p>Gradle is a popular build tool to manage Java projects. Gradle’s build scripts are written in Groovy. The design of Gradle is aimed to be used as a language, not as a rigid framework. In this article, I want to give some basic idea about what a Gradle build script is composed of and some of the features provided by Gradle.</p>
-<p>Gradle is based upon two basic concepts: <strong>projects</strong> and <strong>tasks</strong>. A project can be your application or a library that might be used by a different project. A project doesn’t have to be something that you build, it could be something to be performed, like deploying an application. A task represents a particular piece of work that is done in a build process, like compiling some classes or running unit tests.</p>
-        <a href="https://sskelkar.github.io/post/building-with-gradle/" class="post-read-more">[Read More]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
          
     </div>
     

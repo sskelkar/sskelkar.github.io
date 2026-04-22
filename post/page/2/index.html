@@ -176,7 +176,7 @@
             <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Sep 7, 2025
+  <i class="fas fa-calendar"></i>&nbsp;Posted on Oct 5, 2025
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;0&nbsp;minutes
@@ -202,6 +202,50 @@
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         
         <div class="posts-list">
+          
+            <article class="post-preview">
+    <a href="https://sskelkar.github.io/post/hystrix-a-simple-use-case/">
+        <h2 class="post-title">Hystrix – a simple use case</h2>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on Dec 5, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <p>Hystrix is a fault tolerance library that is very useful for managing failures in a distributed environment like microservices. Suppose we have a service <code>A</code> dependent  on service <code>B</code>, which is in turn dependent on service <code>C</code>.</p>
+<pre tabindex="0"><code>A -&gt; B -&gt; C
+</code></pre><p>Let&rsquo;s say a call is made from <code>A</code> to <code>B</code>. To serve this request, <code>B</code> needs to call <code>C</code> but there’s a communication failure between them. If the call from <code>B</code> to <code>C</code> is wrapped in Hystrix mechanism, we prevent the failure being propagated to <code>A</code>. Because <code>B</code> couldn’t fetch the actual information from <code>C</code>, Hystrix gives us the option of declaring a fallback value to be used in this case, if feasible.</p>
+        <a href="https://sskelkar.github.io/post/hystrix-a-simple-use-case/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+       
+       <a href="https://sskelkar.github.io/tags/microservices/">Microservices</a>&nbsp;
+         
+    </div>
+    
+
+</article>
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/rxjava-observables/">
@@ -657,52 +701,6 @@ With the Config Server you have a central place to manage external properties fo
         
        
        <a href="https://sskelkar.github.io/tags/functional-programming/">Functional Programming</a>&nbsp;
-         
-    </div>
-    
-
-</article>
-          
-            <article class="post-preview">
-    <a href="https://sskelkar.github.io/post/how-unit-testing-leads-to-improved-code/">
-        <h2 class="post-title">How unit testing leads to improved code</h2>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Aug 9, 2015
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;6&nbsp;minutes
-  
-  
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        <p>In Test Driven Development, the purpose of unit testing is to help us design our classes and not just to validate the correctness of our code. In this article I want to demonstrate how unit testing forces us to write better code, with help of an example. I will use Mockito for mocking.</p>
-<p>First, let me define the problem domain I’ll be using in the example. Suppose we have an online booking portal where customers make reservations for travel or accommodation. Whenever a new reservation is created, its details are added to an XML which is kept at some location. Periodically, we need to fetch all the reservations that have been created in our system and send for printing.</p>
-        <a href="https://sskelkar.github.io/post/how-unit-testing-leads-to-improved-code/" class="post-read-more">[Read More]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/unit-testing/">Unit Testing</a>&nbsp;
-        
-       
-       <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
          
     </div>
     
