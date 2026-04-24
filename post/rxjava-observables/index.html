@@ -44,7 +44,8 @@ public class Producer2 {
     }
     return list;
   }
-}"><script type="application/ld+json">
+}">
+  <meta name="author" content="Sojjwal Kelkar"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
     "@type": "WebSite",
@@ -89,7 +90,7 @@ public class Producer2 {
   "@context": "http://schema.org",
   "@type": "Article",
   "author": {
-    "name" : ""
+    "name" : "Sojjwal Kelkar"
   },
   "headline": "Running time intensive operations in parallel with RxJava Observables",
   "description" : "Recently I delved into the RxJava library. In this post I will demonstrate how RxJava Observables can be used to execute two long running tasks in parallel, so as to reduce their overall execution time.\nWhile we can create threads for this purpose, an additional benefit of using Observables is that it provides a convenient way of collecting the results of the parallel tasks. With threads, this can get pretty complicated. Let\u0026rsquo;s consider a situation where we have a consumer class that depends on the result of two or more expensive independent tasks. public class Producer1 { public List\u0026lt;Integer\u0026gt; produce() { List\u0026lt;Integer\u0026gt; list = new ArrayList\u0026lt;Integer\u0026gt;(); for(int i=0; i\u0026lt;5; i\u002b\u002b) { System.out.println(\u0026#34;Producer1 - \u0026#34; \u002b i); try { Thread.sleep(1000); } catch(Exception e) {} list.add(i); } return list; } } public class Producer2 { public List\u0026lt;Integer\u0026gt; produce() { List\u0026lt;Integer\u0026gt; list = new ArrayList\u0026lt;Integer\u0026gt;(); for(int i=0; i\u0026lt;5; i\u002b\u002b) { System.out.println(\u0026#34;Producer2 - \u0026#34; \u002b i); try { Thread.sleep(1000); } catch(Exception e) {} list.add(i); } return list; } }\n",
@@ -446,19 +447,18 @@ Finally, we  call the <code>single()</code> method to trigger the execution of o
           
           
           
-          
         </ul>
         <p class="credits copyright text-muted">
-          
-
-          &nbsp;&bull;&nbsp;&copy;
+          &copy;
           
             2026
           
 
           
-            &nbsp;&bull;&nbsp;
-            <a href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
+            &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+            
+              Sojjwal Kelkar
+            
           
         </p>
         

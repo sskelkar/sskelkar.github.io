@@ -6,54 +6,63 @@
     <description>Recent content in Coding Is Fun on Sojjwal Kelkar</description>
     <generator>Hugo</generator>
     <language>en</language>
+    <managingEditor>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</managingEditor>
+    <webMaster>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</webMaster>
     <lastBuildDate>Thu, 23 Apr 2026 23:40:02 +0200</lastBuildDate>
     <atom:link href="https://sskelkar.github.io/tags/coding-is-fun/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>If Rubens could delegate his paintings, why can&#39;t you delegate your code?</title>
       <link>https://sskelkar.github.io/post/if-rubens-could-delegate/</link>
-      <pubDate>Thu, 23 Apr 2026 23:40:02 +0200</pubDate>
+      <pubDate>Thu, 23 Apr 2026 23:40:02 +0200</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/if-rubens-could-delegate/</guid>
       <description>&lt;p&gt;I have previously argued that &lt;a href=&#34;https://sskelkar.github.io/post/ics-using-genai-should-think-like-managers/&#34;&gt;engineers using agentic coding should think like managers&lt;/a&gt;. But perhaps you are not interested in management. You don&amp;rsquo;t know what managers do and don&amp;rsquo;t want to learn to think like them. You are put off by all the manager-analogies and wish they&amp;rsquo;d stop. Perhaps you are the artistic type, who thinks of themselves as a software craftsperson.&lt;/p&gt;&#xA;&lt;p&gt;So let&amp;rsquo;s change the subject and talk about something interesting, like art. Hey how about that Rubens? Do you know his process on some of his famous paintings like &lt;em&gt;The Elevation of the Cross&lt;/em&gt;?&lt;/p&gt;</description>
     </item>
     <item>
       <title>ICs Using AI Agents Should Think Like Managers</title>
       <link>https://sskelkar.github.io/post/ics-using-genai-should-think-like-managers/</link>
-      <pubDate>Sun, 05 Oct 2025 22:01:56 +0200</pubDate>
+      <pubDate>Sun, 05 Oct 2025 22:01:56 +0200</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/ics-using-genai-should-think-like-managers/</guid>
       <description>&lt;p&gt;Developers new to agentic coding are at risk of having the wrong expectations. When they try coding agents for the first time, it feels like magic.  But cracks appear when AI is used without understanding its limitations. People tend to dismiss agentic coding if it doesn&amp;rsquo;t work &amp;ldquo;perfectly&amp;rdquo;. This is unfortunate, as coding agents are in fact very impressive.&lt;br&gt;&#xA;It is said that managers have been vibe coding forever. Now, if ICs are also vibe coding, are they like managers?&lt;/p&gt;</description>
     </item>
     <item>
       <title>Software tenbagger</title>
       <link>https://sskelkar.github.io/post/software-tenbagger/</link>
-      <pubDate>Mon, 12 May 2025 21:02:00 +0200</pubDate>
+      <pubDate>Mon, 12 May 2025 21:02:00 +0200</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/software-tenbagger/</guid>
       <description>&lt;p&gt;&amp;ldquo;Tenbagger&amp;rdquo; is a term coined by legendary investor Peter Lynch to describe stocks that provide tenfold value on the initial investment.&#xA;As software engineers we make scores of decisions every day in the face of ever-evolving requirements, whose impact on the architecture might only become visible down the line.&#xA;It&amp;rsquo;s nice when a relatively low-effort code change ends up providing compounding benefits over a long time horizon.&lt;/p&gt;&#xA;&lt;p&gt;I am currently working on a critical component in a distributed system for a food-delivery app. One of its core responsibilities is to receive information from an upstream service and&#xA;pass it into downstream services. The feature requirements typically follow this pattern: customers can now provide a backup phone number, which should be shown on the delivery app.&#xA;So an order passing through a chain of systems can now contain a new field, which needs to be forwarded to relevant downstream services.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The small pleasures of programming</title>
       <link>https://sskelkar.github.io/post/small-pleasures-of-programming/</link>
-      <pubDate>Sun, 23 Sep 2018 00:00:00 +0530</pubDate>
+      <pubDate>Sun, 23 Sep 2018 00:00:00 +0530</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/small-pleasures-of-programming/</guid>
       <description>&lt;p&gt;It’s not just pulling off a complex engineering feat that makes programmers love their jobs. There are small pleasures to be had even in your day to day tasks, if you look for them.&lt;/p&gt;&#xA;&lt;p&gt;Seasoned programmers know the thrill of recognising the possibility to introduce an abstraction over duplication.&#xA;A task as simple as renaming a variable can be the difference between obscurantism and lucidity.&#xA;It’s the boy scout principle in action. Making your code a bit more pleasant to revisit.&#xA;The joy one derives in these simple improvements is akin to &lt;a href=&#34;https://en.wikipedia.org/wiki/Am%C3%A9lie&#34;&gt;Amélie&lt;/a&gt;’s &lt;em&gt;les petits plaisirs&lt;/em&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Representing natural numbers in lambda calculus</title>
       <link>https://sskelkar.github.io/post/representing-natural-numbers-in-lambda-calculus/</link>
-      <pubDate>Wed, 08 Nov 2017 00:00:00 +0530</pubDate>
+      <pubDate>Wed, 08 Nov 2017 00:00:00 +0530</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/representing-natural-numbers-in-lambda-calculus/</guid>
       <description>&lt;p&gt;One of the joys of reading &lt;a href=&#34;https://mitpress.mit.edu/sicp/full-text/book/book.html&#34;&gt;SICP&lt;/a&gt; is that apart from the main subject matter, we come across many tangential topics that are interesting in their own right. One such topic is mentioned in &lt;code&gt;Exercise 2.6&lt;/code&gt;: Church numerals. Named after the mathematician Alonzo Church, Church numerals are a way of representing natural numbers in lambda calculus. But what is λ-calculus?&lt;/p&gt;&#xA;&lt;p&gt;From a programming perspective, λ-calculus can be thought of as the smallest universal programming language. It lacks some of the common features that one would expect in a programming language like, primitives, booleans, numbers etc. In this language, variable substitution and functions are used as the building blocks to express everything else. Even numbers! In this post we will get a glimpse of how this is achieved.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>How unit testing leads to improved code</title>
+      <link>https://sskelkar.github.io/post/how-unit-testing-leads-to-improved-code/</link>
+      <pubDate>Sun, 09 Aug 2015 00:00:00 +0530</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
+      <guid>https://sskelkar.github.io/post/how-unit-testing-leads-to-improved-code/</guid>
+      <description>&lt;p&gt;In Test Driven Development, the purpose of unit testing is to help us design our classes and not just to validate the correctness of our code. In this article I want to demonstrate how unit testing forces us to write better code, with help of an example. I will use Mockito for mocking.&lt;/p&gt;&#xA;&lt;p&gt;First, let me define the problem domain I’ll be using in the example. Suppose we have an online booking portal where customers make reservations for travel or accommodation. Whenever a new reservation is created, its details are added to an XML which is kept at some location. Periodically, we need to fetch all the reservations that have been created in our system and send for printing.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Scheming with the Little Schemer</title>
       <link>https://sskelkar.github.io/post/scheming-with-the-little-schemer/</link>
-      <pubDate>Wed, 05 Aug 2015 00:00:00 +0530</pubDate>
+      <pubDate>Wed, 05 Aug 2015 00:00:00 +0530</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/scheming-with-the-little-schemer/</guid>
       <description>&lt;p&gt;From a very long time, I have been an admirer of Lisp, an often praised but seldom used programming language. Common consensus about Lisp is that it is the kind of language you don’t need to know to get your daily tasks done, but any programmer worth his salt should be familiar with its concepts.&lt;/p&gt;&#xA;&lt;p&gt;For a beginner, perhaps the easiest way to get a taste of Lisp is to go through &lt;a href=&#34;https://mitpress.mit.edu/books/little-schemer&#34;&gt;The Little Schemer&lt;/a&gt;. As programming books go, this is quite an unusual one. Programmers like to say that they don’t really learn something new, unless they have written some code in it. The Little Schemer takes this idea up a notch. There are no formal definitions (but there are some &amp;ldquo;commandments&amp;rdquo;!) and very little explanation. The book is composed of nothing but (often humorously phrased) coding problems from beginning to end. You need to fire up your compiler and start writing code from the get go. The idea is to let the readers pickup functional programming concepts intuitively rather than teaching them explicitly. You can use any implementation of Lisp dialects like Scheme or Common Lisp to work out the problems. &lt;a href=&#34;http://www.gnu.org/software/mit-scheme/&#34;&gt;MIT/GNU Scheme&lt;/a&gt; worked fine for me.&lt;/p&gt;</description>
     </item>
     <item>
       <title>RIP Yahoo! Pipes</title>
       <link>https://sskelkar.github.io/post/rip-yahoo-pipes/</link>
-      <pubDate>Thu, 23 Jul 2015 00:00:00 +0530</pubDate>
+      <pubDate>Thu, 23 Jul 2015 00:00:00 +0530</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/rip-yahoo-pipes/</guid>
       <description>&lt;p&gt;Yahoo has announced it will shut down its web mashup application Pipes on September of this year. Pipes was a pretty useful application to combine web feeds from multiple sources. With an easy to use GUI, you could add filters, modify the fields present in a feed and render the Pipe in RSS, JSON or Atom formats. So you could subscribe to a Pipe just like you would subscribe to any web feed.&lt;/p&gt;</description>
     </item>

@@ -56,7 +56,8 @@ public class Deadlock {
         new Thread(() -&gt; new Deadlock(lock1, lock2).methodB()).start();
     }
 }
-First thread calls methodA and acquires lock1. Second thread calls methodB and acquires lock2. Then the first thread calls methodB while at the same time the second thread calls methodA. Both are trying to acquire a lock that is already held by another thread, so neither can proceed further."><script type="application/ld+json">
+First thread calls methodA and acquires lock1. Second thread calls methodB and acquires lock2. Then the first thread calls methodB while at the same time the second thread calls methodA. Both are trying to acquire a lock that is already held by another thread, so neither can proceed further.">
+  <meta name="author" content="Sojjwal Kelkar"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
     "@type": "WebSite",
@@ -465,19 +466,18 @@ Found 1 deadlock.
           
           
           
-          
         </ul>
         <p class="credits copyright text-muted">
-          
-
-          &nbsp;&bull;&nbsp;&copy;
+          &copy;
           
             2026
           
 
           
-            &nbsp;&bull;&nbsp;
-            <a href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
+            &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+            
+              Sojjwal Kelkar
+            
           
         </p>
         

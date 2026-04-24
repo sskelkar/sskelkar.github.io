@@ -13,7 +13,8 @@
 
 
       <title>Database - </title>
-<script type="application/ld+json">
+
+  <meta name="author" content="Sojjwal Kelkar"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
     "@type": "WebSite",
@@ -203,6 +204,52 @@ So an order passing through a chain of systems can now contain a new field, whic
 
           
             <article class="post-preview">
+    <a href="https://sskelkar.github.io/post/squashing-ruby-on-rails-database-migrations/">
+        <h2 class="post-title">Squashing ruby on rails database migrations</h2>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Feb 13, 2021
+  
+  
+    <span class="meta-separator">|</span><i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+  
+  
+  
+  
+  
+    <span class="blog-tags"><a href="https://sskelkar.github.io/tags/ruby/">Ruby</a> <a href="https://sskelkar.github.io/tags/database/">Database</a></span>
+  
+</span>
+
+    </p>
+    <div class="post-entry">
+        
+        <h2 id="why">Why?</h2>
+<p>There are several reasons why you&rsquo;d want to squash the database migrations in your Ruby on Rails application:</p>
+<ol>
+<li>
+<p>In a long running project you may end up with hundreds of files in your <code>db/migrate</code> folder over time. Carrying these legacy
+migrations incurs maintenance overhead. For example, when upgrading the Rails version, you may need to modify those old migrations for
+syntax changes.</p>
+</li>
+<li>
+<p>If your build process involves recreating the database to run the tests, it would need to run all of these old migrations. Running a lot
+of migrations would slow down the build time.</p>
+        <a href="https://sskelkar.github.io/post/squashing-ruby-on-rails-database-migrations/" class="post-read-more">[Read more]</a>
+        
+    </div>
+
+</article>
+
+          
+            <article class="post-preview">
     <a href="https://sskelkar.github.io/post/postgres-explain-analyze/">
         <h2 class="post-title">Understanding a Postgres query plan</h2>
         
@@ -259,7 +306,7 @@ So an order passing through a chain of systems can now contain a new field, whic
   
   
   
-    <span class="blog-tags"><a href="https://sskelkar.github.io/tags/java/">Java</a> <a href="https://sskelkar.github.io/tags/spring/">Spring</a> <a href="https://sskelkar.github.io/tags/database/">Database</a></span>
+    <span class="blog-tags"><a href="https://sskelkar.github.io/tags/java/">Java</a> <a href="https://sskelkar.github.io/tags/database/">Database</a></span>
   
 </span>
 
@@ -310,7 +357,6 @@ A team can have multiple players. A player can have a statistic.</p>
         <ul class="list-inline text-center footer-links">
           
           
-          
           <li>
             <a href="/tags/database/index.xml" title="RSS">
               <span class="fa-stack fa-lg">
@@ -323,16 +369,16 @@ A team can have multiple players. A player can have a statistic.</p>
           
         </ul>
         <p class="credits copyright text-muted">
-          
-
-          &nbsp;&bull;&nbsp;&copy;
+          &copy;
           
             2026
           
 
           
-            &nbsp;&bull;&nbsp;
-            <a href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
+            &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+            
+              Sojjwal Kelkar
+            
           
         </p>
         

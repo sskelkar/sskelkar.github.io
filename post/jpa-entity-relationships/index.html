@@ -36,7 +36,8 @@ INSERT INTO player_stat(player_stat_id, player_id, runs, wickets) VALUES(20, 2, 
 INSERT INTO player_stat(player_stat_id, player_id, runs, wickets) VALUES(30, 3, 7000, 100);
 INSERT INTO player_stat(player_stat_id, player_id, runs, wickets) VALUES(40, 4, 2000, 0);
 INSERT INTO player_stat(player_stat_id, player_id, runs, wickets) VALUES(50, 5, 9000, 0);
-A team can have multiple players. A player can have a statistic."><script type="application/ld+json">
+A team can have multiple players. A player can have a statistic.">
+  <meta name="author" content="Sojjwal Kelkar"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
     "@type": "WebSite",
@@ -81,7 +82,7 @@ A team can have multiple players. A player can have a statistic."><script type="
   "@context": "http://schema.org",
   "@type": "Article",
   "author": {
-    "name" : ""
+    "name" : "Sojjwal Kelkar"
   },
   "headline": "JPA Entity Relationships",
   "description" : "In a relational database, the relationships between two tables are defined by foreign keys. Typically, one table has a column that contains the primary key of another table’s row. In JPA, we deal with entity objects that are Java representations of database tables. So we need a different way for establishing relationship between two entities. JPA entity relationships define how these entities refer to each other.\nFor the purpose of this article, I will work with JPA 2.0 and a table structure as following. CREATE TABLE team(team_id NUMBER, name VARCHAR2(20)); INSERT INTO team(team_id, name) VALUES(1, \u0026#39;india\u0026#39;); INSERT INTO team(team_id, name) VALUES(2, \u0026#39;australia\u0026#39;); INSERT INTO team(team_id, name) VALUES(3, \u0026#39;england\u0026#39;); CREATE TABLE player(player_id NUMBER, name VARCHAR2(50), team_id NUMBER, age NUMBER, role VARCHAR2(20)); INSERT INTO player(player_id, name, team_id, age, role) VALUES(1, \u0026#39;sachin\u0026#39;, 1, 42, \u0026#39;batsman\u0026#39;); INSERT INTO player(player_id, name, team_id, age, role) VALUES(2, \u0026#39;dhoni\u0026#39;, 1, 34, \u0026#39;wicketkeeper\u0026#39;); INSERT INTO player(player_id, name, team_id, age, role) VALUES(3, \u0026#39;clarke\u0026#39;, 2, 38, \u0026#39;batsman\u0026#39;); INSERT INTO player(player_id, name, team_id, age, role) VALUES(4, \u0026#39;rogers\u0026#39;, 2, 40, \u0026#39;batsman\u0026#39;); INSERT INTO player(player_id, name, team_id, age, role) VALUES(5, \u0026#39;cook\u0026#39;, 3, 31, \u0026#39;batsman\u0026#39;); INSERT INTO player(player_id, name, team_id, age, role) VALUES(6, \u0026#39;root\u0026#39;, 3, 26, \u0026#39;batsman\u0026#39;); CREATE TABLE player_stat(player_stat_id NUMBER, player_id NUMBER, runs NUMBER, wickets NUMBER); INSERT INTO player_stat(player_stat_id, player_id, runs, wickets) VALUES(10, 1, 10000, 300); INSERT INTO player_stat(player_stat_id, player_id, runs, wickets) VALUES(20, 2, 5000, 10); INSERT INTO player_stat(player_stat_id, player_id, runs, wickets) VALUES(30, 3, 7000, 100); INSERT INTO player_stat(player_stat_id, player_id, runs, wickets) VALUES(40, 4, 2000, 0); INSERT INTO player_stat(player_stat_id, player_id, runs, wickets) VALUES(50, 5, 9000, 0); A team can have multiple players. A player can have a statistic.\n",
@@ -90,7 +91,7 @@ A team can have multiple players. A player can have a statistic."><script type="
   "datePublished" : "2016-01-15T00:00:00\u002b05:30",
   "dateModified" : "2016-01-15T00:00:00\u002b05:30",
   "image" : "https:\/\/sskelkar.github.io\/",
-  "keywords" : [ "Java, Spring, Database" ],
+  "keywords" : [ "Java, Database" ],
   "mainEntityOfPage" : "https:\/\/sskelkar.github.io\/post\/jpa-entity-relationships\/",
   "publisher" : {
     "@type": "Organization",
@@ -263,7 +264,7 @@ A team can have multiple players. A player can have a statistic.">
   
   
   
-    <span class="blog-tags"><a href="https://sskelkar.github.io/tags/java/">Java</a> <a href="https://sskelkar.github.io/tags/spring/">Spring</a> <a href="https://sskelkar.github.io/tags/database/">Database</a></span>
+    <span class="blog-tags"><a href="https://sskelkar.github.io/tags/java/">Java</a> <a href="https://sskelkar.github.io/tags/database/">Database</a></span>
   
 </span>
 
@@ -474,13 +475,13 @@ In this case, since <code>player</code> holds a reference of <code>team</code>, 
                 
                     <li><a href="/post/software-tenbagger/">Software tenbagger</a></li>
                 
+                    <li><a href="/post/squashing-ruby-on-rails-database-migrations/">Squashing ruby on rails database migrations</a></li>
+                
                     <li><a href="/post/postgres-explain-analyze/">Understanding a Postgres query plan</a></li>
                 
                     <li><a href="/post/db-integration-tests-for-spring-app/">Database integration tests for a Spring application</a></li>
                 
                     <li><a href="/post/using-thread-dumps-to-analyze-deadlocks/">Using thread dumps to analyse deadlocks</a></li>
-                
-                    <li><a href="/post/rxjava-observables/">Running time intensive operations in parallel with RxJava Observables</a></li>
                 
               </ul>
 
@@ -525,19 +526,18 @@ In this case, since <code>player</code> holds a reference of <code>team</code>, 
           
           
           
-          
         </ul>
         <p class="credits copyright text-muted">
-          
-
-          &nbsp;&bull;&nbsp;&copy;
+          &copy;
           
             2026
           
 
           
-            &nbsp;&bull;&nbsp;
-            <a href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
+            &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+            
+              Sojjwal Kelkar
+            
           
         </p>
         

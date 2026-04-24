@@ -23,10 +23,10 @@
     <loc>https://sskelkar.github.io/post/ics-using-genai-should-think-like-managers/</loc>
     <lastmod>2025-10-05T22:01:56+02:00</lastmod>
   </url><url>
-    <loc>https://sskelkar.github.io/post/quarterly-roadmaps-for-complex-services/</loc>
-    <lastmod>2025-09-07T00:00:00+05:30</lastmod>
+    <loc>https://sskelkar.github.io/tags/management/</loc>
+    <lastmod>2025-10-05T22:01:56+02:00</lastmod>
   </url><url>
-    <loc>https://sskelkar.github.io/tags/manager/</loc>
+    <loc>https://sskelkar.github.io/post/quarterly-roadmaps-for-complex-services/</loc>
     <lastmod>2025-09-07T00:00:00+05:30</lastmod>
   </url><url>
     <loc>https://sskelkar.github.io/tags/database/</loc>
@@ -35,7 +35,7 @@
     <loc>https://sskelkar.github.io/post/software-tenbagger/</loc>
     <lastmod>2025-05-12T21:02:00+02:00</lastmod>
   </url><url>
-    <loc>https://sskelkar.github.io/tags/ruby-on-rails/</loc>
+    <loc>https://sskelkar.github.io/tags/ruby/</loc>
     <lastmod>2021-02-13T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://sskelkar.github.io/post/squashing-ruby-on-rails-database-migrations/</loc>
@@ -48,12 +48,6 @@
     <lastmod>2019-01-12T00:00:00+05:30</lastmod>
   </url><url>
     <loc>https://sskelkar.github.io/tags/java/</loc>
-    <lastmod>2019-01-12T00:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://sskelkar.github.io/tags/spring/</loc>
-    <lastmod>2019-01-12T00:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://sskelkar.github.io/tags/unit-testing/</loc>
     <lastmod>2019-01-12T00:00:00+05:30</lastmod>
   </url><url>
     <loc>https://sskelkar.github.io/post/small-pleasures-of-programming/</loc>
@@ -130,9 +124,6 @@
   </url><url>
     <loc>https://sskelkar.github.io/post/closures-in-javascript/</loc>
     <lastmod>2015-07-20T00:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://sskelkar.github.io/tags/angular/</loc>
-    <lastmod>2015-07-19T00:00:00+05:30</lastmod>
   </url><url>
     <loc>https://sskelkar.github.io/post/dependency-injection-in-angularjs-1x/</loc>
     <lastmod>2015-07-19T00:00:00+05:30</lastmod>

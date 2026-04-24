@@ -19,7 +19,8 @@ In a cloud environment these instances can go up and down arbitrarily.
 So we need some kind of service discovery mechanism to keep track of running instances. When a service A needs to call a service B,
 it asks for the address of any running instance of service B from the service discovery. The service discovery can also load balance the
 incoming requests. In this post I demonstrate how to setup a service discovery environment with Netflix Eureka.
-When ever a service instance spins up, it registers itself with Eureka and sends regular heartbeats to confirm its availability."><script type="application/ld+json">
+When ever a service instance spins up, it registers itself with Eureka and sends regular heartbeats to confirm its availability.">
+  <meta name="author" content="Sojjwal Kelkar"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
     "@type": "WebSite",
@@ -64,7 +65,7 @@ When ever a service instance spins up, it registers itself with Eureka and sends
   "@context": "http://schema.org",
   "@type": "Article",
   "author": {
-    "name" : ""
+    "name" : "Sojjwal Kelkar"
   },
   "headline": "Step by step guide to set up a service discovery environment",
   "description" : "In a microservices environment we can run multiple instances of a service for resilience and scalability. In a cloud environment these instances can go up and down arbitrarily. So we need some kind of service discovery mechanism to keep track of running instances. When a service A needs to call a service B, it asks for the address of any running instance of service B from the service discovery. The service discovery can also load balance the incoming requests. In this post I demonstrate how to setup a service discovery environment with Netflix Eureka. When ever a service instance spins up, it registers itself with Eureka and sends regular heartbeats to confirm its availability.\n",
@@ -401,19 +402,18 @@ c. Configure your <code>bootstrap.yml</code> like following:
           
           
           
-          
         </ul>
         <p class="credits copyright text-muted">
-          
-
-          &nbsp;&bull;&nbsp;&copy;
+          &copy;
           
             2026
           
 
           
-            &nbsp;&bull;&nbsp;
-            <a href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
+            &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+            
+              Sojjwal Kelkar
+            
           
         </p>
         

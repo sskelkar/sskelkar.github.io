@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Management on Sojjwal Kelkar</title>
+    <link>https://sskelkar.github.io/tags/management/</link>
+    <description>Recent content in Management on Sojjwal Kelkar</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <managingEditor>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</managingEditor>
+    <webMaster>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</webMaster>
+    <lastBuildDate>Sun, 05 Oct 2025 22:01:56 +0200</lastBuildDate>
+    <atom:link href="https://sskelkar.github.io/tags/management/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ICs Using AI Agents Should Think Like Managers</title>
+      <link>https://sskelkar.github.io/post/ics-using-genai-should-think-like-managers/</link>
+      <pubDate>Sun, 05 Oct 2025 22:01:56 +0200</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
+      <guid>https://sskelkar.github.io/post/ics-using-genai-should-think-like-managers/</guid>
+      <description>&lt;p&gt;Developers new to agentic coding are at risk of having the wrong expectations. When they try coding agents for the first time, it feels like magic.  But cracks appear when AI is used without understanding its limitations. People tend to dismiss agentic coding if it doesn&amp;rsquo;t work &amp;ldquo;perfectly&amp;rdquo;. This is unfortunate, as coding agents are in fact very impressive.&lt;br&gt;&#xA;It is said that managers have been vibe coding forever. Now, if ICs are also vibe coding, are they like managers?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>A Manager&#39;s Guide to Keeping the Lights On</title>
+      <link>https://sskelkar.github.io/post/quarterly-roadmaps-for-complex-services/</link>
+      <pubDate>Sun, 07 Sep 2025 00:00:00 +0530</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
+      <guid>https://sskelkar.github.io/post/quarterly-roadmaps-for-complex-services/</guid>
+      <description>&lt;p&gt;Last year I transitioned to the role of engineering manager on a complex, legacy service with a poor reliability record.&#xA;As a first-time manager I found it challenging to plan a roadmap that can balance tackling reliability issues and reducing technical debt on one hand, and building&#xA;new features on the other.&lt;/p&gt;&#xA;&lt;p&gt;Developer time is a very precious resource. As a manager, you want to spend it in a way that produces compounding benefits over time.&#xA;So I came up with some guiding principles to help me prioritize work in a way that keeps the system running, with hopefully fewer hiccups over time.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
