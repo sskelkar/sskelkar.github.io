@@ -54,29 +54,11 @@
     <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
       <a class="navbar-brand" href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
     </div>
 
-    <div class="collapse navbar-collapse" id="main-navbar">
+    <div class="navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
-        
-          
-            <li>
-              <a title="Tech Blog" href="/">Tech Blog</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Cartoons" href="/cartoons">Cartoons</a>
-            </li>
-          
         
           
             <li>
@@ -191,7 +173,7 @@
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Dec 5, 2016
+  <i class="fas fa-calendar"></i>&nbsp;Dec 5, 2016
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
@@ -199,8 +181,14 @@
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/microservices/">Microservices</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
@@ -208,20 +196,12 @@
         <p>Hystrix is a fault tolerance library that is very useful for managing failures in a distributed environment like microservices. Suppose we have a service <code>A</code> dependent  on service <code>B</code>, which is in turn dependent on service <code>C</code>.</p>
 <pre tabindex="0"><code>A -&gt; B -&gt; C
 </code></pre><p>Let&rsquo;s say a call is made from <code>A</code> to <code>B</code>. To serve this request, <code>B</code> needs to call <code>C</code> but there’s a communication failure between them. If the call from <code>B</code> to <code>C</code> is wrapped in Hystrix mechanism, we prevent the failure being propagated to <code>A</code>. Because <code>B</code> couldn’t fetch the actual information from <code>C</code>, Hystrix gives us the option of declaring a fallback value to be used in this case, if feasible.</p>
-        <a href="https://sskelkar.github.io/post/hystrix-a-simple-use-case/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/hystrix-a-simple-use-case/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/microservices/">Microservices</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/service-discovery-setup-guide/">
@@ -235,7 +215,7 @@
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Dec 17, 2015
+  <i class="fas fa-calendar"></i>&nbsp;Dec 17, 2015
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
@@ -243,8 +223,16 @@
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
+      
+        <a href="https://sskelkar.github.io/tags/microservices/">Microservices</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
@@ -255,23 +243,12 @@ So we need some kind of service discovery mechanism to keep track of running ins
 it asks for the address of any running instance of service B from the service discovery. The service discovery can also load balance the
 incoming requests. In this post I demonstrate how to setup a service discovery environment with <a href="https://github.com/Netflix/eureka">Netflix Eureka</a>.
 When ever a service instance spins up, it registers itself with Eureka and sends regular heartbeats to confirm its availability.</p>
-        <a href="https://sskelkar.github.io/post/service-discovery-setup-guide/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/service-discovery-setup-guide/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
-        
-       
-       <a href="https://sskelkar.github.io/tags/microservices/">Microservices</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/how-to-set-up-a-local-spring-cloud-config-server/">
@@ -285,7 +262,7 @@ When ever a service instance spins up, it registers itself with Eureka and sends
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Dec 15, 2015
+  <i class="fas fa-calendar"></i>&nbsp;Dec 15, 2015
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
@@ -293,8 +270,16 @@ When ever a service instance spins up, it registers itself with Eureka and sends
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
+      
+        <a href="https://sskelkar.github.io/tags/microservices/">Microservices</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
@@ -306,23 +291,12 @@ With the Config Server you have a central place to manage external properties fo
 <h3 id="steps-to-configure-config-server">Steps to configure config server</h3>
 <p>a. Create a new Gradle project for the config server. In <a href="https://start.spring.io/">https://start.spring.io/</a>, select the starters for config server.</p>
 <p>b. In your project, navigate to <code>src/main/resources</code>. Rename the automatically generated <code>application.properties</code> file to <code>bootstrap.yml</code>.</p>
-        <a href="https://sskelkar.github.io/post/how-to-set-up-a-local-spring-cloud-config-server/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/how-to-set-up-a-local-spring-cloud-config-server/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
-        
-       
-       <a href="https://sskelkar.github.io/tags/microservices/">Microservices</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
         </div>
         

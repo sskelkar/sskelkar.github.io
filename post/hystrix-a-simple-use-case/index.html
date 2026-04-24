@@ -110,29 +110,11 @@ Let&rsquo;s say a call is made from A to B. To serve this request, B needs to ca
     <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
       <a class="navbar-brand" href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
     </div>
 
-    <div class="collapse navbar-collapse" id="main-navbar">
+    <div class="navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
-        
-          
-            <li>
-              <a title="Tech Blog" href="/">Tech Blog</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Cartoons" href="/cartoons">Cartoons</a>
-            </li>
-          
         
           
             <li>
@@ -232,7 +214,7 @@ Let&rsquo;s say a call is made from A to B. To serve this request, B needs to ca
             <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Dec 5, 2016
+  <i class="fas fa-calendar"></i>&nbsp;Dec 5, 2016
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
@@ -240,8 +222,14 @@ Let&rsquo;s say a call is made from A to B. To serve this request, B needs to ca
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/microservices/">Microservices</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
           </div>
         </div>
@@ -263,15 +251,6 @@ Let&rsquo;s say a call is made from A to B. To serve this request, B needs to ca
 <p>In fact, Hystrix goes one step further. If we have a high volume of requests going from <code>B</code> to <code>C</code> per unit of time, and the rate of failure reaches some particular value say 50%, then Hystrix will stop any further requests for a period of time and instead return the fallback value immediately. In Hystrix terminology the circuit is said to be <code>open</code> in this case.</p>
 <p>After a pre-configured time has elapsed, Hyxtrix will attempt to process the next request by calling service <code>C</code>. This is the <code>half-open</code> state. If the call still fails, the system revert backs to <code>open</code> state. But if it is successful, the circuit is <code>closed</code> and for all subsequent requests, service <code>C</code> is called.</p>
 
-
-        
-          <div class="blog-tags">
-            
-              
-              <a href="https://sskelkar.github.io/tags/microservices/">Microservices</a>&nbsp;
-            
-          </div>
-        
 
         
 
@@ -312,9 +291,9 @@ Let&rsquo;s say a call is made from A to B. To serve this request, B needs to ca
 
 
       
+
       
-      
-      
+
       
         
       

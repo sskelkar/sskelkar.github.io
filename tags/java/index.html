@@ -54,29 +54,11 @@
     <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
       <a class="navbar-brand" href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
     </div>
 
-    <div class="collapse navbar-collapse" id="main-navbar">
+    <div class="navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
-        
-          
-            <li>
-              <a title="Tech Blog" href="/">Tech Blog</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Cartoons" href="/cartoons">Cartoons</a>
-            </li>
-          
         
           
             <li>
@@ -191,7 +173,7 @@
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Jan 12, 2019
+  <i class="fas fa-calendar"></i>&nbsp;Jan 12, 2019
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;6&nbsp;minutes
@@ -199,33 +181,29 @@
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
+      
+        <a href="https://sskelkar.github.io/tags/spring/">Spring</a>&nbsp;
+      
+        <a href="https://sskelkar.github.io/tags/unit-testing/">Unit Testing</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
         
         <p>Suppose you are tasked with writing tests for a Spring and Hibernate application. This application uses a mix of native queries, HQL or entity associations to fetch data from the database. If you choose to mock the DAO or entity layers, you leave a significant portion of the code untested. In such cases data integration tests can provide the most correct feedback. But you do you configure your application to run integration tests?</p>
-        <a href="https://sskelkar.github.io/post/db-integration-tests-for-spring-app/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/db-integration-tests-for-spring-app/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
-        
-       
-       <a href="https://sskelkar.github.io/tags/spring/">Spring</a>&nbsp;
-        
-       
-       <a href="https://sskelkar.github.io/tags/unit-testing/">Unit Testing</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/using-thread-dumps-to-analyze-deadlocks/">
@@ -239,7 +217,7 @@
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Oct 14, 2017
+  <i class="fas fa-calendar"></i>&nbsp;Oct 14, 2017
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
@@ -247,8 +225,14 @@
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
@@ -296,20 +280,12 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
 First thread calls <code>methodA</code> and acquires <code>lock1</code>. Second thread calls <code>methodB</code> and acquires <code>lock2</code>. Then the first thread calls <code>methodB</code> while at the same time the second thread calls <code>methodA</code>. Both are trying to acquire a lock that is already held by another thread, so neither can proceed further.</p>
-        <a href="https://sskelkar.github.io/post/using-thread-dumps-to-analyze-deadlocks/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/using-thread-dumps-to-analyze-deadlocks/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/rxjava-observables/">
@@ -323,7 +299,7 @@ First thread calls <code>methodA</code> and acquires <code>lock1</code>. Second 
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Sep 1, 2016
+  <i class="fas fa-calendar"></i>&nbsp;Sep 1, 2016
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
@@ -331,8 +307,14 @@ First thread calls <code>methodA</code> and acquires <code>lock1</code>. Second 
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
@@ -368,20 +350,12 @@ Let&rsquo;s consider a situation where we have a consumer class that depends on 
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> list;
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}</span></span></code></pre></div></p>
-        <a href="https://sskelkar.github.io/post/rxjava-observables/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/rxjava-observables/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/logging-with-spring-aop/">
@@ -395,7 +369,7 @@ Let&rsquo;s consider a situation where we have a consumer class that depends on 
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Feb 12, 2016
+  <i class="fas fa-calendar"></i>&nbsp;Feb 12, 2016
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
@@ -403,31 +377,28 @@ Let&rsquo;s consider a situation where we have a consumer class that depends on 
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
+      
+        <a href="https://sskelkar.github.io/tags/spring/">Spring</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
         
         <p>Aspect oriented programming (AOP) is a way of separating the business login in your code from cross cutting concerns. What is a cross cutting concern?</p>
 <p>Analogy time. A typical house has different rooms that have designated functions. We keep our stuff in the rooms where they make sense. The living room is an unlikely location for a dishwasher and a bathtub belongs in the bathroom. But the electric circuit runs throughout the house because it is not tied to the functionality of any specific room. Thus, the electric circuit is a cross-cutting concern.</p>
-        <a href="https://sskelkar.github.io/post/logging-with-spring-aop/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/logging-with-spring-aop/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
-        
-       
-       <a href="https://sskelkar.github.io/tags/spring/">Spring</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/memory-profiling-simple-examples/">
@@ -441,7 +412,7 @@ Let&rsquo;s consider a situation where we have a consumer class that depends on 
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Feb 4, 2016
+  <i class="fas fa-calendar"></i>&nbsp;Feb 4, 2016
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;5&nbsp;minutes
@@ -449,27 +420,25 @@ Let&rsquo;s consider a situation where we have a consumer class that depends on 
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
         
         <p>Recently I have been trying to learn different memory profiling tools to monitor Java applications. I have looked into the command line tools that are shipped as part of JDK like <code>jstat</code>, <code>jps</code>, <code>jvisualvm</code> etc. Licensed tools like <code>Yourkit</code> provide wholesome information about a running JVM including memory usage, CPU time, thread count etc. Running a java application with <code>-verbose:gc</code> option prints memory usage of each generation after every garbage collection event.</p>
-        <a href="https://sskelkar.github.io/post/memory-profiling-simple-examples/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/memory-profiling-simple-examples/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/jpa-entity-relationships/">
@@ -483,7 +452,7 @@ Let&rsquo;s consider a situation where we have a consumer class that depends on 
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Jan 15, 2016
+  <i class="fas fa-calendar"></i>&nbsp;Jan 15, 2016
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;7&nbsp;minutes
@@ -491,8 +460,18 @@ Let&rsquo;s consider a situation where we have a consumer class that depends on 
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
+      
+        <a href="https://sskelkar.github.io/tags/spring/">Spring</a>&nbsp;
+      
+        <a href="https://sskelkar.github.io/tags/database/">Database</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
@@ -520,26 +499,12 @@ Let&rsquo;s consider a situation where we have a consumer class that depends on 
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player_stat(player_stat_id, player_id, runs, wickets) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">0</span>);
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player_stat(player_stat_id, player_id, runs, wickets) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">9000</span>, <span style="color:#ae81ff">0</span>);</span></span></code></pre></div>
 A team can have multiple players. A player can have a statistic.</p>
-        <a href="https://sskelkar.github.io/post/jpa-entity-relationships/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/jpa-entity-relationships/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
-        
-       
-       <a href="https://sskelkar.github.io/tags/spring/">Spring</a>&nbsp;
-        
-       
-       <a href="https://sskelkar.github.io/tags/database/">Database</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/introduction-to-jdb/">
@@ -553,7 +518,7 @@ A team can have multiple players. A player can have a statistic.</p>
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Jan 11, 2016
+  <i class="fas fa-calendar"></i>&nbsp;Jan 11, 2016
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
@@ -561,28 +526,26 @@ A team can have multiple players. A player can have a statistic.</p>
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
         
         <p><code>jdb</code> (Java Debugger) is a simple command-line debugger for Java classes that is provided as part of the JDK tools and utilities.</p>
 <p><code>jdb</code> is based on a server-client model. While debugging, you have one JVM where the code is executed and another JVM where debugger runs. Either VMs can act as the server. There are two ways to start the debugger. You can directly fire up the debugger by giving the main class name with the jdb command.</p>
-        <a href="https://sskelkar.github.io/post/introduction-to-jdb/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/introduction-to-jdb/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/service-discovery-setup-guide/">
@@ -596,7 +559,7 @@ A team can have multiple players. A player can have a statistic.</p>
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Dec 17, 2015
+  <i class="fas fa-calendar"></i>&nbsp;Dec 17, 2015
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
@@ -604,8 +567,16 @@ A team can have multiple players. A player can have a statistic.</p>
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
+      
+        <a href="https://sskelkar.github.io/tags/microservices/">Microservices</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
@@ -616,23 +587,12 @@ So we need some kind of service discovery mechanism to keep track of running ins
 it asks for the address of any running instance of service B from the service discovery. The service discovery can also load balance the
 incoming requests. In this post I demonstrate how to setup a service discovery environment with <a href="https://github.com/Netflix/eureka">Netflix Eureka</a>.
 When ever a service instance spins up, it registers itself with Eureka and sends regular heartbeats to confirm its availability.</p>
-        <a href="https://sskelkar.github.io/post/service-discovery-setup-guide/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/service-discovery-setup-guide/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
-        
-       
-       <a href="https://sskelkar.github.io/tags/microservices/">Microservices</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/how-to-set-up-a-local-spring-cloud-config-server/">
@@ -646,7 +606,7 @@ When ever a service instance spins up, it registers itself with Eureka and sends
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Dec 15, 2015
+  <i class="fas fa-calendar"></i>&nbsp;Dec 15, 2015
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
@@ -654,8 +614,16 @@ When ever a service instance spins up, it registers itself with Eureka and sends
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
+      
+        <a href="https://sskelkar.github.io/tags/microservices/">Microservices</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
@@ -667,23 +635,12 @@ With the Config Server you have a central place to manage external properties fo
 <h3 id="steps-to-configure-config-server">Steps to configure config server</h3>
 <p>a. Create a new Gradle project for the config server. In <a href="https://start.spring.io/">https://start.spring.io/</a>, select the starters for config server.</p>
 <p>b. In your project, navigate to <code>src/main/resources</code>. Rename the automatically generated <code>application.properties</code> file to <code>bootstrap.yml</code>.</p>
-        <a href="https://sskelkar.github.io/post/how-to-set-up-a-local-spring-cloud-config-server/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/how-to-set-up-a-local-spring-cloud-config-server/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
-        
-       
-       <a href="https://sskelkar.github.io/tags/microservices/">Microservices</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/building-with-gradle/">
@@ -697,7 +654,7 @@ With the Config Server you have a central place to manage external properties fo
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Oct 24, 2015
+  <i class="fas fa-calendar"></i>&nbsp;Oct 24, 2015
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;6&nbsp;minutes
@@ -705,28 +662,26 @@ With the Config Server you have a central place to manage external properties fo
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
         
         <p>Gradle is a popular build tool to manage Java projects. Gradle’s build scripts are written in Groovy. The design of Gradle is aimed to be used as a language, not as a rigid framework. In this article, I want to give some basic idea about what a Gradle build script is composed of and some of the features provided by Gradle.</p>
 <p>Gradle is based upon two basic concepts: <strong>projects</strong> and <strong>tasks</strong>. A project can be your application or a library that might be used by a different project. A project doesn’t have to be something that you build, it could be something to be performed, like deploying an application. A task represents a particular piece of work that is done in a build process, like compiling some classes or running unit tests.</p>
-        <a href="https://sskelkar.github.io/post/building-with-gradle/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/building-with-gradle/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
         </div>
         

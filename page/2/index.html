@@ -53,29 +53,11 @@
     <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
       <a class="navbar-brand" href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
     </div>
 
-    <div class="collapse navbar-collapse" id="main-navbar">
+    <div class="navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
-        
-          
-            <li>
-              <a title="Tech Blog" href="/">Tech Blog</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Cartoons" href="/cartoons">Cartoons</a>
-            </li>
-          
         
           
             <li>
@@ -192,7 +174,7 @@
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Jan 14, 2017
+  <i class="fas fa-calendar"></i>&nbsp;Jan 14, 2017
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;8&nbsp;minutes
@@ -200,31 +182,28 @@
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/javascript/">JavaScript</a>&nbsp;
+      
+        <a href="https://sskelkar.github.io/tags/unit-testing/">Unit Testing</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
         
         <h2></h2>
 <p>Creating a front-end JavaScript project can be a daunting task due to the sheer volume of choices available while deciding the tech stack. First, you need to decide the JavaScript framework or library for your project. Do you plan to use the latest ES2015 language features in your code? If yes, then you need a transpiler because your browser probably doesn’t support them yet. Then you require a bundling tool to get your code loaded in the browser. You may want to minify the code for faster load time. To automate all these steps, you need a build script. You may want to deploy your project on a local web server during development. Some setup is required for that. Finally, you need to include some testing framework in your project to write unit tests.</p>
-        <a href="https://sskelkar.github.io/post/setting-up-a-javascript-project-in-2017/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/setting-up-a-javascript-project-in-2017/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/javascript/">JavaScript</a>&nbsp;
-        
-       
-       <a href="https://sskelkar.github.io/tags/unit-testing/">Unit Testing</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/hystrix-a-simple-use-case/">
@@ -238,7 +217,7 @@
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Dec 5, 2016
+  <i class="fas fa-calendar"></i>&nbsp;Dec 5, 2016
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
@@ -246,8 +225,14 @@
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/microservices/">Microservices</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
@@ -255,20 +240,12 @@
         <p>Hystrix is a fault tolerance library that is very useful for managing failures in a distributed environment like microservices. Suppose we have a service <code>A</code> dependent  on service <code>B</code>, which is in turn dependent on service <code>C</code>.</p>
 <pre tabindex="0"><code>A -&gt; B -&gt; C
 </code></pre><p>Let&rsquo;s say a call is made from <code>A</code> to <code>B</code>. To serve this request, <code>B</code> needs to call <code>C</code> but there’s a communication failure between them. If the call from <code>B</code> to <code>C</code> is wrapped in Hystrix mechanism, we prevent the failure being propagated to <code>A</code>. Because <code>B</code> couldn’t fetch the actual information from <code>C</code>, Hystrix gives us the option of declaring a fallback value to be used in this case, if feasible.</p>
-        <a href="https://sskelkar.github.io/post/hystrix-a-simple-use-case/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/hystrix-a-simple-use-case/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/microservices/">Microservices</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/rxjava-observables/">
@@ -282,7 +259,7 @@
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Sep 1, 2016
+  <i class="fas fa-calendar"></i>&nbsp;Sep 1, 2016
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
@@ -290,8 +267,14 @@
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
@@ -327,20 +310,12 @@ Let&rsquo;s consider a situation where we have a consumer class that depends on 
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> list;
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}</span></span></code></pre></div></p>
-        <a href="https://sskelkar.github.io/post/rxjava-observables/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/rxjava-observables/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/cartoons/revert-back-to-me/">
@@ -354,7 +329,7 @@ Let&rsquo;s consider a situation where we have a consumer class that depends on 
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Aug 1, 2016
+  <i class="fas fa-calendar"></i>&nbsp;Aug 1, 2016
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
@@ -362,8 +337,14 @@ Let&rsquo;s consider a situation where we have a consumer class that depends on 
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/cartoons/">Cartoons</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
@@ -372,20 +353,12 @@ Let&rsquo;s consider a situation where we have a consumer class that depends on 
 When people ask you to “revert back”, they are actually asking you to &ldquo;reply back&rdquo;.
 It is an Indian colloquialism and in fact people think that using this phrase makes them sound more formal!</p>
 <p>Of course languages are used differently in different parts of the world. But I have always wondered in which scenario would asking someone to &ldquo;revert back&rdquo; be a doable request? Now I have an answer.</p>
-        <a href="https://sskelkar.github.io/cartoons/revert-back-to-me/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/cartoons/revert-back-to-me/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/cartoons/">Cartoons</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/logging-with-spring-aop/">
@@ -399,7 +372,7 @@ It is an Indian colloquialism and in fact people think that using this phrase ma
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Feb 12, 2016
+  <i class="fas fa-calendar"></i>&nbsp;Feb 12, 2016
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
@@ -407,31 +380,28 @@ It is an Indian colloquialism and in fact people think that using this phrase ma
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
+      
+        <a href="https://sskelkar.github.io/tags/spring/">Spring</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
         
         <p>Aspect oriented programming (AOP) is a way of separating the business login in your code from cross cutting concerns. What is a cross cutting concern?</p>
 <p>Analogy time. A typical house has different rooms that have designated functions. We keep our stuff in the rooms where they make sense. The living room is an unlikely location for a dishwasher and a bathtub belongs in the bathroom. But the electric circuit runs throughout the house because it is not tied to the functionality of any specific room. Thus, the electric circuit is a cross-cutting concern.</p>
-        <a href="https://sskelkar.github.io/post/logging-with-spring-aop/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/logging-with-spring-aop/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
-        
-       
-       <a href="https://sskelkar.github.io/tags/spring/">Spring</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/memory-profiling-simple-examples/">
@@ -445,7 +415,7 @@ It is an Indian colloquialism and in fact people think that using this phrase ma
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Feb 4, 2016
+  <i class="fas fa-calendar"></i>&nbsp;Feb 4, 2016
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;5&nbsp;minutes
@@ -453,27 +423,25 @@ It is an Indian colloquialism and in fact people think that using this phrase ma
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
         
         <p>Recently I have been trying to learn different memory profiling tools to monitor Java applications. I have looked into the command line tools that are shipped as part of JDK like <code>jstat</code>, <code>jps</code>, <code>jvisualvm</code> etc. Licensed tools like <code>Yourkit</code> provide wholesome information about a running JVM including memory usage, CPU time, thread count etc. Running a java application with <code>-verbose:gc</code> option prints memory usage of each generation after every garbage collection event.</p>
-        <a href="https://sskelkar.github.io/post/memory-profiling-simple-examples/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/memory-profiling-simple-examples/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/jpa-entity-relationships/">
@@ -487,7 +455,7 @@ It is an Indian colloquialism and in fact people think that using this phrase ma
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Jan 15, 2016
+  <i class="fas fa-calendar"></i>&nbsp;Jan 15, 2016
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;7&nbsp;minutes
@@ -495,8 +463,18 @@ It is an Indian colloquialism and in fact people think that using this phrase ma
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
+      
+        <a href="https://sskelkar.github.io/tags/spring/">Spring</a>&nbsp;
+      
+        <a href="https://sskelkar.github.io/tags/database/">Database</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
@@ -524,26 +502,12 @@ It is an Indian colloquialism and in fact people think that using this phrase ma
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player_stat(player_stat_id, player_id, runs, wickets) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">0</span>);
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player_stat(player_stat_id, player_id, runs, wickets) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">9000</span>, <span style="color:#ae81ff">0</span>);</span></span></code></pre></div>
 A team can have multiple players. A player can have a statistic.</p>
-        <a href="https://sskelkar.github.io/post/jpa-entity-relationships/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/jpa-entity-relationships/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
-        
-       
-       <a href="https://sskelkar.github.io/tags/spring/">Spring</a>&nbsp;
-        
-       
-       <a href="https://sskelkar.github.io/tags/database/">Database</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/introduction-to-jdb/">
@@ -557,7 +521,7 @@ A team can have multiple players. A player can have a statistic.</p>
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Jan 11, 2016
+  <i class="fas fa-calendar"></i>&nbsp;Jan 11, 2016
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
@@ -565,28 +529,26 @@ A team can have multiple players. A player can have a statistic.</p>
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
         
         <p><code>jdb</code> (Java Debugger) is a simple command-line debugger for Java classes that is provided as part of the JDK tools and utilities.</p>
 <p><code>jdb</code> is based on a server-client model. While debugging, you have one JVM where the code is executed and another JVM where debugger runs. Either VMs can act as the server. There are two ways to start the debugger. You can directly fire up the debugger by giving the main class name with the jdb command.</p>
-        <a href="https://sskelkar.github.io/post/introduction-to-jdb/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/introduction-to-jdb/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/cartoons/apostrophe-abuse/">
@@ -600,7 +562,7 @@ A team can have multiple players. A player can have a statistic.</p>
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Jan 1, 2016
+  <i class="fas fa-calendar"></i>&nbsp;Jan 1, 2016
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
@@ -608,8 +570,14 @@ A team can have multiple players. A player can have a statistic.</p>
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/cartoons/">Cartoons</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
@@ -620,16 +588,8 @@ A team can have multiple players. A player can have a statistic.</p>
         
     </div>
 
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/cartoons/">Cartoons</a>&nbsp;
-         
-    </div>
-    
-
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/service-discovery-setup-guide/">
@@ -643,7 +603,7 @@ A team can have multiple players. A player can have a statistic.</p>
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Dec 17, 2015
+  <i class="fas fa-calendar"></i>&nbsp;Dec 17, 2015
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
@@ -651,8 +611,16 @@ A team can have multiple players. A player can have a statistic.</p>
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
+      
+        <a href="https://sskelkar.github.io/tags/microservices/">Microservices</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
@@ -663,23 +631,12 @@ So we need some kind of service discovery mechanism to keep track of running ins
 it asks for the address of any running instance of service B from the service discovery. The service discovery can also load balance the
 incoming requests. In this post I demonstrate how to setup a service discovery environment with <a href="https://github.com/Netflix/eureka">Netflix Eureka</a>.
 When ever a service instance spins up, it registers itself with Eureka and sends regular heartbeats to confirm its availability.</p>
-        <a href="https://sskelkar.github.io/post/service-discovery-setup-guide/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/service-discovery-setup-guide/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/java/">Java</a>&nbsp;
-        
-       
-       <a href="https://sskelkar.github.io/tags/microservices/">Microservices</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
         </div>
 

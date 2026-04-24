@@ -54,29 +54,11 @@
     <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
       <a class="navbar-brand" href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
     </div>
 
-    <div class="collapse navbar-collapse" id="main-navbar">
+    <div class="navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
-        
-          
-            <li>
-              <a title="Tech Blog" href="/">Tech Blog</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Cartoons" href="/cartoons">Cartoons</a>
-            </li>
-          
         
           
             <li>
@@ -191,7 +173,7 @@
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Nov 8, 2017
+  <i class="fas fa-calendar"></i>&nbsp;Nov 8, 2017
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;7&nbsp;minutes
@@ -199,31 +181,28 @@
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/functional-programming/">Functional Programming</a>&nbsp;
+      
+        <a href="https://sskelkar.github.io/tags/coding-is-fun/">Coding is fun</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
         
         <p>One of the joys of reading <a href="https://mitpress.mit.edu/sicp/full-text/book/book.html">SICP</a> is that apart from the main subject matter, we come across many tangential topics that are interesting in their own right. One such topic is mentioned in <code>Exercise 2.6</code>: Church numerals. Named after the mathematician Alonzo Church, Church numerals are a way of representing natural numbers in lambda calculus. But what is λ-calculus?</p>
 <p>From a programming perspective, λ-calculus can be thought of as the smallest universal programming language. It lacks some of the common features that one would expect in a programming language like, primitives, booleans, numbers etc. In this language, variable substitution and functions are used as the building blocks to express everything else. Even numbers! In this post we will get a glimpse of how this is achieved.</p>
-        <a href="https://sskelkar.github.io/post/representing-natural-numbers-in-lambda-calculus/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/representing-natural-numbers-in-lambda-calculus/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/functional-programming/">Functional Programming</a>&nbsp;
-        
-       
-       <a href="https://sskelkar.github.io/tags/coding-is-fun/">Coding is fun</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/tail-recursion/">
@@ -237,7 +216,7 @@
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Aug 26, 2015
+  <i class="fas fa-calendar"></i>&nbsp;Aug 26, 2015
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
@@ -245,28 +224,26 @@
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/functional-programming/">Functional Programming</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
         
         <p>Tail recursion is one of those functional programming concepts that are likely to be unknown to someone coming from a Java background, like me. I encountered this term while skimming through the first few pages of <a href="https://mitpress.mit.edu/sicp/full-text/book/book.html">SICP</a>. After some quick R&amp;D (i.e. googling), the following is a summary of what I have learnt.</p>
 <p>Before understanding tail recursion, we need to be familiar with the term <strong>tail call</strong>. Simply put, if in a function definition, the last instruction before returning is a function call, then that function call is called a tail call.</p>
-        <a href="https://sskelkar.github.io/post/tail-recursion/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/tail-recursion/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/functional-programming/">Functional Programming</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/scheming-with-the-little-schemer/">
@@ -280,7 +257,7 @@
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Aug 5, 2015
+  <i class="fas fa-calendar"></i>&nbsp;Aug 5, 2015
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
@@ -288,31 +265,28 @@
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/functional-programming/">Functional Programming</a>&nbsp;
+      
+        <a href="https://sskelkar.github.io/tags/coding-is-fun/">Coding is fun</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
         
         <p>From a very long time, I have been an admirer of Lisp, an often praised but seldom used programming language. Common consensus about Lisp is that it is the kind of language you don’t need to know to get your daily tasks done, but any programmer worth his salt should be familiar with its concepts.</p>
 <p>For a beginner, perhaps the easiest way to get a taste of Lisp is to go through <a href="https://mitpress.mit.edu/books/little-schemer">The Little Schemer</a>. As programming books go, this is quite an unusual one. Programmers like to say that they don’t really learn something new, unless they have written some code in it. The Little Schemer takes this idea up a notch. There are no formal definitions (but there are some &ldquo;commandments&rdquo;!) and very little explanation. The book is composed of nothing but (often humorously phrased) coding problems from beginning to end. You need to fire up your compiler and start writing code from the get go. The idea is to let the readers pickup functional programming concepts intuitively rather than teaching them explicitly. You can use any implementation of Lisp dialects like Scheme or Common Lisp to work out the problems. <a href="http://www.gnu.org/software/mit-scheme/">MIT/GNU Scheme</a> worked fine for me.</p>
-        <a href="https://sskelkar.github.io/post/scheming-with-the-little-schemer/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/scheming-with-the-little-schemer/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/functional-programming/">Functional Programming</a>&nbsp;
-        
-       
-       <a href="https://sskelkar.github.io/tags/coding-is-fun/">Coding is fun</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/closures-in-javascript/">
@@ -326,7 +300,7 @@
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on Jul 20, 2015
+  <i class="fas fa-calendar"></i>&nbsp;Jul 20, 2015
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
@@ -334,8 +308,16 @@
   
   
   
+  
+    <span class="blog-tags">
+      
+        <a href="https://sskelkar.github.io/tags/javascript/">JavaScript</a>&nbsp;
+      
+        <a href="https://sskelkar.github.io/tags/functional-programming/">Functional Programming</a>&nbsp;
+      
+    </span>
+  
 </span>
-
 
     </p>
     <div class="post-entry">
@@ -343,23 +325,12 @@
         <p>A good understanding of closures is a must-have skill for any JavaScript programmer. So let&rsquo;s take a look at how they work with two simple examples.</p>
 <p>In JavaScript, functions are first class citizens. This means a function can be passed as an argument to another function, returned as the value from a function, assigned to a variable and stored in a data structure.</p>
 <p>We can even write a function within a function, and the inner function has access to the <em>environment</em> within which it was created. A closure is a combination of a function and the environment in which it was created. This means an inner function can hold the scope of parent function even if the parent function has returned. Following example will make it a little clear.</p>
-        <a href="https://sskelkar.github.io/post/closures-in-javascript/" class="post-read-more">[Read More]</a>
+        <a href="https://sskelkar.github.io/post/closures-in-javascript/" class="post-read-more">[Read more]</a>
         
     </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="https://sskelkar.github.io/tags/javascript/">JavaScript</a>&nbsp;
-        
-       
-       <a href="https://sskelkar.github.io/tags/functional-programming/">Functional Programming</a>&nbsp;
-         
-    </div>
-    
 
 </article>
+
           
         </div>
         
