@@ -238,6 +238,43 @@ It is said that managers have been vibe coding forever. Now, if ICs are also vib
 
           
             <article class="post-preview">
+    <a href="https://sskelkar.github.io/post/prps-capture-intention/">
+        <h2 class="post-title">PRPs Capture Intention Like Never Before</h2>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Sep 20, 2025
+  
+  
+    <span class="meta-separator">|</span><i class="fas fa-clock"></i>&nbsp;5&nbsp;minutes
+  
+  
+  
+  
+  
+    <span class="blog-tags"><a href="https://sskelkar.github.io/tags/agentic-coding/">Agentic Coding</a></span>
+  
+</span>
+
+    </p>
+    <div class="post-entry">
+        
+        <p>It&rsquo;s been about two months since my team started using Gemini as part of their daily coding workflow. We observed that while AI is powerful, it requires some effort to keep it aligned with our requirements, lest it runs amok.</p>
+<p>When we simply gave it a problem statement and let it work, the output was sometimes not what we wanted to achieve. Our simple prompts failed to specify constraints, conventions, and success criteria. Gemini was making assumptions that didn&rsquo;t match our expectations.</p>
+        <a href="https://sskelkar.github.io/post/prps-capture-intention/" class="post-read-more">[Read more]</a>
+        
+    </div>
+
+</article>
+
+          
+            <article class="post-preview">
     <a href="https://sskelkar.github.io/post/quarterly-roadmaps-for-complex-services/">
         <h2 class="post-title">A Manager&#39;s Guide to Keeping the Lights On</h2>
         
@@ -507,84 +544,6 @@ The joy one derives in these simple improvements is akin to <a href="https://en.
         <p>One of the joys of reading <a href="https://mitpress.mit.edu/sicp/full-text/book/book.html">SICP</a> is that apart from the main subject matter, we come across many tangential topics that are interesting in their own right. One such topic is mentioned in <code>Exercise 2.6</code>: Church numerals. Named after the mathematician Alonzo Church, Church numerals are a way of representing natural numbers in lambda calculus. But what is λ-calculus?</p>
 <p>From a programming perspective, λ-calculus can be thought of as the smallest universal programming language. It lacks some of the common features that one would expect in a programming language like, primitives, booleans, numbers etc. In this language, variable substitution and functions are used as the building blocks to express everything else. Even numbers! In this post we will get a glimpse of how this is achieved.</p>
         <a href="https://sskelkar.github.io/post/representing-natural-numbers-in-lambda-calculus/" class="post-read-more">[Read more]</a>
-        
-    </div>
-
-</article>
-
-          
-            <article class="post-preview">
-    <a href="https://sskelkar.github.io/post/using-thread-dumps-to-analyze-deadlocks/">
-        <h2 class="post-title">Using thread dumps to analyse deadlocks</h2>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Oct 14, 2017
-  
-  
-    <span class="meta-separator">|</span><i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
-  
-  
-  
-  
-  
-    <span class="blog-tags"><a href="https://sskelkar.github.io/tags/java/">Java</a></span>
-  
-</span>
-
-    </p>
-    <div class="post-entry">
-        
-        <p>In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Deadlock</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Object lock1;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Object lock2;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Deadlock</span>(Object lock1, Object lock2) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lock1</span> <span style="color:#f92672">=</span> lock1;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lock2</span> <span style="color:#f92672">=</span> lock2;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">methodA</span>() {
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;trying to acquire lock1 from - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">synchronized</span> (lock1) {
-</span></span><span style="display:flex;"><span>            someLongRunningTask();
-</span></span><span style="display:flex;"><span>            methodB();
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">methodB</span>() {
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;trying to acquire lock2 from - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">synchronized</span> (lock2) {
-</span></span><span style="display:flex;"><span>            someLongRunningTask();
-</span></span><span style="display:flex;"><span>            methodA();
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">someLongRunningTask</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>            Thread.<span style="color:#a6e22e">sleep</span>(100);
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (InterruptedException e) {
-</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span>args) {
-</span></span><span style="display:flex;"><span>        Object lock1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
-</span></span><span style="display:flex;"><span>        Object lock2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">new</span> Deadlock(lock1, lock2).<span style="color:#a6e22e">methodA</span>()).<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">new</span> Deadlock(lock1, lock2).<span style="color:#a6e22e">methodB</span>()).<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
-First thread calls <code>methodA</code> and acquires <code>lock1</code>. Second thread calls <code>methodB</code> and acquires <code>lock2</code>. Then the first thread calls <code>methodB</code> while at the same time the second thread calls <code>methodA</code>. Both are trying to acquire a lock that is already held by another thread, so neither can proceed further.</p>
-        <a href="https://sskelkar.github.io/post/using-thread-dumps-to-analyze-deadlocks/" class="post-read-more">[Read more]</a>
         
     </div>
 

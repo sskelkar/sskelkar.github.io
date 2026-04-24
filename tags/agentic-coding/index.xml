@@ -24,5 +24,12 @@
       <guid>https://sskelkar.github.io/post/ics-using-genai-should-think-like-managers/</guid>
       <description>&lt;p&gt;Developers new to agentic coding are at risk of having the wrong expectations. When they try coding agents for the first time, it feels like magic.  But cracks appear when AI is used without understanding its limitations. People tend to dismiss agentic coding if it doesn&amp;rsquo;t work &amp;ldquo;perfectly&amp;rdquo;. This is unfortunate, as coding agents are in fact very impressive.&lt;br&gt;&#xA;It is said that managers have been vibe coding forever. Now, if ICs are also vibe coding, are they like managers?&lt;/p&gt;</description>
     </item>
+    <item>
+      <title>PRPs Capture Intention Like Never Before</title>
+      <link>https://sskelkar.github.io/post/prps-capture-intention/</link>
+      <pubDate>Sat, 20 Sep 2025 00:00:00 +0530</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
+      <guid>https://sskelkar.github.io/post/prps-capture-intention/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s been about two months since my team started using Gemini as part of their daily coding workflow. We observed that while AI is powerful, it requires some effort to keep it aligned with our requirements, lest it runs amok.&lt;/p&gt;&#xA;&lt;p&gt;When we simply gave it a problem statement and let it work, the output was sometimes not what we wanted to achieve. Our simple prompts failed to specify constraints, conventions, and success criteria. Gemini was making assumptions that didn&amp;rsquo;t match our expectations.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>

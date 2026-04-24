@@ -187,6 +187,84 @@
         <div class="posts-list">
           
             <article class="post-preview">
+    <a href="https://sskelkar.github.io/post/using-thread-dumps-to-analyze-deadlocks/">
+        <h2 class="post-title">Using thread dumps to analyse deadlocks</h2>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Oct 14, 2017
+  
+  
+    <span class="meta-separator">|</span><i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+  
+  
+  
+    <span class="blog-tags"><a href="https://sskelkar.github.io/tags/java/">Java</a></span>
+  
+</span>
+
+    </p>
+    <div class="post-entry">
+        
+        <p>In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Deadlock</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Object lock1;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Object lock2;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Deadlock</span>(Object lock1, Object lock2) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lock1</span> <span style="color:#f92672">=</span> lock1;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lock2</span> <span style="color:#f92672">=</span> lock2;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">methodA</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;trying to acquire lock1 from - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">synchronized</span> (lock1) {
+</span></span><span style="display:flex;"><span>            someLongRunningTask();
+</span></span><span style="display:flex;"><span>            methodB();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">methodB</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;trying to acquire lock2 from - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">synchronized</span> (lock2) {
+</span></span><span style="display:flex;"><span>            someLongRunningTask();
+</span></span><span style="display:flex;"><span>            methodA();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">someLongRunningTask</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>            Thread.<span style="color:#a6e22e">sleep</span>(100);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (InterruptedException e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span>args) {
+</span></span><span style="display:flex;"><span>        Object lock1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+</span></span><span style="display:flex;"><span>        Object lock2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">new</span> Deadlock(lock1, lock2).<span style="color:#a6e22e">methodA</span>()).<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">new</span> Deadlock(lock1, lock2).<span style="color:#a6e22e">methodB</span>()).<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+First thread calls <code>methodA</code> and acquires <code>lock1</code>. Second thread calls <code>methodB</code> and acquires <code>lock2</code>. Then the first thread calls <code>methodB</code> while at the same time the second thread calls <code>methodA</code>. Both are trying to acquire a lock that is already held by another thread, so neither can proceed further.</p>
+        <a href="https://sskelkar.github.io/post/using-thread-dumps-to-analyze-deadlocks/" class="post-read-more">[Read more]</a>
+        
+    </div>
+
+</article>
+
+          
+            <article class="post-preview">
     <a href="https://sskelkar.github.io/post/setting-up-a-javascript-project-in-2017/">
         <h2 class="post-title">Setting up a JavaScript project in 2017</h2>
         
@@ -572,43 +650,6 @@ With the Config Server you have a central place to manage external properties fo
 <p>a. Create a new Gradle project for the config server. In <a href="https://start.spring.io/">https://start.spring.io/</a>, select the starters for config server.</p>
 <p>b. In your project, navigate to <code>src/main/resources</code>. Rename the automatically generated <code>application.properties</code> file to <code>bootstrap.yml</code>.</p>
         <a href="https://sskelkar.github.io/post/how-to-set-up-a-local-spring-cloud-config-server/" class="post-read-more">[Read more]</a>
-        
-    </div>
-
-</article>
-
-          
-            <article class="post-preview">
-    <a href="https://sskelkar.github.io/post/building-with-gradle/">
-        <h2 class="post-title">Building with Gradle</h2>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Oct 24, 2015
-  
-  
-    <span class="meta-separator">|</span><i class="fas fa-clock"></i>&nbsp;6&nbsp;minutes
-  
-  
-  
-  
-  
-    <span class="blog-tags"><a href="https://sskelkar.github.io/tags/java/">Java</a></span>
-  
-</span>
-
-    </p>
-    <div class="post-entry">
-        
-        <p>Gradle is a popular build tool to manage Java projects. Gradle’s build scripts are written in Groovy. The design of Gradle is aimed to be used as a language, not as a rigid framework. In this article, I want to give some basic idea about what a Gradle build script is composed of and some of the features provided by Gradle.</p>
-<p>Gradle is based upon two basic concepts: <strong>projects</strong> and <strong>tasks</strong>. A project can be your application or a library that might be used by a different project. A project doesn’t have to be something that you build, it could be something to be performed, like deploying an application. A task represents a particular piece of work that is done in a build process, like compiling some classes or running unit tests.</p>
-        <a href="https://sskelkar.github.io/post/building-with-gradle/" class="post-read-more">[Read more]</a>
         
     </div>
 

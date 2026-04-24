@@ -164,6 +164,84 @@
           
           
             <article class="post-preview">
+    <a href="https://sskelkar.github.io/post/using-thread-dumps-to-analyze-deadlocks/">
+        <h2 class="post-title">Using thread dumps to analyse deadlocks</h2>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Oct 14, 2017
+  
+  
+    <span class="meta-separator">|</span><i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+  
+  
+  
+    <span class="blog-tags"><a href="https://sskelkar.github.io/tags/java/">Java</a></span>
+  
+</span>
+
+    </p>
+    <div class="post-entry">
+        
+        <p>In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Deadlock</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Object lock1;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Object lock2;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Deadlock</span>(Object lock1, Object lock2) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lock1</span> <span style="color:#f92672">=</span> lock1;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lock2</span> <span style="color:#f92672">=</span> lock2;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">methodA</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;trying to acquire lock1 from - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">synchronized</span> (lock1) {
+</span></span><span style="display:flex;"><span>            someLongRunningTask();
+</span></span><span style="display:flex;"><span>            methodB();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">methodB</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;trying to acquire lock2 from - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">synchronized</span> (lock2) {
+</span></span><span style="display:flex;"><span>            someLongRunningTask();
+</span></span><span style="display:flex;"><span>            methodA();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">someLongRunningTask</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>            Thread.<span style="color:#a6e22e">sleep</span>(100);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (InterruptedException e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span>args) {
+</span></span><span style="display:flex;"><span>        Object lock1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+</span></span><span style="display:flex;"><span>        Object lock2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">new</span> Deadlock(lock1, lock2).<span style="color:#a6e22e">methodA</span>()).<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">new</span> Deadlock(lock1, lock2).<span style="color:#a6e22e">methodB</span>()).<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+First thread calls <code>methodA</code> and acquires <code>lock1</code>. Second thread calls <code>methodB</code> and acquires <code>lock2</code>. Then the first thread calls <code>methodB</code> while at the same time the second thread calls <code>methodA</code>. Both are trying to acquire a lock that is already held by another thread, so neither can proceed further.</p>
+        <a href="https://sskelkar.github.io/post/using-thread-dumps-to-analyze-deadlocks/" class="post-read-more">[Read more]</a>
+        
+    </div>
+
+</article>
+
+          
+            <article class="post-preview">
     <a href="https://sskelkar.github.io/post/setting-up-a-javascript-project-in-2017/">
         <h2 class="post-title">Setting up a JavaScript project in 2017</h2>
         
@@ -542,47 +620,6 @@ A team can have multiple players. A player can have a statistic.</p>
         <p>Plurals of regular nouns don&rsquo;t need an apostrophe, people!
 <img src="/img/apostrophe.jpg" alt="apostrophe"></p>
 
-        
-    </div>
-
-</article>
-
-          
-            <article class="post-preview">
-    <a href="https://sskelkar.github.io/post/service-discovery-setup-guide/">
-        <h2 class="post-title">Step by step guide to set up a service discovery environment</h2>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Dec 17, 2015
-  
-  
-    <span class="meta-separator">|</span><i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
-  
-  
-  
-  
-  
-    <span class="blog-tags"><a href="https://sskelkar.github.io/tags/java/">Java</a> <a href="https://sskelkar.github.io/tags/microservices/">Microservices</a></span>
-  
-</span>
-
-    </p>
-    <div class="post-entry">
-        
-        <p>In a microservices environment we can run multiple instances of a service for resilience and scalability.
-In a cloud environment these instances can go up and down arbitrarily.
-So we need some kind of service discovery mechanism to keep track of running instances. When a service A needs to call a service B,
-it asks for the address of any running instance of service B from the service discovery. The service discovery can also load balance the
-incoming requests. In this post I demonstrate how to setup a service discovery environment with <a href="https://github.com/Netflix/eureka">Netflix Eureka</a>.
-When ever a service instance spins up, it registers itself with Eureka and sends regular heartbeats to confirm its availability.</p>
-        <a href="https://sskelkar.github.io/post/service-discovery-setup-guide/" class="post-read-more">[Read more]</a>
         
     </div>
 
