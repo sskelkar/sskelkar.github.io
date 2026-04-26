@@ -11,18 +11,18 @@
     <lastBuildDate>Sat, 25 Apr 2026 00:00:00 +0530</lastBuildDate>
     <atom:link href="https://sskelkar.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Agentic coding improves your codebase. True story!</title>
+      <title>Agentic coding improves your codebase</title>
       <link>https://sskelkar.github.io/post/agentic-coding-improves-codebase/</link>
       <pubDate>Sat, 25 Apr 2026 00:00:00 +0530</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/agentic-coding-improves-codebase/</guid>
-      <description>&lt;p&gt;It is Q2 of 2026 and agentic coding is so thoroughly ingrained in our daily development process that life without it has started to become unimaginable. Don&amp;rsquo;t we all sometimes wonder: How did people travel to another country before translation or navigation apps? How did people survive without emails and smartphones?  Pretty soon it&amp;rsquo;s going to be: how did people write code before AI agents?&lt;/p&gt;&#xA;&lt;p&gt;If like my team, you are using agentic coding responsibly in a serious production project, you might have noticed another change - the code repo has markedly improved.&lt;/p&gt;</description>
+      <description>&lt;p&gt;It is Q2 of 2026 and agentic coding is so thoroughly ingrained in our daily development process that life without it has started to become unimaginable.&#xA;Don&amp;rsquo;t we all sometimes wonder: How did people travel to another country before translation or navigation apps?&#xA;How did people survive without emails and smartphones?  Pretty soon it&amp;rsquo;s going to be: how did people write code before AI agents?&lt;/p&gt;&#xA;&lt;p&gt;If like my team, you are using agentic coding responsibly in a serious production project, you might have noticed another change - the code repo has markedly improved.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>If Rubens could delegate his paintings, why can&#39;t you delegate your code?</title>
-      <link>https://sskelkar.github.io/post/if-rubens-could-delegate/</link>
+      <title>If Rubens could delegate his paintings, you can your code</title>
+      <link>https://sskelkar.github.io/post/if-rubens-could-delegate-paintings-you-can-delegate-code/</link>
       <pubDate>Thu, 23 Apr 2026 23:40:02 +0200</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
-      <guid>https://sskelkar.github.io/post/if-rubens-could-delegate/</guid>
-      <description>&lt;p&gt;I have previously argued that &lt;a href=&#34;https://sskelkar.github.io/post/ics-using-genai-should-think-like-managers/&#34;&gt;engineers using agentic coding should think like managers&lt;/a&gt;. But perhaps you are not interested in management. You don&amp;rsquo;t know what managers do and don&amp;rsquo;t want to learn to think like them. You are put off by all the manager-analogies and wish they&amp;rsquo;d stop. Perhaps you are the artistic type, who thinks of themselves as a software craftsperson.&lt;/p&gt;&#xA;&lt;p&gt;So let&amp;rsquo;s change the subject and talk about something interesting, like art. Hey how about that Rubens? Do you know his process on some of his famous paintings like &lt;em&gt;The Elevation of the Cross&lt;/em&gt;?&lt;/p&gt;</description>
+      <guid>https://sskelkar.github.io/post/if-rubens-could-delegate-paintings-you-can-delegate-code/</guid>
+      <description>&lt;p&gt;I have previously argued that &lt;a href=&#34;https://sskelkar.github.io/post/ics-using-genai-should-think-like-managers/&#34;&gt;engineers using agentic coding should think like managers&lt;/a&gt;.&#xA;But perhaps you are not interested in management. You don&amp;rsquo;t know what managers do, and you don&amp;rsquo;t want to know.&#xA;You are put off by all the manager-analogies and wish they&amp;rsquo;d stop. Perhaps you are the artistic type, who thinks of themselves as a software craftsperson.&lt;/p&gt;&#xA;&lt;p&gt;So let&amp;rsquo;s change the subject and talk about something interesting, like art. Hey how about that Rubens?&#xA;Do you know his process on some of his famous paintings like &lt;em&gt;The Elevation of the Cross&lt;/em&gt;?&lt;/p&gt;</description>
     </item>
     <item>
       <title>ICs Using AI Agents Should Think Like Managers</title>
@@ -32,10 +32,10 @@
       <description>&lt;p&gt;Developers new to agentic coding are at risk of having the wrong expectations. When they try coding agents for the first time, it feels like magic.  But cracks appear when AI is used without understanding its limitations. People tend to dismiss agentic coding if it doesn&amp;rsquo;t work &amp;ldquo;perfectly&amp;rdquo;. This is unfortunate, as coding agents are in fact very impressive.&lt;br&gt;&#xA;It is said that managers have been vibe coding forever. Now, if ICs are also vibe coding, are they like managers?&lt;/p&gt;</description>
     </item>
     <item>
-      <title>PRPs Capture Intention Like Never Before</title>
-      <link>https://sskelkar.github.io/post/prps-capture-intention/</link>
+      <title>Well structured prompts capture intent like never before</title>
+      <link>https://sskelkar.github.io/post/prompts-capture-intent-like-never-before/</link>
       <pubDate>Wed, 10 Sep 2025 00:00:00 +0530</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
-      <guid>https://sskelkar.github.io/post/prps-capture-intention/</guid>
+      <guid>https://sskelkar.github.io/post/prompts-capture-intent-like-never-before/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s been about two months since my team started using Gemini as part of their daily coding workflow.&#xA;We observed that while AI is powerful, it requires some effort to keep it aligned with our requirements, lest it runs amok.&lt;/p&gt;&#xA;&lt;p&gt;When we simply gave it a problem statement and let it work, the output was sometimes not what we wanted to achieve.&#xA;Our simple prompts failed to specify constraints, conventions, and success criteria. Gemini was making assumptions that didn&amp;rsquo;t match our expectations.&lt;/p&gt;</description>
     </item>
     <item>
