@@ -38,5 +38,12 @@
       <guid>https://sskelkar.github.io/post/prompts-capture-intent-like-never-before/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s been about two months since my team started using Gemini as part of their daily coding workflow.&#xA;We observed that while AI is powerful, it requires some effort to keep it aligned with our requirements, lest it runs amok.&lt;/p&gt;&#xA;&lt;p&gt;When we simply gave it a problem statement and let it work, the output was sometimes not what we wanted to achieve.&#xA;Our simple prompts failed to specify constraints, conventions, and success criteria. Gemini was making assumptions that didn&amp;rsquo;t match our expectations.&lt;/p&gt;</description>
     </item>
+    <item>
+      <title>Vibe Coding in Production: Early impressions</title>
+      <link>https://sskelkar.github.io/post/vibe-coding-in-production/</link>
+      <pubDate>Sat, 23 Aug 2025 21:00:00 +0200</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
+      <guid>https://sskelkar.github.io/post/vibe-coding-in-production/</guid>
+      <description>&lt;p&gt;For the past few months I have been trying to incorporate agentic coding as much as possible in my daily workflow.&#xA;So this is a good time to pause and reflect on some early impressions of using AI.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;1. &amp;ldquo;A sword is only as good as the person who wields it.&amp;rdquo;&lt;/strong&gt; While working on a software project you learn a lot&#xA;and develop a style of doing things, subconsciously, without realizing. With an agent you have to recall everything.&#xA;AI is like an enthusiastic but careless junior developer. You don&amp;rsquo;t automatically trust everything it proposes just like you wouldn&amp;rsquo;t blindly trust an inexperienced&#xA;engineer who is new to your project.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>
