@@ -68,7 +68,7 @@ Our simple prompts failed to specify constraints, conventions, and success crite
   "headline": "Well structured prompts capture intent like never before",
   "description" : "It\u0026rsquo;s been about two months since my team started using Gemini as part of their daily coding workflow. We observed that while AI is powerful, it requires some effort to keep it aligned with our requirements, lest it runs amok.\nWhen we simply gave it a problem statement and let it work, the output was sometimes not what we wanted to achieve. Our simple prompts failed to specify constraints, conventions, and success criteria. Gemini was making assumptions that didn\u0026rsquo;t match our expectations.\n",
   "inLanguage" : "en",
-  "wordCount":  926 ,
+  "wordCount":  924 ,
   "datePublished" : "2025-09-10T00:00:00\u002b05:30",
   "dateModified" : "2025-09-10T00:00:00\u002b05:30",
   "image" : "https:\/\/sskelkar.github.io\/",
@@ -273,15 +273,15 @@ The PRP doesn&rsquo;t need to be written manually. Gemini helps write it.
 The developer iterates over it with Gemini until all the requirements, implementation steps, and success criteria have been clearly documented.
 Any background information on the feature is also added to the document.</p>
 <p>The PRP may contain a list of implementation steps. As Gemini runs through each step, it can update their status.</p>
-<h2 id="yes-you-should-check-in-the-prp"><a href="#yes-you-should-check-in-the-prp">Yes, You Should Check in the PRP</a></h2>
+<h2 id="yes-you-should-check-in-the-prompt"><a href="#yes-you-should-check-in-the-prompt">Yes, you should check-in the prompt</a></h2>
 <p>There was some debate in the team about what to do with these PRPs once the implementation was done. One camp argued for discarding the plan because it&rsquo;s not code. In the first few weeks when we started agentic coding, our general understanding was that AI-generated code should be indistinguishable from human written code. The intention being that AI written code should match the quality of human code. Checking in the PRPs gave it away!</p>
-<p>There were also more practical concerns: PRPs accumulating over time and increasing clutter, and PRPs being a development-time artifact that would soon become outdated as new code is written.</p>
-<p>While these concerns made sense, I saw value in keeping the PRPs around, at least for the time being. Since we were gradually transitioning to the Gemini way of working and still learning, I thought it was too soon to declare what constituted a good practice.</p>
+<p>There were also more practical concerns: PRPs accumulating over time and increasing clutter, and being a development-time artifact they would soon become outdated as new code is written.</p>
+<p>While these concerns made sense, I saw value in keeping the prompts around, at least for the time being. Since we were gradually transitioning to the Gemini way of working and still learning, I thought it was too soon to declare what constituted a good practice.</p>
 <p>As we transition to PRP-based Gemini usage, having them in pull requests or the codebase is valuable for knowledge sharing as a way of showing what a good prompt looks like. Our approach will evolve, and we&rsquo;ll learn from each other with every PR. They&rsquo;re also useful as a reference for junior engineers. For this purpose, committing them to a dedicated folder is the most convenient approach, rather than copying and pasting them elsewhere.</p>
 <p>If the PRPs turn out to not be useful, we can easily delete them later.</p>
 <p>Some tickets require changes large enough that they should be deployed in multiple steps, rather than one huge diff. The PRP also serves as a persistent prompt that&rsquo;s readily available when we want to continue working on a ticket. In each session, we can ask Gemini to check the current state of the PRP and continue where it left off.</p>
-<h2 id="capturing-intent-and-thought-process"><a href="#capturing-intent-and-thought-process">Capturing Intent and Thought Process</a></h2>
-<p>But I&rsquo;ve now started observing a very interesting benefit of having the PRP as part of a pull request.
+<h2 id="capturing-intent-and-thought-process"><a href="#capturing-intent-and-thought-process">Capturing intent and thought process</a></h2>
+<p>But I&rsquo;ve now started observing a very interesting benefit of having the prompt as part of a pull request.
 Previously, a pull request contained only the code diff, which was the final result of what developers deemed ready to be published.
 We rarely got insight into the developer&rsquo;s thought process when implementing a feature.
 What constraints did they consider? Which edge cases did they think about? Did they write code or tests first?</p>
