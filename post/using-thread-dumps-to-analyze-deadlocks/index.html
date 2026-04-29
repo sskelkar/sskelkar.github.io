@@ -129,50 +129,12 @@ First thread calls methodA and acquires lock1. Second thread calls methodB and a
 
 <meta property="og:title" content="Using thread dumps to analyse deadlocks" />
 <meta property="og:description" content="In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock:
-public class Deadlock {
-    private Object lock1;
-    private Object lock2;
-
-    public Deadlock(Object lock1, Object lock2) {
-        this.lock1 = lock1;
-        this.lock2 = lock2;
-    }
-
-    public void methodA() {
-        System.out.println(&#34;trying to acquire lock1 from - &#34; &#43; Thread.currentThread().getName());
-        synchronized (lock1) {
-            someLongRunningTask();
-            methodB();
-        }
-    }
-
-    public void methodB() {
-        System.out.println(&#34;trying to acquire lock2 from - &#34; &#43; Thread.currentThread().getName());
-        synchronized (lock2) {
-            someLongRunningTask();
-            methodA();
-        }
-    }
-
-    private void someLongRunningTask() {
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void main(String[]args) {
-        Object lock1 = new Object();
-        Object lock2 = new Object();
-
-        new Thread(() -&gt; new Deadlock(lock1, lock2).methodA()).start();
-        new Thread(() -&gt; new Deadlock(lock1, lock2).methodB()).start();
-    }
-}
-First thread calls methodA and acquires lock1. Second thread calls methodB and acquires lock2. Then the first thread calls methodB while at the same time the second thread calls methodA. Both are trying to acquire a lock that is already held by another thread, so neither can proceed further.">
+public …">
 <meta property="og:url" content="https://sskelkar.github.io/post/using-thread-dumps-to-analyze-deadlocks/" />
-<meta property="og:type" content="website" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-10-14T00:00:00&#43;05:30" />
+<meta property="article:author" content="Sojjwal Kelkar" />
+<meta property="article:tag" content="Java" />
 <meta property="og:site_name" content="Sojjwal Kelkar" />
 
   <meta name="twitter:title" content="Using thread dumps to analyse deadlocks" />

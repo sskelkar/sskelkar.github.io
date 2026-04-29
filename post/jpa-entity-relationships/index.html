@@ -108,31 +108,12 @@ A team can have multiple players. A player can have a statistic.">
 
 
 <meta property="og:title" content="JPA Entity Relationships" />
-<meta property="og:description" content="In a relational database, the relationships between two tables are defined by foreign keys. Typically, one table has a column that contains the primary key of another table’s row. In JPA, we deal with entity objects that are Java representations of database tables. So we need a different way for establishing relationship between two entities. JPA entity relationships define how these entities refer to each other.
-For the purpose of this article, I will work with JPA 2.0 and a table structure as following.
-CREATE TABLE team(team_id NUMBER, name VARCHAR2(20));
-INSERT INTO team(team_id, name) VALUES(1, &#39;india&#39;);
-INSERT INTO team(team_id, name) VALUES(2, &#39;australia&#39;);
-INSERT INTO team(team_id, name) VALUES(3, &#39;england&#39;);
-
-
-CREATE TABLE player(player_id NUMBER, name VARCHAR2(50), team_id NUMBER, age NUMBER, role VARCHAR2(20));
-INSERT INTO player(player_id, name, team_id, age, role) VALUES(1, &#39;sachin&#39;, 1, 42, &#39;batsman&#39;);
-INSERT INTO player(player_id, name, team_id, age, role) VALUES(2, &#39;dhoni&#39;, 1, 34, &#39;wicketkeeper&#39;);
-INSERT INTO player(player_id, name, team_id, age, role) VALUES(3, &#39;clarke&#39;, 2, 38, &#39;batsman&#39;);
-INSERT INTO player(player_id, name, team_id, age, role) VALUES(4, &#39;rogers&#39;, 2, 40, &#39;batsman&#39;);
-INSERT INTO player(player_id, name, team_id, age, role) VALUES(5, &#39;cook&#39;, 3, 31, &#39;batsman&#39;);
-INSERT INTO player(player_id, name, team_id, age, role) VALUES(6, &#39;root&#39;, 3, 26, &#39;batsman&#39;);
-
-CREATE TABLE player_stat(player_stat_id NUMBER, player_id NUMBER, runs NUMBER, wickets NUMBER);
-INSERT INTO player_stat(player_stat_id, player_id, runs, wickets) VALUES(10, 1, 10000, 300);
-INSERT INTO player_stat(player_stat_id, player_id, runs, wickets) VALUES(20, 2, 5000, 10);
-INSERT INTO player_stat(player_stat_id, player_id, runs, wickets) VALUES(30, 3, 7000, 100);
-INSERT INTO player_stat(player_stat_id, player_id, runs, wickets) VALUES(40, 4, 2000, 0);
-INSERT INTO player_stat(player_stat_id, player_id, runs, wickets) VALUES(50, 5, 9000, 0);
-A team can have multiple players. A player can have a statistic.">
+<meta property="og:description" content="In a relational database, the relationships between two tables are defined by foreign keys. Typically, one table has a column that contains the primary key of another table’s row. In JPA, we deal with …">
 <meta property="og:url" content="https://sskelkar.github.io/post/jpa-entity-relationships/" />
-<meta property="og:type" content="website" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-01-15T00:00:00&#43;05:30" />
+<meta property="article:tag" content="Java" />
+<meta property="article:tag" content="Database" />
 <meta property="og:site_name" content="Sojjwal Kelkar" />
 
   <meta name="twitter:title" content="JPA Entity Relationships" />
