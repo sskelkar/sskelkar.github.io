@@ -6,14 +6,16 @@
     <description>Recent content in Engineering Management on Sojjwal Kelkar</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 07 Sep 2025 00:00:00 +0530</lastBuildDate>
+    <managingEditor>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</managingEditor>
+    <webMaster>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</webMaster>
+    <lastBuildDate>Thu, 30 Apr 2026 00:00:00 +0530</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/engineering-management/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Keeping the Lights On: A Manager&#39;s Guide to Legacy Services</title>
-      <link>http://localhost:1313/post/quarterly-roadmaps-for-complex-services/</link>
-      <pubDate>Sun, 07 Sep 2025 00:00:00 +0530</pubDate>
-      <guid>http://localhost:1313/post/quarterly-roadmaps-for-complex-services/</guid>
-      <description>&lt;p&gt;As a new engineering manager, inheriting a complex, unreliable, and legacy product can be a daunting experience. I recently went through this with a service called &amp;ldquo;Hurrier&amp;rdquo;. While Hurrier owned multiple tier-1 features, it was plagued with reliability issues and technical debt. This post outlines some of the guiding principles our team adopted to not only keep the lights on but also to steadily improve the health of the system.&lt;/p&gt;</description>
+      <title>AI is challenging engineering managers in novel ways</title>
+      <link>http://localhost:1313/post/ai-challenging-engineering-managers/</link>
+      <pubDate>Thu, 30 Apr 2026 00:00:00 +0530</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
+      <guid>http://localhost:1313/post/ai-challenging-engineering-managers/</guid>
+      <description>&lt;p&gt;The advent of agentic coding has had profound implications for software engineering and triggered a developer &lt;a href=&#34;https://boristane.com/blog/the-software-development-lifecycle-is-dead/&#34;&gt;identity crisis&lt;/a&gt;.  While much of the attention has been focussed on the impact of AI on software engineers, it is worth dwelling into how it is impacting managers.&lt;/p&gt;&#xA;&lt;h1 id=&#34;tbd-people-management&#34;&gt;TBD: People management&lt;/h1&gt;&#xA;&lt;p&gt;While the productivity gains brought by AI are phenomenal. For your average software engineer this is also a time of great apprehension and anxiety. With all the news about AI-driven layoffs, engineers are understandably worried about their future prospects. As such, line mangers need to be prepared to have some difficult conversations in their 1:1 s that should be handled delicately.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
