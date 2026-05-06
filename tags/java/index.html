@@ -176,8 +176,6 @@
     <a href="https://sskelkar.github.io/post/db-integration-tests-for-spring-app/">
         <h2 class="post-title">Database integration tests for a Spring application</h2>
         
-        
-        
     </a>
 
     <p class="post-meta">
@@ -199,10 +197,8 @@
 
     </p>
     <div class="post-entry">
-        
-        <p>Suppose you are tasked with writing tests for a Spring and Hibernate application. This application uses a mix of native queries, HQL or entity associations to fetch data from the database. If you choose to mock the DAO or entity layers, you leave a significant portion of the code untested. In such cases data integration tests can provide the most correct feedback. But you do you configure your application to run integration tests?</p>
+        Suppose you are tasked with writing tests for a Spring and Hibernate application. This application uses a mix of native queries, HQL or entity associations to fetch data from the …
         <a href="https://sskelkar.github.io/post/db-integration-tests-for-spring-app/" class="post-read-more">[Read more]</a>
-        
     </div>
 
 </article>
@@ -211,8 +207,6 @@
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/using-thread-dumps-to-analyze-deadlocks/">
         <h2 class="post-title">Using thread dumps to analyse deadlocks</h2>
-        
-        
         
     </a>
 
@@ -235,52 +229,8 @@
 
     </p>
     <div class="post-entry">
-        
-        <p>In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a deadlock:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Deadlock</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Object lock1;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Object lock2;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Deadlock</span>(Object lock1, Object lock2) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lock1</span> <span style="color:#f92672">=</span> lock1;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lock2</span> <span style="color:#f92672">=</span> lock2;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">methodA</span>() {
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;trying to acquire lock1 from - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">synchronized</span> (lock1) {
-</span></span><span style="display:flex;"><span>            someLongRunningTask();
-</span></span><span style="display:flex;"><span>            methodB();
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">methodB</span>() {
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;trying to acquire lock2 from - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">synchronized</span> (lock2) {
-</span></span><span style="display:flex;"><span>            someLongRunningTask();
-</span></span><span style="display:flex;"><span>            methodA();
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">someLongRunningTask</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>            Thread.<span style="color:#a6e22e">sleep</span>(100);
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (InterruptedException e) {
-</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span>args) {
-</span></span><span style="display:flex;"><span>        Object lock1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
-</span></span><span style="display:flex;"><span>        Object lock2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">new</span> Deadlock(lock1, lock2).<span style="color:#a6e22e">methodA</span>()).<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">new</span> Deadlock(lock1, lock2).<span style="color:#a6e22e">methodB</span>()).<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
-First thread calls <code>methodA</code> and acquires <code>lock1</code>. Second thread calls <code>methodB</code> and acquires <code>lock2</code>. Then the first thread calls <code>methodB</code> while at the same time the second thread calls <code>methodA</code>. Both are trying to acquire a lock that is already held by another thread, so neither can proceed further.</p>
+        In a multi-threaded Java application, a deadlock occurs when two threads wait forever attempting to acquire locks that are held by each other. Here’s a simple example to simulate a …
         <a href="https://sskelkar.github.io/post/using-thread-dumps-to-analyze-deadlocks/" class="post-read-more">[Read more]</a>
-        
     </div>
 
 </article>
@@ -289,8 +239,6 @@ First thread calls <code>methodA</code> and acquires <code>lock1</code>. Second 
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/rxjava-observables/">
         <h2 class="post-title">Running time intensive operations in parallel with RxJava Observables</h2>
-        
-        
         
     </a>
 
@@ -313,40 +261,8 @@ First thread calls <code>methodA</code> and acquires <code>lock1</code>. Second 
 
     </p>
     <div class="post-entry">
-        
-        <p>Recently I delved into the <a href="https://github.com/ReactiveX/RxJava">RxJava</a> library. In this post I will demonstrate how RxJava Observables can be used to execute two long running tasks in parallel, so as to reduce their overall execution time.</p>
-<p>While we can create threads for this purpose, an additional benefit of using Observables is that it provides a convenient way of collecting the results of the parallel tasks. With threads, this can get pretty complicated.
-Let&rsquo;s consider a situation where we have a consumer class that depends on the result of two or more expensive independent tasks.
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Producer1</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">produce</span>() {
-</span></span><span style="display:flex;"><span>    List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span>();
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>0; i<span style="color:#f92672">&lt;</span>5; i<span style="color:#f92672">++</span>) {
-</span></span><span style="display:flex;"><span>      System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Producer1 - &#34;</span> <span style="color:#f92672">+</span> i);
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>        Thread.<span style="color:#a6e22e">sleep</span>(1000);
-</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">catch</span>(Exception e) {}
-</span></span><span style="display:flex;"><span>      list.<span style="color:#a6e22e">add</span>(i);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> list;
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Producer2</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">produce</span>() {
-</span></span><span style="display:flex;"><span>    List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span>();
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>0; i<span style="color:#f92672">&lt;</span>5; i<span style="color:#f92672">++</span>) {
-</span></span><span style="display:flex;"><span>      System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Producer2 - &#34;</span> <span style="color:#f92672">+</span> i);
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>        Thread.<span style="color:#a6e22e">sleep</span>(1000);
-</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">catch</span>(Exception e) {}
-</span></span><span style="display:flex;"><span>      list.<span style="color:#a6e22e">add</span>(i);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> list;
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>}</span></span></code></pre></div></p>
+        Recently I delved into the RxJava library. In this post I will demonstrate how RxJava Observables can be used to execute two long running tasks in parallel, so as to reduce their …
         <a href="https://sskelkar.github.io/post/rxjava-observables/" class="post-read-more">[Read more]</a>
-        
     </div>
 
 </article>
@@ -355,8 +271,6 @@ Let&rsquo;s consider a situation where we have a consumer class that depends on 
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/logging-with-spring-aop/">
         <h2 class="post-title">Logging with Spring AOP</h2>
-        
-        
         
     </a>
 
@@ -379,11 +293,9 @@ Let&rsquo;s consider a situation where we have a consumer class that depends on 
 
     </p>
     <div class="post-entry">
-        
-        <p>Aspect oriented programming (AOP) is a way of separating the business login in your code from cross cutting concerns. What is a cross cutting concern?</p>
-<p>Analogy time. A typical house has different rooms that have designated functions. We keep our stuff in the rooms where they make sense. The living room is an unlikely location for a dishwasher and a bathtub belongs in the bathroom. But the electric circuit runs throughout the house because it is not tied to the functionality of any specific room. Thus, the electric circuit is a cross-cutting concern.</p>
+        Aspect oriented programming (AOP) is a way of separating the business login in your code from cross cutting concerns. What is a cross cutting concern?
+Analogy time. A typical house …
         <a href="https://sskelkar.github.io/post/logging-with-spring-aop/" class="post-read-more">[Read more]</a>
-        
     </div>
 
 </article>
@@ -392,8 +304,6 @@ Let&rsquo;s consider a situation where we have a consumer class that depends on 
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/memory-profiling-simple-examples/">
         <h2 class="post-title">Memory profiling – simple examples</h2>
-        
-        
         
     </a>
 
@@ -416,10 +326,8 @@ Let&rsquo;s consider a situation where we have a consumer class that depends on 
 
     </p>
     <div class="post-entry">
-        
-        <p>Recently I have been trying to learn different memory profiling tools to monitor Java applications. I have looked into the command line tools that are shipped as part of JDK like <code>jstat</code>, <code>jps</code>, <code>jvisualvm</code> etc. Licensed tools like <code>Yourkit</code> provide wholesome information about a running JVM including memory usage, CPU time, thread count etc. Running a java application with <code>-verbose:gc</code> option prints memory usage of each generation after every garbage collection event.</p>
+        Recently I have been trying to learn different memory profiling tools to monitor Java applications. I have looked into the command line tools that are shipped as part of JDK like …
         <a href="https://sskelkar.github.io/post/memory-profiling-simple-examples/" class="post-read-more">[Read more]</a>
-        
     </div>
 
 </article>
@@ -428,8 +336,6 @@ Let&rsquo;s consider a situation where we have a consumer class that depends on 
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/jpa-entity-relationships/">
         <h2 class="post-title">JPA Entity Relationships</h2>
-        
-        
         
     </a>
 
@@ -452,32 +358,8 @@ Let&rsquo;s consider a situation where we have a consumer class that depends on 
 
     </p>
     <div class="post-entry">
-        
-        <p>In a relational database, the relationships between two tables are defined by foreign keys. Typically, one table has a column that contains the primary key of another table’s row. In JPA, we deal with entity objects that are Java representations of database tables. So we need a different way for establishing relationship between two entities. JPA entity relationships define how these entities refer to each other.</p>
-<p>For the purpose of this article, I will work with JPA 2.0 and a table structure as following.
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> team(team_id NUMBER, name VARCHAR2(<span style="color:#ae81ff">20</span>));
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> team(team_id, name) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;india&#39;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> team(team_id, name) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;australia&#39;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> team(team_id, name) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;england&#39;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> player(player_id NUMBER, name VARCHAR2(<span style="color:#ae81ff">50</span>), team_id NUMBER, age NUMBER, <span style="color:#66d9ef">role</span> VARCHAR2(<span style="color:#ae81ff">20</span>));
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player(player_id, name, team_id, age, <span style="color:#66d9ef">role</span>) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;sachin&#39;</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">42</span>, <span style="color:#e6db74">&#39;batsman&#39;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player(player_id, name, team_id, age, <span style="color:#66d9ef">role</span>) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;dhoni&#39;</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">34</span>, <span style="color:#e6db74">&#39;wicketkeeper&#39;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player(player_id, name, team_id, age, <span style="color:#66d9ef">role</span>) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;clarke&#39;</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">38</span>, <span style="color:#e6db74">&#39;batsman&#39;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player(player_id, name, team_id, age, <span style="color:#66d9ef">role</span>) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">4</span>, <span style="color:#e6db74">&#39;rogers&#39;</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">40</span>, <span style="color:#e6db74">&#39;batsman&#39;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player(player_id, name, team_id, age, <span style="color:#66d9ef">role</span>) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#39;cook&#39;</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">31</span>, <span style="color:#e6db74">&#39;batsman&#39;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player(player_id, name, team_id, age, <span style="color:#66d9ef">role</span>) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">6</span>, <span style="color:#e6db74">&#39;root&#39;</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">26</span>, <span style="color:#e6db74">&#39;batsman&#39;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> player_stat(player_stat_id NUMBER, player_id NUMBER, runs NUMBER, wickets NUMBER);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player_stat(player_stat_id, player_id, runs, wickets) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">10000</span>, <span style="color:#ae81ff">300</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player_stat(player_stat_id, player_id, runs, wickets) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5000</span>, <span style="color:#ae81ff">10</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player_stat(player_stat_id, player_id, runs, wickets) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">7000</span>, <span style="color:#ae81ff">100</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player_stat(player_stat_id, player_id, runs, wickets) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">0</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player_stat(player_stat_id, player_id, runs, wickets) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">9000</span>, <span style="color:#ae81ff">0</span>);</span></span></code></pre></div>
-A team can have multiple players. A player can have a statistic.</p>
+        In a relational database, the relationships between two tables are defined by foreign keys. Typically, one table has a column that contains the primary key of another table’s row. …
         <a href="https://sskelkar.github.io/post/jpa-entity-relationships/" class="post-read-more">[Read more]</a>
-        
     </div>
 
 </article>
@@ -486,8 +368,6 @@ A team can have multiple players. A player can have a statistic.</p>
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/introduction-to-jdb/">
         <h2 class="post-title">Introduction to jdb</h2>
-        
-        
         
     </a>
 
@@ -510,11 +390,9 @@ A team can have multiple players. A player can have a statistic.</p>
 
     </p>
     <div class="post-entry">
-        
-        <p><code>jdb</code> (Java Debugger) is a simple command-line debugger for Java classes that is provided as part of the JDK tools and utilities.</p>
-<p><code>jdb</code> is based on a server-client model. While debugging, you have one JVM where the code is executed and another JVM where debugger runs. Either VMs can act as the server. There are two ways to start the debugger. You can directly fire up the debugger by giving the main class name with the jdb command.</p>
+        jdb (Java Debugger) is a simple command-line debugger for Java classes that is provided as part of the JDK tools and utilities.
+jdb is based on a server-client model. While …
         <a href="https://sskelkar.github.io/post/introduction-to-jdb/" class="post-read-more">[Read more]</a>
-        
     </div>
 
 </article>
@@ -523,8 +401,6 @@ A team can have multiple players. A player can have a statistic.</p>
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/service-discovery-setup-guide/">
         <h2 class="post-title">Step by step guide to set up a service discovery environment</h2>
-        
-        
         
     </a>
 
@@ -547,15 +423,8 @@ A team can have multiple players. A player can have a statistic.</p>
 
     </p>
     <div class="post-entry">
-        
-        <p>In a microservices environment we can run multiple instances of a service for resilience and scalability.
-In a cloud environment these instances can go up and down arbitrarily.
-So we need some kind of service discovery mechanism to keep track of running instances. When a service A needs to call a service B,
-it asks for the address of any running instance of service B from the service discovery. The service discovery can also load balance the
-incoming requests. In this post I demonstrate how to setup a service discovery environment with <a href="https://github.com/Netflix/eureka">Netflix Eureka</a>.
-When ever a service instance spins up, it registers itself with Eureka and sends regular heartbeats to confirm its availability.</p>
+        In a microservices environment we can run multiple instances of a service for resilience and scalability. In a cloud environment these instances can go up and down arbitrarily. So …
         <a href="https://sskelkar.github.io/post/service-discovery-setup-guide/" class="post-read-more">[Read more]</a>
-        
     </div>
 
 </article>
@@ -564,8 +433,6 @@ When ever a service instance spins up, it registers itself with Eureka and sends
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/how-to-set-up-a-local-spring-cloud-config-server/">
         <h2 class="post-title">How to set up a local spring cloud config server</h2>
-        
-        
         
     </a>
 
@@ -588,16 +455,9 @@ When ever a service instance spins up, it registers itself with Eureka and sends
 
     </p>
     <div class="post-entry">
-        
-        <p>From the <a href="https://spring.io/projects/spring-cloud-config">official documentation</a>,</p>
-<blockquote>
-<p>Spring Cloud Config provides server and client-side support for externalized configuration in a distributed system.
-With the Config Server you have a central place to manage external properties for applications across all environments.</p></blockquote>
-<h3 id="steps-to-configure-config-server">Steps to configure config server</h3>
-<p>a. Create a new Gradle project for the config server. In <a href="https://start.spring.io/">https://start.spring.io/</a>, select the starters for config server.</p>
-<p>b. In your project, navigate to <code>src/main/resources</code>. Rename the automatically generated <code>application.properties</code> file to <code>bootstrap.yml</code>.</p>
+        From the official documentation,
+Spring Cloud Config provides server and client-side support for externalized configuration in a distributed system. With the Config Server you have …
         <a href="https://sskelkar.github.io/post/how-to-set-up-a-local-spring-cloud-config-server/" class="post-read-more">[Read more]</a>
-        
     </div>
 
 </article>
@@ -606,8 +466,6 @@ With the Config Server you have a central place to manage external properties fo
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/building-with-gradle/">
         <h2 class="post-title">Building with Gradle</h2>
-        
-        
         
     </a>
 
@@ -630,11 +488,8 @@ With the Config Server you have a central place to manage external properties fo
 
     </p>
     <div class="post-entry">
-        
-        <p>Gradle is a popular build tool to manage Java projects. Gradle’s build scripts are written in Groovy. The design of Gradle is aimed to be used as a language, not as a rigid framework. In this article, I want to give some basic idea about what a Gradle build script is composed of and some of the features provided by Gradle.</p>
-<p>Gradle is based upon two basic concepts: <strong>projects</strong> and <strong>tasks</strong>. A project can be your application or a library that might be used by a different project. A project doesn’t have to be something that you build, it could be something to be performed, like deploying an application. A task represents a particular piece of work that is done in a build process, like compiling some classes or running unit tests.</p>
+        Gradle is a popular build tool to manage Java projects. Gradle’s build scripts are written in Groovy. The design of Gradle is aimed to be used as a language, not as a rigid …
         <a href="https://sskelkar.github.io/post/building-with-gradle/" class="post-read-more">[Read more]</a>
-        
     </div>
 
 </article>

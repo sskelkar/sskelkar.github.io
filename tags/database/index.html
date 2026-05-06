@@ -176,8 +176,6 @@
     <a href="https://sskelkar.github.io/post/software-tenbagger/">
         <h2 class="post-title">Software tenbagger</h2>
         
-        
-        
     </a>
 
     <p class="post-meta">
@@ -199,15 +197,8 @@
 
     </p>
     <div class="post-entry">
-        
-        <p>&ldquo;Tenbagger&rdquo; is a term coined by legendary investor Peter Lynch to describe stocks that provide tenfold value on the initial investment.
-As software engineers we make scores of decisions every day in the face of ever-evolving requirements, whose impact on the architecture might only become visible down the line.
-It&rsquo;s nice when a relatively low-effort code change ends up providing compounding benefits over a long time horizon.</p>
-<p>I am currently working on a critical component in a distributed system for a food-delivery app. One of its core responsibilities is to receive information from an upstream service and
-pass it into downstream services. The feature requirements typically follow this pattern: customers can now provide a backup phone number, which should be shown on the delivery app.
-So an order passing through a chain of systems can now contain a new field, which needs to be forwarded to relevant downstream services.</p>
+        &ldquo;Tenbagger&rdquo; is a term coined by legendary investor Peter Lynch to describe stocks that provide tenfold value on the initial investment. As software engineers we make …
         <a href="https://sskelkar.github.io/post/software-tenbagger/" class="post-read-more">[Read more]</a>
-        
     </div>
 
 </article>
@@ -216,8 +207,6 @@ So an order passing through a chain of systems can now contain a new field, whic
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/squashing-ruby-on-rails-database-migrations/">
         <h2 class="post-title">Squashing ruby on rails database migrations</h2>
-        
-        
         
     </a>
 
@@ -240,20 +229,9 @@ So an order passing through a chain of systems can now contain a new field, whic
 
     </p>
     <div class="post-entry">
-        
-        <h2 id="why">Why?</h2>
-<p>There are several reasons why you&rsquo;d want to squash the database migrations in your Ruby on Rails application:</p>
-<ol>
-<li>
-<p>In a long running project you may end up with hundreds of files in your <code>db/migrate</code> folder over time. Carrying these legacy
-migrations incurs maintenance overhead. For example, when upgrading the Rails version, you may need to modify those old migrations for
-syntax changes.</p>
-</li>
-<li>
-<p>If your build process involves recreating the database to run the tests, it would need to run all of these old migrations. Running a lot
-of migrations would slow down the build time.</p>
+        Why? There are several reasons why you&rsquo;d want to squash the database migrations in your Ruby on Rails application:
+In a long running project you may end up with hundreds of …
         <a href="https://sskelkar.github.io/post/squashing-ruby-on-rails-database-migrations/" class="post-read-more">[Read more]</a>
-        
     </div>
 
 </article>
@@ -262,8 +240,6 @@ of migrations would slow down the build time.</p>
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/postgres-explain-analyze/">
         <h2 class="post-title">Understanding a Postgres query plan</h2>
-        
-        
         
     </a>
 
@@ -286,10 +262,8 @@ of migrations would slow down the build time.</p>
 
     </p>
     <div class="post-entry">
-        
-        <p>A query plan is a sequence of steps used by a database to access data. Being able to read a query plan is key to understanding the performance of an SQL query. While tuning a query we need to know how the rows are being fetched from the tables? Are the indexes being used? What is the cost of joining to tables? A query plan provides with an answer for all of these questions.</p>
+        A query plan is a sequence of steps used by a database to access data. Being able to read a query plan is key to understanding the performance of an SQL query. While tuning a query …
         <a href="https://sskelkar.github.io/post/postgres-explain-analyze/" class="post-read-more">[Read more]</a>
-        
     </div>
 
 </article>
@@ -298,8 +272,6 @@ of migrations would slow down the build time.</p>
             <article class="post-preview">
     <a href="https://sskelkar.github.io/post/jpa-entity-relationships/">
         <h2 class="post-title">JPA Entity Relationships</h2>
-        
-        
         
     </a>
 
@@ -322,32 +294,8 @@ of migrations would slow down the build time.</p>
 
     </p>
     <div class="post-entry">
-        
-        <p>In a relational database, the relationships between two tables are defined by foreign keys. Typically, one table has a column that contains the primary key of another table’s row. In JPA, we deal with entity objects that are Java representations of database tables. So we need a different way for establishing relationship between two entities. JPA entity relationships define how these entities refer to each other.</p>
-<p>For the purpose of this article, I will work with JPA 2.0 and a table structure as following.
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> team(team_id NUMBER, name VARCHAR2(<span style="color:#ae81ff">20</span>));
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> team(team_id, name) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;india&#39;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> team(team_id, name) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;australia&#39;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> team(team_id, name) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;england&#39;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> player(player_id NUMBER, name VARCHAR2(<span style="color:#ae81ff">50</span>), team_id NUMBER, age NUMBER, <span style="color:#66d9ef">role</span> VARCHAR2(<span style="color:#ae81ff">20</span>));
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player(player_id, name, team_id, age, <span style="color:#66d9ef">role</span>) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;sachin&#39;</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">42</span>, <span style="color:#e6db74">&#39;batsman&#39;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player(player_id, name, team_id, age, <span style="color:#66d9ef">role</span>) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;dhoni&#39;</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">34</span>, <span style="color:#e6db74">&#39;wicketkeeper&#39;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player(player_id, name, team_id, age, <span style="color:#66d9ef">role</span>) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;clarke&#39;</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">38</span>, <span style="color:#e6db74">&#39;batsman&#39;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player(player_id, name, team_id, age, <span style="color:#66d9ef">role</span>) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">4</span>, <span style="color:#e6db74">&#39;rogers&#39;</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">40</span>, <span style="color:#e6db74">&#39;batsman&#39;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player(player_id, name, team_id, age, <span style="color:#66d9ef">role</span>) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#39;cook&#39;</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">31</span>, <span style="color:#e6db74">&#39;batsman&#39;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player(player_id, name, team_id, age, <span style="color:#66d9ef">role</span>) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">6</span>, <span style="color:#e6db74">&#39;root&#39;</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">26</span>, <span style="color:#e6db74">&#39;batsman&#39;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> player_stat(player_stat_id NUMBER, player_id NUMBER, runs NUMBER, wickets NUMBER);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player_stat(player_stat_id, player_id, runs, wickets) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">10000</span>, <span style="color:#ae81ff">300</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player_stat(player_stat_id, player_id, runs, wickets) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5000</span>, <span style="color:#ae81ff">10</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player_stat(player_stat_id, player_id, runs, wickets) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">7000</span>, <span style="color:#ae81ff">100</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player_stat(player_stat_id, player_id, runs, wickets) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">0</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> player_stat(player_stat_id, player_id, runs, wickets) <span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">9000</span>, <span style="color:#ae81ff">0</span>);</span></span></code></pre></div>
-A team can have multiple players. A player can have a statistic.</p>
+        In a relational database, the relationships between two tables are defined by foreign keys. Typically, one table has a column that contains the primary key of another table’s row. …
         <a href="https://sskelkar.github.io/post/jpa-entity-relationships/" class="post-read-more">[Read more]</a>
-        
     </div>
 
 </article>
