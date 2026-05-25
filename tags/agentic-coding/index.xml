@@ -8,8 +8,15 @@
     <language>en</language>
     <managingEditor>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</managingEditor>
     <webMaster>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</webMaster>
-    <lastBuildDate>Sat, 25 Apr 2026 00:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 00:00:00 +0530</lastBuildDate>
     <atom:link href="https://sskelkar.github.io/tags/agentic-coding/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mimicking developer cognitive process with agent teams</title>
+      <link>https://sskelkar.github.io/post/mimicking-developer-cognitive-process-with-agent-teams/</link>
+      <pubDate>Tue, 26 May 2026 00:00:00 +0530</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
+      <guid>https://sskelkar.github.io/post/mimicking-developer-cognitive-process-with-agent-teams/</guid>
+      <description>&lt;p&gt;Agentic coding came with the promise that developers can spend their time thinking at a higher abstraction, as the task of writing code is delegated away.&#xA;Instead, what we observe is that for any non-trivial task, developers have to spend their time micromanaging AI to ensure that:&#xA;it doesn&amp;rsquo;t stray away from what the developer wants it to build; is being thorough enough; and doesn&amp;rsquo;t overlook any critical requirement.&#xA;After the AI-assisted code has been written, it runs into the speed bump of code review.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>How AI is forcing us to finally fix our codebase</title>
       <link>https://sskelkar.github.io/post/how-ai-fixes-codebase/</link>

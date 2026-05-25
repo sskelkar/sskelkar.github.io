@@ -1,0 +1,552 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+ 
+
+
+      <title>Mimicking developer cognitive process with agent teams - </title>
+
+  <meta name="description" content="Agentic coding came with the promise that developers can spend their time thinking at a higher abstraction, as the task of writing code is delegated away.
+Instead, what we observe is that for any non-trivial task, developers have to spend their time micromanaging AI to ensure that:
+it doesn&rsquo;t stray away from what the developer wants it to build; is being thorough enough; and doesn&rsquo;t overlook any critical requirement.
+After the AI-assisted code has been written, it runs into the speed bump of code review.">
+  <meta name="author" content="Sojjwal Kelkar"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Sojjwal Kelkar",
+    
+    "url": "https:\/\/sskelkar.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/sskelkar.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/sskelkar.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/sskelkar.github.io\/post\/mimicking-developer-cognitive-process-with-agent-teams\/",
+          "name": "Mimicking developer cognitive process with agent teams"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Sojjwal Kelkar"
+  },
+  "headline": "Mimicking developer cognitive process with agent teams",
+  "description" : "Agentic coding came with the promise that developers can spend their time thinking at a higher abstraction, as the task of writing code is delegated away. Instead, what we observe is that for any non-trivial task, developers have to spend their time micromanaging AI to ensure that: it doesn\u0026rsquo;t stray away from what the developer wants it to build; is being thorough enough; and doesn\u0026rsquo;t overlook any critical requirement. After the AI-assisted code has been written, it runs into the speed bump of code review.\n",
+  "inLanguage" : "en",
+  "wordCount":  3117 ,
+  "datePublished" : "2026-05-26T00:00:00\u002b05:30",
+  "dateModified" : "2026-05-26T00:00:00\u002b05:30",
+  "image" : "https:\/\/sskelkar.github.io\/",
+  "keywords" : [ "Agentic Coding" ],
+  "mainEntityOfPage" : "https:\/\/sskelkar.github.io\/post\/mimicking-developer-cognitive-process-with-agent-teams\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/sskelkar.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/sskelkar.github.io\/",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Mimicking developer cognitive process with agent teams" />
+<meta property="og:url" content="https://sskelkar.github.io/post/mimicking-developer-cognitive-process-with-agent-teams/" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-05-26T00:00:00&#43;05:30" />
+<meta property="article:author" content="Sojjwal Kelkar" />
+<meta property="article:tag" content="Agentic Coding" />
+<meta property="og:site_name" content="Sojjwal Kelkar" />
+
+  <meta name="twitter:title" content="Mimicking developer cognitive process with agent teams" />
+  <meta name="twitter:description" content="Agentic coding came with the promise that developers can spend their time thinking at a higher abstraction, as the task of writing code is delegated away.
+Instead, what we observe is that for any …">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="generator" content="Hugo 0.148.2">
+  <link rel="alternate" href="https://sskelkar.github.io/index.xml" type="application/rss+xml" title="Sojjwal Kelkar"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.6.0/css/all.css" integrity="sha384-h/hnnw1Bi4nbpD6kE7nYfCXzovi622sY5WBxww8ARKwpdLj5kUWjRuyiXaD1U2JT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="https://sskelkar.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://sskelkar.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://sskelkar.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://sskelkar.github.io/">Sojjwal Kelkar</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+
+        
+
+        
+
+        <li>
+          <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
+        </li>
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header-section ">
+  
+  <div class="intro-header no-img">
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="post-heading">
+            <h1>Mimicking developer cognitive process with agent teams</h1>
+            <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;May 26, 2026
+  
+  
+    <span class="meta-separator">|</span><i class="fas fa-clock"></i>&nbsp;15&nbsp;minutes
+  
+  
+  
+  
+  
+    <span class="blog-tags"><a href="https://sskelkar.github.io/tags/agentic-coding/">Agentic Coding</a></span>
+  
+</span>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Agentic coding came with the promise that developers can spend their time thinking at a higher abstraction, as the task of writing code is delegated away.
+Instead, what we observe is that for any non-trivial task, developers have to spend their time micromanaging AI to ensure that:
+it doesn&rsquo;t stray away from what the developer wants it to build; is being thorough enough; and doesn&rsquo;t overlook any critical requirement.
+After the AI-assisted code has been written, it runs into the speed bump of code review.</p>
+<p>Any serious project requires strict quality requirements. Therefore, any velocity gained by speedy AI-generated code is offset
+by the burden of verification and code reviews.</p>
+<p>There are two major reasons why AI struggles to get it right:</p>
+<ul>
+<li>
+<h3 id="ai-operating-on-incomplete-information">AI operating on incomplete information</h3>
+<p>Sure, we have added <code>claude.md</code> and extensively documented the project rules. But not everything that a human does while writing
+code can be captured in these documents. Just like a new engineer joining a team learns about the product, codebase, deployment
+constraints, common failure modes and team preferences etc. over time by building (and breaking) things; AI agents also somehow need to accumulate
+learnings, recognize the patterns and recall specific information when needed, so that the need for explicit prompting should go down.</p>
+<p>Because even if it was possible to provide upfront documentation for everything, loading it all up leads to context bloat, which brings us to the next problem.</p>
+</li>
+<li>
+<h3 id="tendency-of-ai-to-forget-its-instructions">Tendency of AI to forget its instructions</h3>
+<p>We can provide an instruction clear as daylight, but there&rsquo;s a chance that the AI agent can simply ignore it.</p>
+<p>This limitation of LLMs is well explained in <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">this Anthropic blog</a>:</p>
+<blockquote>
+<p>[&hellip;] we’ve observed that LLMs, like humans, lose focus or experience confusion at a certain point. Studies on needle-in-a-haystack style benchmarking have uncovered the concept of context rot: as the number of tokens in the context window increases, the model’s ability to accurately recall information from that context decreases.</p>
+<p>[&hellip;] Context, therefore, must be treated as a finite resource with diminishing marginal returns. Like humans, who have limited working memory capacity, LLMs have an “attention budget” that they draw on when parsing large volumes of context. Every new token introduced depletes this budget by some amount, increasing the need to carefully curate the tokens available to the LLM.</p></blockquote>
+</li>
+</ul>
+<p>Other more insidious issues have been <a href="https://www.reddit.com/r/ClaudeCode/comments/1rug14a/claude_wrote_playwright_tests_that_secretly/?utm_source=chatgpt.com">observed</a> where agents can manipulate unit tests or requirements to fit the implementation.</p>
+<p>Which means engineers must babysit AI agents to ensure they are doing the right thing. But we don&rsquo;t want to micromanage.
+No, we want to YOLO when vibe coding, but&hellip; safely.</p>
+<h1 id="how-humans-develop-software"><a href="#how-humans-develop-software">How humans develop software</a></h1>
+<p>Developers utilize their institutional knowledge to exercise taste and judgement. They know how their services interact with each other.
+How the data being produced in one service is used by another. How a few lines of code can impact the customer experience.
+Because of this developers don’t just blindly implement a ticket assigned to them. They think about edge cases and anticipate failure scenarios.
+They are discerning and push back on introducing changes that can break any implicit or explicit constraints,
+duplicate a feature or something that does not belong to the domain responsibilities.</p>
+<p>But that&rsquo;s not all. Developers remember what code change had broken production last quarter. How to safely roll out a change
+in a backward compatible manner. Or there&rsquo;s a technical debt that&rsquo;s supposed to be cleaned up, but it&rsquo;s not safe to do so right now
+because of some dependency. Beyond functionality, they know the coding style and preferences of their team.
+In short, humans exercise <em>judgement</em>.</p>
+<p>Having said that, humans are not infallible. People complain that AI is non-deterministic. But so are we.
+Humans experience fatigue, cognitive load, simple forgetfulness or not being able to make connections when information is provided
+in a different context. All of which can lead to what we call &ldquo;human errors&rdquo;. So just like we manage our expectations and
+build safety mechanisms to work around human limitations, we need to do the same with AI.</p>
+<h1 id="what-is-an-agent-team"><a href="#what-is-an-agent-team">What is an agent team?</a></h1>
+<p>It is an <a href="https://code.claude.com/docs/en/agent-teams">experimental Claude feature</a> where we can spin up multiple agents within the same session. Unlike subagents,
+that can only report back to the main agent, the agent &rsquo;teammates&rsquo; can talk to each other using the <code>SendMessage</code> tool.
+Each agent has its own context window, instructions, configuration and model. They live in their separate tmux pane,
+where the user can interact with them individually.</p>
+<p>These agents can take on predefined subagent types or personas. Each agent persona also maintains its separate memory where
+it can store its learnings. We can make the agents self-reflect after a session. So just like a human developer,
+the agent can gradually accumulate knowledge that can be lazy loaded depending on the situation.</p>
+<h1 id="the-agent-categories"><a href="#the-agent-categories">The Agent Categories</a></h1>
+<p>Now I present four agent categories or archetypes who, when working together, can crudely mimic the human cognitive process described above.
+When building an agent-team, each archetype can be represented by a single agent with broad set of responsibilities, or
+multiple fine-grained agents.</p>
+<h2 id="the-spec-owner"><a href="#the-spec-owner">The Spec Owner</a></h2>
+<p>Its primary responsibilities are:</p>
+<h3 id="creating-the-requirement-spec">Creating the requirement spec</h3>
+<p>The spec owner agent works with the human to produce a clear spec that has taken into account not only the new requirements,
+but also a holistic understanding of the system that&rsquo;s typically not present in a Jira ticket (see <a href="#the-knowledge-keeper">The Knowledge Keeper</a>).
+It should interview the human developer and help them think through different aspects of the problem statement - possible edge cases,
+inputs and outputs, any public contracts, impact on the current product flows etc.</p>
+<p>This spec should ideally be a structured prompt, like a <a href="https://sskelkar.github.io/post/prompts-capture-intent-like-never-before/#product-requirement-prompts">Product Requirement Prompt</a>. Each functional requirement is
+given a unique identifier that would help in cross-referencing it with the implementation.</p>
+<p>It is important to note that the spec being produced by this agent only reflects the information known during
+the requirement gathering process. It can be iterated upon with the help of other agents as more information becomes available.
+For eg, the Implementor can contest the requirement if it finds something that doesn&rsquo;t make sense in its code walkthrough.
+Any contentious information bubbles up to the human, who must decide what should be built.</p>
+<p>In a multi-agent team, this agent has the sole access to modify the spec. It operates on a project directory to which no
+other agent would have the write access. Therefore, it can be the gatekeeper for the human-approved spec.
+Other agents can dispute the requirements laid out in the spec, but they cannot silently modify it without the knowledge of the human engineer.</p>
+<h3 id="code-review">Code review</h3>
+<p>After a human has approved the spec, it is sent to the implementor agent. When the implementor reports that the task is done,
+the spec owner reviews the code and the unit tests to verify its adherence to the requirement spec.</p>
+<p>If it detects any issues it can message the Implementor to fix it. Otherwise, it approves the code to go to the next checkpoint.</p>
+<p>There can be situations where there&rsquo;s no real requirement spec, for example, when we are refactoring some code rather than
+introducing some new functionality. In such situations, this agent can just document some invariants that shouldn&rsquo;t break
+as a result of the refactoring. So the job of the Spec Owner is slightly different because there&rsquo;s no &lsquo;spec&rsquo; to be owned.
+Its primary role is of the code reviewer who ensures that the refactoring hasn&rsquo;t caused any feature or data regression.</p>
+<h2 id="the-implementor"><a href="#the-implementor">The Implementor</a></h2>
+<p>As the name implies, this agent must correctly implement the requirements while upholding code quality.</p>
+<p>At bootstrap, it loads the style guides, code conventions and all HOWTO docs on how code is organized in the project. Before starting to write code it should produce an implementation plan (IMPL) and get it reviewed by the developer.</p>
+<p>To write this doc, first it must deep dive into the code to check the feasibility of the solution it is proposing. The IMPL doc should include:</p>
+<ul>
+<li>A listing of how each requirement will be implemented and verified</li>
+<li>The assumptions that the agent is operating under</li>
+<li>Any alternative solutions considered, with trade-offs</li>
+<li>An architecture diagram of its proposed implementation. This can be a simple ASCII or Mermaid class diagram or a detailed UML diagram. This way the developer can get an idea of what the implementation will look like before the code is written</li>
+<li>Edge cases it has considered</li>
+<li>Any open questions for the developer</li>
+</ul>
+<p>During its code exploration phase, it can flag any discrepancies in the requirements. Our goal is to gather as much information upfront
+as possible. Because the later we discover issues down the line, the more expensive it gets to change the code in terms of time and tokens.</p>
+<p>The implementor has a strong post-session self-reflection protocol where it tries to capture every preference expressed by the human
+and any information that wasn&rsquo;t present in the project guides. It indexes all the information and can load on demand.
+The memory feature comes with great promise that can gradually reduce the amount of management these agents need.
+However, memory bloat is also a concern. So periodic review and compaction is needed. I&rsquo;m still experimenting with this
+feature to learn how well this actually works.</p>
+<h2 id="the-knowledge-keeper"><a href="#the-knowledge-keeper">The Knowledge Keeper</a></h2>
+<p>This agent creates a Andrej Karpathy&rsquo;s <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">LLM Wiki</a>-style documentation of a project that:</p>
+<ul>
+<li>provides a blackbox understanding of the project</li>
+<li>captures &lsquo;institutional knowledge&rsquo; that is not present in the code</li>
+</ul>
+<p>The knowledge collected by it is supposed to function like a second brain, relieving the developer from having to know or remember everything tiny detail. It provides value by:</p>
+<h3 id="gathering-knowledge">Gathering knowledge</h3>
+<p>It collects and updates all knowledge related to a project that is difficult to express in the code. It can document:</p>
+<ul>
+<li>Product flows: Business-centric doc that helps the reader understand what the service does</li>
+<li>External dependencies: What can break in service X if we stop publishing Y</li>
+<li>Data contracts: What&rsquo;s coming in. What&rsquo;s going out. What&rsquo;s getting stored.</li>
+<li>Configurations: Which flags need to be set to enable a feature</li>
+</ul>
+<p>Its mandate is to:</p>
+<ul>
+<li>Not duplicate the code in the documentation</li>
+<li>Interview the human to capture as much institutional knowledge as possible</li>
+<li>Never assume things. Always clarify.</li>
+</ul>
+<p>To create the documentation we can start a standalone Claude session with the knowledge keeper as the main agent.
+We ask it to document some flow and give it a starting point reference in the code. The agent will read the code, comments,
+unit tests etc. to create the doc. The human should be actively involved in the documentation process by reviewing agent&rsquo;s work,
+fixing terminology, providing additional context that&rsquo;s not present in the code. The reviewer should look out for any leaps
+made by the agent. We want the language in the doc to match how the product folk and the team speaks, rather than
+it reading like AI slop.</p>
+<p>This agent can collect additional information like the commit hash and timestamp of the code that was used to create the doc.
+So we can get a sense of how fresh the documentation is.
+In my team, we prefer to keep this agent&rsquo;s documentation in the project repo itself. It might also be a good idea if the
+Product Manager, rather than a developer creates this doc.</p>
+<h3 id="sanity-checks-in-an-agent-team-session">Sanity checks in an agent team session</h3>
+<p>This agent is not just a passive documenter. In an agent team session, it can play an interesting role.</p>
+<ul>
+<li>First the Spec Owner uses its documentation to get some product context when writing the spec document.</li>
+<li>When the Spec Owner&rsquo;s doc is ready, the Knowledge Keeper can read it to determine what kind of change is being introduced to the system. It basically compares the spec with its own documentation. It should remember this diff in a structured format.</li>
+<li>When the Implementor has written the code, the Knowledge Keeper is notified again. It reads the code changes and determines how it is changing the product flows. It again takes a structured diff.</li>
+<li>Then it can compare the spec based diff and the implementation based diff to detect whether the implementation has drifted away from the requirements. Thus, it is yet another agent in the loop who&rsquo;s reviewing the code and providing timely feedback.</li>
+<li>Lastly of course, this agent updates the documentation at the same time when new code is being written, thereby solving the perennial struggle to keep the documentation up to date.</li>
+</ul>
+<p>To get the diff checking benefit out of this agent, before starting a team session, I do a short run with this agent to update its documentation or create it if there was none.</p>
+<h2 id="the-orchestrator"><a href="#the-orchestrator">The Orchestrator</a></h2>
+<p>The agents described so far are specialists, that can be used standalone. For example, instead of working with the default Claude agent, we can start a session with a developer (<code>claude --agent developer</code>) and benefit from its accumulated learnings.</p>
+<p>But to make them work as a team, we need a lead agent to orchestrate the flow. The orchestrator knows in which order the information is transmitted between the agents. It can review docs and code produced by the other agents. It mediates disputes, keeps tracks of retries to prevent the agents from circling endlessly, and escalates to the human if the team is not able to progress for some reason.</p>
+<h2 id="helper-agents"><a href="#helper-agents">Helper agents</a></h2>
+<p>The point of the agent team is to keep the context of the primary agents focussed on their job. Therefore, any task, tool calls,
+research etc. that may have a potentially low signal-to-noise ratio must be kept out of their context windows. This is where helper agents come in. A primary agent can delegate the grunt work to a helper agent and only get back compact result that is strictly relevant to it. These are simple agents that can run on cheaper models.</p>
+<p>For example, we use helper subagents to run unit tests en-masse as the final verification step of the feature implementation.
+A unit-test-runner subagent only reports back the failures.</p>
+<p>There are also tools like <a href="https://github.com/rtk-ai/rtk">rtk</a> that perform a similar function. But depending on the task at hand or compatibility of your stack with <code>rtk</code>,
+a helper agent might be preferable.</p>
+<h1 id="how-it-all-comes-together"><a href="#how-it-all-comes-together">How it all comes together</a></h1>
+<p>At bootstrap, in addition to the common instructional files like <code>claude.md</code>, each agent loads its own specific instructions
+and unique memory. Meaning they are operating with different contexts and points of view. Agents can keep each other accountable
+by performing adversarial reviews on their outputs. All of this improves the probability that the code produced by an agent team
+session doesn&rsquo;t miss an important detail, that a single agent might. The Spec Owner will inform the Implementor if the latter missed implementing some requirement. If the Implementor discovers some undocumented behaviour during its code walkthrough, it informs the Knowledge Keeper to update its documentation.</p>
+<p>Each agent also interacts differently with the user, meaning they can help the human developer think through different aspects of a problem.
+They can also help fill in the gaps if the developer doesn&rsquo;t know certain aspects of the project or cannot recall details at the moment.</p>
+<p>As per Claude documentation, agent teammates shouldn&rsquo;t edit the same file because it can lead to overwrites. I think this is actually a feature not a bug.
+Each agent has edit permission to different parts of the project. Which means the Implementor can’t silently alter the requirement.
+Changes to the spec go through the Spec Owner. And Spec Owner&rsquo;s mandate dictates that all edits to the spec require human approval.</p>
+<p>While I have described broad agent personas here. In practice multiple specialist agents can be used for better context control.
+For example, instead of a single implementor agent having to know everything detail about how human developers prefer to write
+code on a project, we can split the role into specialists who review the code and provide feedback: one has thoroughly understanding
+of the project architecture; another is a clean coding practitioner; and yet another can be the reliability expert who has been
+trained in last twenty incident reports and knows all the common failure modes. So the Single Responsibility Principle, applied to AI agents.</p>
+<p>Finally, not everything has to be an AI agent. Remember, context is a finite resource. So we need to offload any responsibilities that can be done by static code analyzers.</p>
+<h1 id="but-what-about-the-cost"><a href="#but-what-about-the-cost">But what about the cost?</a></h1>
+<p>At first look, a multi-agent setup seems more expensive than a single agent. But it&rsquo;s not a given. Instead of using one big
+powerful agent, we have divided its job to multiple specialized agents that work on a smaller problem space. Because each agent
+is only solving a part of the problem, it is possible to use cheaper models for them. So the overall cost may turn out to be
+comparable to using a single agent on a bigger model.</p>
+<p>Companies have made a similar trade-off before with pair programming. If two engineers together work on the same ticket
+instead of one, it seems like doubling the cost. But it can also mean higher quality and faster delivery because
+there is less probability of rework and delays if feedback comes during implementation, rather than during code review.</p>
+<p>In the end it&rsquo;s not just about what is cheaper, but what provides the most value for money.</p>
+<h1 id="so-how-does-this-change-the-developer-experience"><a href="#so-how-does-this-change-the-developer-experience">So how does this change the Developer Experience?</a></h1>
+<p>Before AI, there was a limit on how much planning and collaboration developers could do. Because the clock is ticking, and
+at some point, you need to stop talking and start coding. AI automates the typing, but still consumes developer time to keep
+the outcome deterministic.</p>
+<p>A team of specialized agents with intricate knowledge of our project and our way of working <em>can</em> improve confidence by
+injecting early feedback from multiple points of view. They may even help deliver robust software by filling in the gaps that the developer missed.</p>
+<p>All of this means that the developers get to spend more time upstream to collaborate on
+architecture, code structure and deciding the right abstractions. The sheer speed by which code can be produced means that
+once a poor architectural decision goes uncorrected, its impact can stack up really fast. This is why as someone who&rsquo;s
+responsible for maintaining a critical legacy system, I believe the need for close human collaboration has never been higher.</p>
+<p>Are agent teams the future of agentic coding? It might well become the norm to have a team of specialist agents, who specialize
+on different aspects of <em>our</em> project, as a way of managing context. Or this might just be a bridge till we reach a point where
+the next generation of LLMs are capable enough to overcome the problem of context rot, while being cost-effective.</p>
+
+
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="/post/how-ai-fixes-codebase/">How AI is forcing us to finally fix our codebase</a></li>
+                
+                    <li><a href="/post/if-rubens-could-delegate-paintings-you-can-delegate-code/">If Rubens could delegate his paintings, you can delegate your code</a></li>
+                
+                    <li><a href="/post/ics-using-genai-should-think-like-managers/">ICs Using AI Agents Should Think Like Managers</a></li>
+                
+                    <li><a href="/post/prompts-capture-intent-like-never-before/">Well structured prompts capture intent like never before</a></li>
+                
+                    <li><a href="/post/vibe-coding-in-production/">Vibe Coding in Production: Early impressions</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://sskelkar.github.io/post/how-ai-fixes-codebase/" data-toggle="tooltip" data-placement="top" title="How AI is forcing us to finally fix our codebase">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+
+      
+
+      
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          &copy;
+          
+            2026
+          
+
+          
+            &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+            
+              Sojjwal Kelkar
+            
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          &bull;&nbsp;Powered by Hugo&nbsp;&bull;&nbsp;
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://sskelkar.github.io/js/main.js"></script>
+<script src="https://sskelkar.github.io/js/dark-mode.js"></script>
+<script src="https://sskelkar.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://sskelkar.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+
