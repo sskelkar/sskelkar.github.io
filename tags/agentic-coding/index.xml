@@ -8,8 +8,15 @@
     <language>en</language>
     <managingEditor>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</managingEditor>
     <webMaster>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</webMaster>
-    <lastBuildDate>Sat, 25 Apr 2026 00:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 29 Aug 2026 14:11:31 +0200</lastBuildDate>
     <atom:link href="https://sskelkar.github.io/tags/agentic-coding/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Talk to each other, not just AI</title>
+      <link>https://sskelkar.github.io/post/talk-to-each-other-not-just-ai/</link>
+      <pubDate>Sat, 29 Aug 2026 14:11:31 +0200</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
+      <guid>https://sskelkar.github.io/post/talk-to-each-other-not-just-ai/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://annievella.com/&#34;&gt;Annie Vella&lt;/a&gt; published another insightful &lt;a href=&#34;https://www.linkedin.com/posts/annievella_ive-spent-some-time-going-through-the-responses-share-7498579139315023872-bILF&#34;&gt;post&lt;/a&gt; that resonated with me. As an Engineering Manager, her point #3 &lt;em&gt;&amp;ldquo;Colleagues stopped talking to each other. Rather than asking one another, they now rely on a model, further compounding the ambiguity and exposure gaps&amp;rdquo;&lt;/em&gt; worries me, and it has influenced some changes in how my team works:&lt;/p&gt;&#xA;&lt;p&gt;Firstly, the stand-up length. Throughout my career, the standard advice has been that a stand-up should take no more than 10-15 minutes. Anything longer used to feel like a failure, for wasting everyone&amp;rsquo;s time. But first with hybrid work and more recently since engineers started spending most of their day talking to Claude instead of each other, the lack of face to face time has become concerning, as it becomes increasingly likely that important design decisions get made in isolation.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>How AI is forcing us to finally fix our codebase</title>
       <link>https://sskelkar.github.io/post/how-ai-fixes-codebase/</link>
