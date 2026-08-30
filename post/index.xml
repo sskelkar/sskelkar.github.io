@@ -8,14 +8,14 @@
     <language>en</language>
     <managingEditor>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</managingEditor>
     <webMaster>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</webMaster>
-    <lastBuildDate>Tue, 26 May 2026 00:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 29 Aug 2026 14:11:31 +0200</lastBuildDate>
     <atom:link href="https://sskelkar.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Mimicking developer cognitive process with agent teams</title>
-      <link>https://sskelkar.github.io/post/mimicking-developer-cognitive-process-with-agent-teams/</link>
-      <pubDate>Tue, 26 May 2026 00:00:00 +0530</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
-      <guid>https://sskelkar.github.io/post/mimicking-developer-cognitive-process-with-agent-teams/</guid>
-      <description>&lt;p&gt;Agentic coding came with the promise that developers could spend their time thinking at a higher abstraction, as the task of writing code is delegated away.&#xA;Instead, what we observe is that for any non-trivial task, developers have to spend their time micromanaging AI to ensure that it is being thorough enough and doesn&amp;rsquo;t overlook any critical requirements.&#xA;In serious projects with strict quality requirements, any velocity gained by speedy AI-generated code can get offset by the burden of monitoring, verification and code reviews.&lt;/p&gt;</description>
+      <title>Talk to Each other, not just AI</title>
+      <link>https://sskelkar.github.io/post/talk-to-each-other-not-just-ai/</link>
+      <pubDate>Sat, 29 Aug 2026 14:11:31 +0200</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
+      <guid>https://sskelkar.github.io/post/talk-to-each-other-not-just-ai/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://annievella.com/&#34;&gt;Annie Vella&lt;/a&gt; published another insightful &lt;a href=&#34;https://www.linkedin.com/posts/annievella_ive-spent-some-time-going-through-the-responses-share-7498579139315023872-bILF&#34;&gt;post&lt;/a&gt; that resonated with me. As an Engineering Manager, her point #3 &lt;em&gt;&amp;ldquo;Colleagues stopped talking to each other. Rather than asking one another, they now rely on a model, further compounding the ambiguity and exposure gaps&amp;rdquo;&lt;/em&gt; worries me, and it has influenced some changes in how my team works:&lt;/p&gt;&#xA;&lt;p&gt;Firstly, the stand-up length. Throughout my career, the standard advice has been that a stand-up should take no more than 10-15 minutes. Anything longer used to feel like a failure, for wasting everyone&amp;rsquo;s time. But first with hybrid work and more recently since engineers started spending most of their day talking to Claude instead of each other, the lack of face to face time has become concerning, as it becomes increasingly likely that important design decisions get made in isolation.&lt;/p&gt;</description>
     </item>
     <item>
       <title>How AI is forcing us to finally fix our codebase</title>
@@ -30,6 +30,13 @@
       <pubDate>Thu, 23 Apr 2026 23:40:02 +0200</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
       <guid>https://sskelkar.github.io/post/if-rubens-could-delegate-paintings-you-can-delegate-code/</guid>
       <description>&lt;p&gt;In my opinion, for effective agentic coding, &lt;a href=&#34;https://sskelkar.github.io/post/ics-using-genai-should-think-like-managers/&#34;&gt;engineers should think like managers&lt;/a&gt;.&#xA;But perhaps you are not interested in management. You don&amp;rsquo;t know what managers do, and you don&amp;rsquo;t want to know.&#xA;You are put off by all the manager-analogies and wish they&amp;rsquo;d stop. Perhaps you are the artistic type - a software craftsperson.&lt;/p&gt;&#xA;&lt;p&gt;So let&amp;rsquo;s change the subject and talk about something interesting&amp;hellip; like art. Hey, how about that Rubens?&#xA;Do you know his process on some of his famous paintings like &lt;em&gt;The Elevation of the Cross&lt;/em&gt;?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Mimicking developer cognitive process with agent teams</title>
+      <link>https://sskelkar.github.io/post/mimicking-developer-cognitive-process-with-agent-teams/</link>
+      <pubDate>Fri, 03 Apr 2026 00:00:00 +0530</pubDate><author>sojjwalkelkar@gmail.com (Sojjwal Kelkar)</author>
+      <guid>https://sskelkar.github.io/post/mimicking-developer-cognitive-process-with-agent-teams/</guid>
+      <description>&lt;p&gt;Agentic coding came with the promise that developers could spend their time thinking at a higher abstraction, as the task of writing code is delegated away.&#xA;Instead, what we observe is that for any non-trivial task, developers have to spend their time micromanaging AI to ensure that it is being thorough enough and doesn&amp;rsquo;t overlook any critical requirements.&#xA;In serious projects with strict quality requirements, any velocity gained by speedy AI-generated code can get offset by the burden of monitoring, verification and code reviews.&lt;/p&gt;</description>
     </item>
     <item>
       <title>ICs Using AI Agents Should Think Like Managers</title>
